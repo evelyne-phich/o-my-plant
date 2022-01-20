@@ -2,8 +2,6 @@ import { Link, NavLink } from "react-router-dom";
 
 import "./style.scss";
 
-import logo from "../../assets/images/logo.svg";
-
 import Button from "../Button";
 
 const Nav = () => {
@@ -13,7 +11,7 @@ const Nav = () => {
   return (
     <nav className="nav">
       <Link className="nav-logo" to="#">
-        <img src={logo} alt="logo O'My Plant" />
+        <img src="/img/logo.svg" alt="logo O'My Plant" />
         <h1 className="nav-title">O'My Plant</h1>
       </Link>
       <div className="nav-menu">
