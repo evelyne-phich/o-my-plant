@@ -1,4 +1,5 @@
 import { Link, NavLink } from "react-router-dom";
+import logo from "../../assets/img/logo/logo.svg";
 
 import "./style.scss";
 
@@ -6,13 +7,15 @@ import Button from "../Button";
 
 const Nav = () => {
   const getActiveClassname = ({ isActive }) =>
-    isActive ? "menu-link menu-link--active" : "menu-link";
+    isActive ? "nav-menu-link menu-link--active" : "nav-menu-link";
 
   return (
     <nav className="nav">
-      <Link className="nav-logo" to="#">
-        <img src="/img/logo.svg" alt="logo O'My Plant" />
-        <h1 className="nav-title">O'My Plant</h1>
+      <Link className="nav-logo" to="#" style={{ textDecoration: "none" }}>
+        <div className="nav-logo-container">
+          <img src={logo} className="nav-logo-img" alt="logo O'My Plant" />
+          <h1 className="nav-title">O'My Plant</h1>
+        </div>
       </Link>
       <div className="nav-menu">
         <NavLink className={getActiveClassname} to="/">
@@ -21,8 +24,14 @@ const Nav = () => {
         <NavLink className={getActiveClassname} to="/about">
           A propos
         </NavLink>
-        <Button />
-        <Button />
+        <Button
+          className="nav-menu-link nav-menu-link-btn nav-menu-link-login"
+          buttonContent="Connexion"
+        />
+        <Button
+          className="nav-menu-link nav-menu-link-btn nav-menu-link-signup"
+          buttonContent="Inscription"
+        />
       </div>
     </nav>
   );

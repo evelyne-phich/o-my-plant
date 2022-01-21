@@ -1,0 +1,28 @@
+@use '../../styles/vars.scss';
+
+.header {
+    height: 100vh;
+    display: flex;
+    z-index: 3;
+    
+    background-color: pink;
+        &-part-left {
+            background-color: vars.$color-4;
+            width: 50vw;
+            height: 100%;/*
+            background: url(../../assets/img/home/home-bgd.jpg);
+            background-size: cover;
+            background-position: center;*/
+        }
+        &-part-right {
+            background-color: vars.$color-1;
+            width: 50vw;
+        }
+        &-img {
+            width: 100%;
+            height: 100VH;
+            object-fit: cover;
+            object-position: left;
+        }
+        
+        }
