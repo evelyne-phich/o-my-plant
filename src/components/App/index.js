@@ -1,13 +1,7 @@
-import Nav from "../Nav";
 import "./style.scss";
 
 const App = () => {
-  return (
-    <div className="app">
-      Hello World
-      <Nav />
-    </div>
-  );
+  return <div className="app">Hello World</div>;
 };
 
 export default App;
