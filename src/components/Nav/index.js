@@ -24,14 +24,18 @@ const Nav = () => {
         <NavLink className={getActiveClassname} to="/about">
           A propos
         </NavLink>
-        <Button
-          className="nav-menu-link nav-menu-link-btn nav-menu-link-login"
-          buttonContent="Connexion"
-        />
-        <Button
-          className="nav-menu-link nav-menu-link-btn nav-menu-link-signup"
-          buttonContent="Inscription"
-        />
+        <Link to="/login">
+          <Button
+            className="nav-menu-link nav-menu-link-btn nav-menu-link-login"
+            buttonContent="Connexion"
+          />
+        </Link>
+        <Link to="/subscribe">
+          <Button
+            className="nav-menu-link nav-menu-link-btn nav-menu-link-signup"
+            buttonContent="Inscription"
+          />
+        </Link>
       </div>
     </nav>
   );

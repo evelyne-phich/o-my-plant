@@ -2,10 +2,11 @@
 // import Page from 'src/components/Page';
 // import AppHeader from 'src/components/AppHeader';
 // import Content from 'src/components/Content';
+import Header from "../Header";
 
 const Home = () => {
   return (
-      /*
+    /*
     <Page>
       <AppHeader />
       <Content
@@ -14,11 +15,11 @@ const Home = () => {
         recipes={recipes}
       />
     </Page>*/
-    <header></header>
-    <main>
+    <Header />
+    /*<main>
         <section></section>
     </main>
-    <footer></footer>
+    <footer></footer>*/
   );
 };
 
