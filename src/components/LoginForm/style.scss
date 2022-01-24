@@ -1,0 +1,31 @@
+@use '../../styles/vars.scss';
+
+.login-form {
+    display: flex;
+    width: 20vw;
+
+    &-element {
+        width: 100%;
+    }
+
+    &-button {
+        font-weight: bold;
+        text-transform: uppercase;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        background-color: vars.$color-1;
+        padding: 0.8rem;
+        width: 100%;
+        margin-top: 1rem;
+        cursor: pointer;
+        transition: 0.2s ease-in-out;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    }
+
+    &-button:hover {
+        background-color: vars.$color-3;
+        color: vars.$color-1;
+
+    }
+}

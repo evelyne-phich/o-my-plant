@@ -1,8 +1,5 @@
 import "./style.scss";
 import homeHeaderImage from "../../assets/img/home/home-bgd.jpg";
-import logo from "../../assets/img/logo/logo.svg";
-
-console.log(homeHeaderImage);
 
 const Header = () => {
   return (

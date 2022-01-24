@@ -2,7 +2,7 @@
 
 .nav {
     height: auto;
-    position: absolute;
+    position: fixed;
     top:0;
     padding-left: 3em;
     padding-right: 3em;
@@ -12,6 +12,7 @@
     z-index: 2;
     left: 0;
     right: 0;
+    background-color: #A8C5BD;
 
     &-logo-container {
         display: flex;
@@ -22,7 +23,7 @@
     }
 
     &-logo-img {
-       max-width: 80%;
+        max-width: 80%;
     }
 
     &-title {
@@ -46,9 +47,4 @@
             font-weight: 600;
         }
     }
-
-    &-btn{
-        margin: 1rem;
-    }
-
 }

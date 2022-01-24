@@ -1,0 +1,14 @@
+@use '../../../styles/vars.scss';
+
+.field-input {
+    color: white;
+    font-weight: 600;
+    background-color: vars.$color-3;
+    border: none;
+    border-radius: 5px;
+    margin-top: 1rem;
+    padding: 0.8rem;
+    width: 100%;
+    display: inline-block;
+    box-sizing: border-box;
+}

@@ -1,8 +1,9 @@
 import { Routes, Route } from "react-router-dom";
-import Axios from "axios";
+// import Axios from "axios";
 import Nav from "../Nav";
 import About from "../About";
-import Header from "../Header";
+import Home from "../Home";
+import Login from "../Login";
 import "./style.scss";
 
 const App = () => {
@@ -16,12 +17,11 @@ const App = () => {
     <>
       <div className="app">
         <Nav />
-        <Header />
         <Routes>
-          <Route path="/" />
+          <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/sign-up" />
-          <Route path="/login" />
+          <Route path="/login" element={<Login />} />
         </Routes>
         {/* <button type="button" onClick={tst}>
           tst
