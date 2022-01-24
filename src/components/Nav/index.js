@@ -30,10 +30,12 @@ const Nav = () => {
             buttonContent="Connexion"
           />
         </Link>
-        <Button
-          className="nav-menu-link nav-menu-link-btn nav-menu-link-signup"
-          buttonContent="Inscription"
-        />
+        <Link to="/subscribe">
+          <Button
+            className="nav-menu-link nav-menu-link-btn nav-menu-link-signup"
+            buttonContent="Inscription"
+          />
+        </Link>
       </div>
     </nav>
   );

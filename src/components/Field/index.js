@@ -3,18 +3,18 @@ import PropTypes from "prop-types";
 import "./style.scss";
 
 const Field = ({ value, type, name, placeholder, onChange }) => {
-  const handleChange = (evt) => {
+  /*const handleChange = (evt) => {
     onChange(evt.target.value, name);
-  };
+  };*/
 
   const inputId = `field-${name}`;
-
+  // className={value.length > 0 ? "field field--has-content" : "field"}
   return (
-    <div className={value.length > 0 ? "field field--has-content" : "field"}>
+    <div>
       <input
         // React - state
         value={value}
-        onChange={handleChange}
+        onChange={(e) => onChange(e.target.value, name)}
         // infos de base
         id={inputId}
         type={type}
@@ -25,20 +25,20 @@ const Field = ({ value, type, name, placeholder, onChange }) => {
     </div>
   );
 };
-
+/*
 Field.propTypes = {
   value: PropTypes.string,
   type: PropTypes.string,
   name: PropTypes.string.isRequired,
   placeholder: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
-};
+};*/
 
 // Valeurs par défaut pour les props
-Field.defaultProps = {
-  value: "",
-  type: "text",
-};
+// Field.defaultProps = {
+//   value: "",
+//   type: "text",
+// };
 
 // == Export
 export default Field;

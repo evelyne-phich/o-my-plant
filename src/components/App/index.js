@@ -3,7 +3,7 @@ import { Routes, Route } from "react-router-dom";
 import Nav from "../Nav";
 import About from "../About";
 import Home from "../Home";
-import Login from "../Login";
+import LoginSubscribe from "../LoginSubscribe";
 import "./style.scss";
 
 const App = () => {
@@ -21,7 +21,14 @@ const App = () => {
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/sign-up" />
-          <Route path="/login" element={<Login />} />
+          <Route
+            path="/login"
+            element={<LoginSubscribe title="Se connecter" />}
+          />
+          <Route
+            path="/subscribe"
+            element={<LoginSubscribe title="S'inscrire" />}
+          />
         </Routes>
         {/* <button type="button" onClick={tst}>
           tst

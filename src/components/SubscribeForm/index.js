@@ -3,26 +3,33 @@ import { useDispatch, useSelector } from "react-redux";
 import PropTypes from "prop-types";
 
 import Field from "../Field";
-import { changeField, login } from "../../actions/user";
+import { changeField, subscribe } from "../../actions/user";
 
 import "./style.scss";
 
-const LoginForm = () => {
+const SubscribeForm = () => {
   const dispatch = useDispatch();
   const currentState = useSelector((state) => state);
   const changeFieldInput = (value, name) => dispatch(changeField(value, name));
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(login());
+    dispatch(subscribe());
   };
 
   return (
-    <div className="login-form">
+    <div className="subscribe-form">
       <form
         autoComplete="off"
-        className="login-form-element"
+        className="subscribe-form-element"
         onSubmit={handleSubmit}
       >
+        <Field
+          name="pseudo"
+          type="text"
+          placeholder="Pseudo"
+          onChange={changeFieldInput}
+          value={currentState.pseudo}
+        />
         <Field
           name="mail"
           type="email"
@@ -37,7 +44,14 @@ const LoginForm = () => {
           onChange={changeFieldInput}
           value={currentState.password}
         />
-        <button type="submit" className="login-form-button">
+        <Field
+          name="passwordConfirmation"
+          type="password"
+          placeholder="Confirmation du mot de passe"
+          onChange={changeFieldInput}
+          value={currentState.password}
+        />
+        <button type="submit" className="subscribe-form-button">
           Valider
         </button>
       </form>
@@ -58,4 +72,4 @@ LoginForm.defaultProps = {
   loggedMessage: "Connecté",
 };*/
 
-export default LoginForm;
+export default SubscribeForm;
