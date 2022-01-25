@@ -1,11 +1,20 @@
 import { Routes, Route } from "react-router-dom";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
 import Nav from "../Nav";
 import About from "../About";
 import Home from "../Home";
 import LoginSubscribe from "../LoginSubscribe";
 import "./style.scss";
+import { fetchUser } from "../../actions/user";
 
 const App = () => {
+  // const dispatch = useDispatch();
+
+  // useEffect(() => {
+  //   dispatch(fetchUser());
+  // }, []);
+
   return (
     <>
       <div className="app">

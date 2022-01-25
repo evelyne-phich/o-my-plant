@@ -1,6 +1,13 @@
 import axios from "axios";
 
-import { saveUser, LOGIN, SUBSCRIBE } from "../actions/user";
+import {
+  saveUser,
+  saveSubscription,
+  LOGIN,
+  SUBSCRIBE,
+  FETCH_USER,
+  LOGOUT,
+} from "../actions/user";
 
 const auth = (store) => (next) => (action) => {
   switch (action.type) {
@@ -34,12 +41,11 @@ const auth = (store) => (next) => (action) => {
           // stockage du token dans le localStorage
           // localStorage.setItem("token", res.data.token);
           // stockage des infos de l'api dans le state
-          // store.dispatch(saveUser(res.data));
+          // store.dispatch(saveSubscription(res.data));
         })
-        .catch((err) => console.log(err.response.data));
+        .catch((err) => console.log("erreur: ", err.response.data));
       break;
-    }
-    /*
+    } /*
     case FETCH_USER: {
       // on va vérifier si on a un token dans le localStorage
       const token = localStorage.getItem("token");
@@ -56,9 +62,8 @@ const auth = (store) => (next) => (action) => {
           .then((res) => store.dispatch(saveUser(res.data)))
           .catch((err) => console.log(err));
       }
-      
       break;
-    }
+    }*/
     case LOGOUT: {
       // suppression du token dans le localStorage
       localStorage.removeItem("token");
@@ -67,7 +72,7 @@ const auth = (store) => (next) => (action) => {
       // il faut donc la passer
       next(action);
       break;
-    }*/
+    }
     default:
       next(action);
   }

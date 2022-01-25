@@ -1,7 +1,4 @@
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
-
-import PropTypes from "prop-types";
 
 import Field from "../Field";
 import { changeField, subscribe } from "../../actions/user";
@@ -16,8 +13,6 @@ const SubscribeForm = () => {
     e.preventDefault();
     dispatch(subscribe());
   };
-
-  const navigate = useNavigate();
 
   return (
     <div className="subscribe-form">
@@ -54,33 +49,12 @@ const SubscribeForm = () => {
           onChange={changeFieldInput}
           value={currentState.password}
         />
-        <button
-          type="submit"
-          className="subscribe-form-button"
-          onClick={() => {
-            if (currentState.user.subscribed) {
-              navigate("/login");
-            }
-          }}
-        >
+        <button type="submit" className="subscribe-form-button">
           Valider
         </button>
       </form>
     </div>
   );
 };
-/*
-LoginForm.propTypes = {
-  email: PropTypes.string.isRequired,
-  password: PropTypes.string.isRequired,
-  changeField: PropTypes.func.isRequired,
-  handleLogin: PropTypes.func.isRequired,
-  handleLogout: PropTypes.func.isRequired,
-  loggedMessage: PropTypes.string,
-};
-
-LoginForm.defaultProps = {
-  loggedMessage: "Connecté",
-};*/
 
 export default SubscribeForm;

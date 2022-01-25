@@ -1,4 +1,4 @@
-import { CHANGE_FIELD, SAVE_USER } from "../actions/user";
+import { CHANGE_FIELD, SAVE_USER, SAVE_SUBSCRIPTION } from "../actions/user";
 
 export const initialState = {
   logged: false,
@@ -7,7 +7,6 @@ export const initialState = {
   password: "",
   token: "",
   pseudo: "",
-  loggedMessage: "",
   firstname: "",
   lastname: "",
   profilepicture: "",
@@ -15,6 +14,7 @@ export const initialState = {
   level: "",
   biography: "",
   telephone: "",
+  role: "",
 };
 
 const reducer = (state = initialState, action = {}) => {
@@ -24,14 +24,20 @@ const reducer = (state = initialState, action = {}) => {
         ...state,
         [action.payload.name]: action.payload.value,
       };
-    case SAVE_USER: {
+    case SAVE_USER:
       return {
         ...state,
         ...action.payload,
         mail: "",
         password: "",
       };
-    } /*
+    case SAVE_SUBSCRIPTION:
+      console.log(action.payload);
+      return {
+        ...state,
+        subscribed: action.payload,
+      };
+    /*
       case LOGOUT: {
         // on vient faire un reset du state
         // en déversant le state initial dans un nouvel objet
