@@ -1,4 +1,9 @@
-import { CHANGE_FIELD, SAVE_USER, SAVE_SUBSCRIPTION } from "../actions/user";
+import {
+  CHANGE_FIELD,
+  SAVE_USER,
+  SAVE_SUBSCRIPTION,
+  UPDATE_PROFILE,
+} from "../actions/user";
 
 export const initialState = {
   logged: false,
@@ -15,6 +20,7 @@ export const initialState = {
   biography: "",
   telephone: "",
   role: "",
+  profileUpdateDisabled: true,
 };
 
 const reducer = (state = initialState, action = {}) => {
@@ -23,6 +29,11 @@ const reducer = (state = initialState, action = {}) => {
       return {
         ...state,
         [action.payload.name]: action.payload.value,
+      };
+    case UPDATE_PROFILE:
+      return {
+        ...state,
+        profileUpdateDisabled: false,
       };
     case SAVE_USER:
       return {

@@ -5,6 +5,7 @@ export const SUBSCRIBE = "SUBSCRIBE";
 export const SAVE_SUBSCRIPTION = "SAVE_SUBSCRIPTION";
 export const SAVE_USER = "SAVE_USER";
 export const FETCH_USER = "FETCH_USER";
+export const UPDATE_PROFILE = "UPDATE_PROFILE";
 
 export const changeField = (value, name) => ({
   type: CHANGE_FIELD,
@@ -12,6 +13,10 @@ export const changeField = (value, name) => ({
     value,
     name,
   },
+});
+
+export const updateProfile = () => ({
+  type: UPDATE_PROFILE,
 });
 
 export const login = () => ({

@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 
 import "./style.scss";
 
-const Field = ({ value, type, name, placeholder, onChange }) => {
+const Field = ({ value, type, name, placeholder, onChange, disabled }) => {
   const inputId = `field-${name}`;
   return (
     <div>
@@ -14,6 +14,7 @@ const Field = ({ value, type, name, placeholder, onChange }) => {
         className="field-input"
         placeholder={placeholder}
         name={name}
+        disabled={disabled}
       />
     </div>
   );
@@ -25,6 +26,7 @@ Field.propTypes = {
   name: PropTypes.string.isRequired,
   placeholder: PropTypes.string,
   onChange: PropTypes.func.isRequired,
+  disabled: PropTypes.bool,
 };
 
 export default Field;
