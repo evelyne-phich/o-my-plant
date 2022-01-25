@@ -12,99 +12,86 @@ const Profile = () => {
 
   return (
     <form className="profile" method="POST">
-      <div className="profile-picture-and-level">
-        <img
-          className="profile-picture"
-          src="https://maison.20minutes.fr/wp-content/uploads/2020/05/palmier-areca-istock.jpg"
-          alt="avatar"
-        ></img>
-        <div className="profil-level">Niveau :</div>
-      </div>
-      <div className="profile-update">
-        <div className="profile-left">
-          <label for="pseudo" className="profile-label">
-            Pseudo du profil
-          </label>
+      <div className="profile-top">
+        <div className="profile-pseudo">
+          <label htmlFor="pseudo">Pseudo du profil</label>
           <Field
             name="pseudo"
             type="text"
-            placeholder={currentState.pseudo}
             onChange={changeFieldInput}
-            value={currentState.pseudo}
+            value={currentState.user.pseudo}
           />
-          <label for="firstname" className="profile-label">
-            Prénom
-          </label>
+        </div>
+        <div className="profile-picture-and-level">
+          <img
+            className="profile-picture"
+            src={currentState.user.profilepicture}
+            alt="avatar"
+          ></img>
+          <div className="profile-level">Niveau :</div>
+        </div>
+      </div>
+      <div className="profile-bottom">
+        <div className="profile-left">
+          <label htmlFor="firstname">Prénom</label>
           <Field
             name="firstname"
             type="text"
-            placeholder={currentState.firstname}
             onChange={changeFieldInput}
-            value={currentState.firstname}
+            value={currentState.user.firstname}
           />
-          <label for="lastname" className="profile-label">
-            Nom
-          </label>
+          <label htmlFor="lastname">Nom</label>
           <Field
             name="lastname"
             type="text"
-            placeholder={currentState.lastname}
             onChange={changeFieldInput}
-            value={currentState.lastname}
+            value={currentState.user.lastname}
           />
-          <label for="dateofbirth" className="profile-label">
-            Date de naissance
-          </label>
+          <label htmlFor="dateofbirth">Date de naissance</label>
           <Field
             name="dateofbirth"
             type="date"
-            placeholder={currentState.dateofbirth}
             onChange={changeFieldInput}
-            value={currentState.dateofbirth}
+            value={currentState.user.dateofbirth}
           />
-          <label for="mail" className="profile-label">
-            Mail
-          </label>
+          <label htmlFor="mail">Mail</label>
           <Field
             name="mail"
             type="email"
-            placeholder={currentState.mail}
             onChange={changeFieldInput}
-            value={currentState.mail}
+            value={currentState.user.mail}
           />
-          <label for="telephone" className="profile-label">
-            Téléphone
-          </label>
+          <label htmlFor="telephone">Téléphone</label>
           <Field
             name="telephone"
-            type="text"
-            placeholder={currentState.telephone}
+            type="tel"
             onChange={changeFieldInput}
-            value={currentState.telephone}
+            value={currentState.user.telephone}
           />
         </div>
         <div className="profile-right">
-          <label for="profilepicture" className="profile-label">
-            Photo de profil
-          </label>
+          <label htmlFor="profilepicture">Photo de profil</label>
           <Field
             name="profilepicture"
             type="file"
-            placeholder=""
             onChange={changeFieldInput}
-            value={currentState.profilepicture}
+            value={currentState.user.profilepicture}
           />
-          <label for="biography" className="profile-label">
-            Bio
-          </label>
-          <textarea
-            name="biography"
-            rows="5"
-            cols="33"
-            placeholder={currentState.biography}
-          ></textarea>
+          <div className="profile-biography">
+            <label htmlFor="biography">Bio</label>
+            <textarea
+              name="biography"
+              rows="18"
+              cols="33"
+              className="profile-biography-content"
+              value={currentState.user.biography}
+            ></textarea>
+          </div>
         </div>
       </div>
+      <button className="profile-submit" type="submit">
+        Modifier
+      </button>
     </form>
   );
 };

@@ -1,3 +1,66 @@
+@use '../../styles/vars.scss';
+
 .profile {
     padding-top: 160px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    label {
+       font-weight: bold;
+       color: vars.$color-1;
+    }
+
+    &-top {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 70%;
+    }
+
+    &-picture {
+        border-radius: 50px;
+        width: 200px;
+        height: 200px;
+        margin-bottom: 24px;
+    }
+
+    &-level {
+        font-weight: bold;
+       color: vars.$color-1;
+    }
+
+    &-bottom {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 36px;
+        width: 70%;
+    }
+
+    &-biography {
+        display: flex;
+        flex-direction: column;
+
+        &-content {
+            margin: 16px 0;
+            border-radius: 5px;
+        }
+    }
+
+    &-submit {
+        color: vars.$color-4;
+        font-weight: bold;
+        border: none;
+        border-radius: 5px;
+        padding: 18px;
+        width: 70%;
+        background-color: vars.$color-1;
+        margin: 24px 0;
+        cursor: pointer;
+        transition: 0.2s ease-in-out;
+
+        &:hover {
+        background-color: vars.$color-2;
+        }
+    }
 }
