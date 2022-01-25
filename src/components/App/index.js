@@ -1,17 +1,19 @@
 import { Routes, Route } from "react-router-dom";
-// import Axios from "axios";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
 import Nav from "../Nav";
 import About from "../About";
 import Home from "../Home";
 import LoginSubscribe from "../LoginSubscribe";
 import "./style.scss";
+import { fetchUser } from "../../actions/user";
 
 const App = () => {
-  // const tst = () => {
-  //   Axios.get("https://omyplant.herokuapp.com/").then((response) => {
-  //     console.log(response.data);
-  //   });
-  // };
+  // const dispatch = useDispatch();
+
+  // useEffect(() => {
+  //   dispatch(fetchUser());
+  // }, []);
 
   return (
     <>
@@ -30,9 +32,6 @@ const App = () => {
             element={<LoginSubscribe title="S'inscrire" />}
           />
         </Routes>
-        {/* <button type="button" onClick={tst}>
-          tst
-        </button> */}
       </div>
     </>
   );

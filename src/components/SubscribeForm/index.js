@@ -1,7 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
 
-import PropTypes from "prop-types";
-
 import Field from "../Field";
 import { changeField, subscribe } from "../../actions/user";
 
@@ -58,18 +56,5 @@ const SubscribeForm = () => {
     </div>
   );
 };
-/*
-LoginForm.propTypes = {
-  email: PropTypes.string.isRequired,
-  password: PropTypes.string.isRequired,
-  changeField: PropTypes.func.isRequired,
-  handleLogin: PropTypes.func.isRequired,
-  handleLogout: PropTypes.func.isRequired,
-  loggedMessage: PropTypes.string,
-};
-
-LoginForm.defaultProps = {
-  loggedMessage: "Connecté",
-};*/
 
 export default SubscribeForm;

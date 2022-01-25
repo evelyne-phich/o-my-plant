@@ -2,6 +2,7 @@ export const CHANGE_FIELD = "CHANGE_FIELD";
 export const LOGIN = "LOGIN";
 export const LOGOUT = "LOGOUT";
 export const SUBSCRIBE = "SUBSCRIBE";
+export const SAVE_SUBSCRIPTION = "SAVE_SUBSCRIPTION";
 export const SAVE_USER = "SAVE_USER";
 export const FETCH_USER = "FETCH_USER";
 
@@ -16,9 +17,11 @@ export const changeField = (value, name) => ({
 export const login = () => ({
   type: LOGIN,
 });
+
 export const subscribe = () => ({
   type: SUBSCRIBE,
 });
+
 export const logout = () => ({
   type: LOGOUT,
 });
@@ -28,6 +31,11 @@ export const saveUser = (user) => ({
   payload: {
     ...user,
   },
+});
+
+export const saveSubscription = (data) => ({
+  type: SAVE_SUBSCRIPTION,
+  payload: { data },
 });
 
 export const fetchUser = () => ({
