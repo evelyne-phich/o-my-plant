@@ -1,4 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 import PropTypes from "prop-types";
 
@@ -15,6 +16,8 @@ const LoginForm = () => {
     e.preventDefault();
     dispatch(login());
   };
+
+  const navigate = useNavigate();
 
   return (
     <div className="login-form">
@@ -37,7 +40,15 @@ const LoginForm = () => {
           onChange={changeFieldInput}
           value={currentState.password}
         />
-        <button type="submit" className="login-form-button">
+        <button
+          type="submit"
+          className="login-form-button"
+          onClick={() => {
+            if (currentState.user.logged) {
+              navigate("/");
+            }
+          }}
+        >
           Valider
         </button>
       </form>

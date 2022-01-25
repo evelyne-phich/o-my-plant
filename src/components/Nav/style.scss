@@ -1,4 +1,12 @@
 @use '../../styles/vars.scss';
+.color {
+    background-color: #A8C5BD;
+}
+
+.transparent {
+    transition-duration: 0.4s ease;
+    background-color: transparent;
+}
 
 .nav {
     height: auto;
@@ -12,7 +20,7 @@
     z-index: 2;
     left: 0;
     right: 0;
-    background-color: #A8C5BD;
+    /*background-color: #A8C5BD;*/
 
     &-logo-container {
         display: flex;
@@ -41,10 +49,33 @@
         &-link{
             padding: 1rem;
             margin-left: 1rem;
-            color: white;
+            color: vars.$color-3;
             text-decoration: none;
             text-transform: uppercase;
             font-weight: 600;
+            position: relative;
+
+            &:after {
+                background: none repeat scroll 0 0 transparent;
+                bottom: 0;
+                content: "";
+                display: block;
+                height: 2px;
+                left: 50%;
+                position: absolute;
+                background: #fff;
+                transition: width 0.3s ease 0s, left 0.3s ease 0s;
+                width: 0;
+            }
+
+            &:hover:after { 
+                width: 100%; 
+                left: 0; 
+            }
+
+            &--active {
+                color: white;
+            }
         }
     }
 }

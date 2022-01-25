@@ -2,6 +2,7 @@ import { CHANGE_FIELD, SAVE_USER } from "../actions/user";
 
 export const initialState = {
   logged: false,
+  subscribed: false,
   mail: "",
   password: "",
   token: "",
@@ -15,21 +16,7 @@ export const initialState = {
   biography: "",
   telephone: "",
 };
-/*
-...state,
-        logged: false,
-        mail: "",
-        password: "",
-        token: "",
-        pseudo: "",
-        loggedMessage: "",
-        firstName: "",
-        lastName: "",
-        pictureUrl: "",
-        dateOfBirth: "",
-        level: "",
-        bio: "",
-*/
+
 const reducer = (state = initialState, action = {}) => {
   switch (action.type) {
     case CHANGE_FIELD:

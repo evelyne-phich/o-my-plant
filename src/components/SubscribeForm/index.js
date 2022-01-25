@@ -1,4 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 import PropTypes from "prop-types";
 
@@ -15,6 +16,8 @@ const SubscribeForm = () => {
     e.preventDefault();
     dispatch(subscribe());
   };
+
+  const navigate = useNavigate();
 
   return (
     <div className="subscribe-form">
@@ -51,7 +54,15 @@ const SubscribeForm = () => {
           onChange={changeFieldInput}
           value={currentState.password}
         />
-        <button type="submit" className="subscribe-form-button">
+        <button
+          type="submit"
+          className="subscribe-form-button"
+          onClick={() => {
+            if (currentState.user.subscribed) {
+              navigate("/login");
+            }
+          }}
+        >
           Valider
         </button>
       </form>

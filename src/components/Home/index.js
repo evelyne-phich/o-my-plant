@@ -12,7 +12,6 @@ const Home = () => {
       <Content
         title={title}
         text="Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, explicabo."
-        recipes={recipes}
       />
     </Page>*/
     <Header />
