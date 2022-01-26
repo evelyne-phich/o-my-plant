@@ -1,3 +1,4 @@
+import Footer from "../Footer";
 import "./style.scss";
 
 const About = () => {
