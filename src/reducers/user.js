@@ -8,10 +8,8 @@ import {
 export const initialState = {
   logged: false,
   subscribed: false,
-  id: 1,
+  id: "",
   mail: "",
-  password: "",
-  token: "",
   pseudo: "",
   firstname: "",
   lastname: "",
@@ -37,17 +35,17 @@ const reducer = (state = initialState, action = {}) => {
         profileUpdateDisabled: false,
       };
     case SAVE_USER:
-      return {
-        ...state,
-        ...action.payload,
-        mail: "",
-        password: "",
-      };
-    case SAVE_SUBSCRIPTION:
       console.log(action.payload);
       return {
         ...state,
-        subscribed: action.payload,
+        ...action.payload.member,
+        logged: true,
+        subscribed: false,
+      };
+    case SAVE_SUBSCRIPTION:
+      return {
+        ...state,
+        subscribed: true,
       };
     /*
       case LOGOUT: {

@@ -44,9 +44,8 @@ export const saveUser = (user) => ({
   },
 });
 
-export const saveSubscription = (data) => ({
+export const saveSubscription = () => ({
   type: SAVE_SUBSCRIPTION,
-  payload: { data },
 });
 
 export const fetchUser = () => ({
