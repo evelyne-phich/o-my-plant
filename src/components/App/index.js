@@ -5,6 +5,7 @@ import Nav from "../Nav";
 import About from "../About";
 import Home from "../Home";
 import LoginSubscribe from "../LoginSubscribe";
+import Profile from "../Profile";
 import "./style.scss";
 import { fetchUser } from "../../actions/user";
 
@@ -31,6 +32,7 @@ const App = () => {
             path="/subscribe"
             element={<LoginSubscribe title="S'inscrire" />}
           />
+          <Route path="/profile" element={<Profile />} />
         </Routes>
       </div>
     </>

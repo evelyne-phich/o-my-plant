@@ -1,0 +1,69 @@
+@use '../../styles/vars.scss';
+
+.profile {
+    padding-top: 160px;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+
+    &-container {
+        display: flex;
+        width: 100%;
+        justify-content: center;
+    }
+
+    &-form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 720px;
+    }
+
+    label {
+        font-weight: bold;
+        color: vars.$color-1;
+    }
+
+    &-picture {
+        border-radius: 50px;
+        width: 200px;
+        height: 200px;
+        margin-bottom: 24px;
+    }
+
+    &-level {
+        font-weight: bold;
+        color: vars.$color-1;
+        margin-bottom: 24px;
+
+    }
+
+    &-biography {
+        display: flex;
+        flex-direction: column;
+
+        &-content {
+            margin: 16px 0;
+            border-radius: 5px;
+        }
+    }
+
+    &-button {
+        color: vars.$color-4;
+        font-weight: bold;
+        border: none;
+        border-radius: 5px;
+        padding: 18px;
+        width: 70%;
+        background-color: vars.$color-1;
+        margin: 24px 0;
+        cursor: pointer;
+        transition: 0.2s ease-in-out;
+        width: 100%;
+
+
+        &:hover {
+        background-color: vars.$color-2;
+        }
+    }
+}
