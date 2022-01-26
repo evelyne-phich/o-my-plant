@@ -8,6 +8,7 @@ import {
 export const initialState = {
   logged: false,
   subscribed: false,
+  id: 1,
   mail: "",
   password: "",
   token: "",

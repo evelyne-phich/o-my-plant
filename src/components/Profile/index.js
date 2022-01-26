@@ -1,7 +1,11 @@
 import { useDispatch, useSelector } from "react-redux";
 
 import Field from "../Field";
-import { changeField, updateProfile } from "../../actions/user";
+import {
+  changeField,
+  updateProfile,
+  handleProfileUpdateSubmit,
+} from "../../actions/user";
 
 import "./style.scss";
 
@@ -9,11 +13,16 @@ const Profile = () => {
   const currentState = useSelector((state) => state);
   const dispatch = useDispatch();
   const changeFieldInput = (value, name) => dispatch(changeField(value, name));
-  const enableProfileUpdate = () => dispatch(updateProfile());
+  const enableProfileUpdate = (event) => {
+    event.preventDefault();
+    dispatch(updateProfile());
+  };
+  const onSubmitClick = () =>
+    dispatch(handleProfileUpdateSubmit(currentState.user.id));
 
   return (
     <div className="profile-container">
-      <form className="profile-form" method="POST">
+      <form className="profile-form">
         <div className="profile">
           <div className="profile-left">
             <div className="profile-pseudo">
@@ -74,7 +83,9 @@ const Profile = () => {
                 src={currentState.user.profilepicture}
                 alt="avatar"
               ></img>
-              <div className="profile-level">Niveau :</div>
+              <div className="profile-level">
+                Niveau : {currentState.user.level}
+              </div>
             </div>
             <label htmlFor="profilepicture">Photo de profil</label>
             <Field
@@ -97,13 +108,24 @@ const Profile = () => {
             </div>
           </div>
         </div>
-        <button
-          className="profile-submit"
-          type="submit"
-          onClick={enableProfileUpdate}
-        >
-          Modifier
-        </button>
+        {currentState.user.profileUpdateDisabled && (
+          <button
+            className="profile-button"
+            type="button"
+            onClick={enableProfileUpdate}
+          >
+            Modifier
+          </button>
+        )}
+        {!currentState.user.profileUpdateDisabled && (
+          <button
+            className="profile-button"
+            type="submit"
+            onClick={onSubmitClick}
+          >
+            Sauvegarder
+          </button>
+        )}
       </form>
     </div>
   );

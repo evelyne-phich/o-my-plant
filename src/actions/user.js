@@ -6,6 +6,7 @@ export const SAVE_SUBSCRIPTION = "SAVE_SUBSCRIPTION";
 export const SAVE_USER = "SAVE_USER";
 export const FETCH_USER = "FETCH_USER";
 export const UPDATE_PROFILE = "UPDATE_PROFILE";
+export const HANDLE_UPDATE_PROFILE_SUBMIT = "HANDLE_UPDATE_PROFILE_SUBMIT";
 
 export const changeField = (value, name) => ({
   type: CHANGE_FIELD,
@@ -17,6 +18,11 @@ export const changeField = (value, name) => ({
 
 export const updateProfile = () => ({
   type: UPDATE_PROFILE,
+});
+
+export const handleProfileUpdateSubmit = (id) => ({
+  type: HANDLE_UPDATE_PROFILE_SUBMIT,
+  payload: id,
 });
 
 export const login = () => ({
