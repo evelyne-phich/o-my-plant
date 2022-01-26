@@ -6,6 +6,7 @@ import About from "../About";
 import Home from "../Home";
 import Login from "../Login";
 import Subscribe from "../Subscribe";
+import Profile from "../Profile";
 import "./style.scss";
 import { fetchUser } from "../../actions/user";
 
@@ -26,6 +27,7 @@ const App = () => {
           <Route path="/sign-up" />
           <Route path="/login" element={<Login title="Se connecter" />} />
           <Route path="/subscribe" element={<Subscribe title="S'inscrire" />} />
+          <Route path="/profile" element={<Profile />} />
         </Routes>
       </div>
     </>
