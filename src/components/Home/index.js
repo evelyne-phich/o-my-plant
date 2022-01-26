@@ -3,6 +3,7 @@
 // import AppHeader from 'src/components/AppHeader';
 // import Content from 'src/components/Content';
 import Header from "../Header";
+import Footer from "../Footer";
 
 const Home = () => {
   return (
@@ -14,7 +15,10 @@ const Home = () => {
         text="Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, explicabo."
       />
     </Page>*/
-    <Header />
+    <div>
+      <Header />
+    </div>
+
     /*<main>
         <section></section>
     </main>
