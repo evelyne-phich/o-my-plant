@@ -19,9 +19,10 @@ const auth = (store) => (next) => (action) => {
           password: state.user.password,
         })
         .then((res) => {
-          console.log(res.data);
+          console.log(res);
           // stockage du token dans le localStorage
           localStorage.setItem("token", res.data.token);
+          console.log(localStorage);
           // stockage des infos de l'api dans le state
           store.dispatch(saveUser(res.data));
         })
@@ -37,11 +38,7 @@ const auth = (store) => (next) => (action) => {
           password: state.user.password,
         })
         .then((res) => {
-          console.log(res.data);
-          // stockage du token dans le localStorage
-          // localStorage.setItem("token", res.data.token);
-          // stockage des infos de l'api dans le state
-          // store.dispatch(saveSubscription(res.data));
+          store.dispatch(saveSubscription());
         })
         .catch((err) => console.log("erreur: ", err.response.data));
       break;

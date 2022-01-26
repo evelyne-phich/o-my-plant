@@ -3,9 +3,8 @@ import { CHANGE_FIELD, SAVE_USER, SAVE_SUBSCRIPTION } from "../actions/user";
 export const initialState = {
   logged: false,
   subscribed: false,
+  id: "",
   mail: "",
-  password: "",
-  token: "",
   pseudo: "",
   firstname: "",
   lastname: "",
@@ -25,17 +24,17 @@ const reducer = (state = initialState, action = {}) => {
         [action.payload.name]: action.payload.value,
       };
     case SAVE_USER:
-      return {
-        ...state,
-        ...action.payload,
-        mail: "",
-        password: "",
-      };
-    case SAVE_SUBSCRIPTION:
       console.log(action.payload);
       return {
         ...state,
-        subscribed: action.payload,
+        ...action.payload.member,
+        logged: true,
+        subscribed: false,
+      };
+    case SAVE_SUBSCRIPTION:
+      return {
+        ...state,
+        subscribed: true,
       };
     /*
       case LOGOUT: {
