@@ -17,8 +17,7 @@ const Profile = () => {
     event.preventDefault();
     dispatch(updateProfile());
   };
-  const onSubmitClick = () =>
-    dispatch(handleProfileUpdateSubmit(currentState.user.id));
+  const onSubmitClick = () => dispatch(handleProfileUpdateSubmit());
 
   return (
     <div className="profile-container">

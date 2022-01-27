@@ -3,6 +3,8 @@ import {
   SAVE_USER,
   SAVE_SUBSCRIPTION,
   UPDATE_PROFILE,
+  LOGIN,
+  FETCH_USER,
 } from "../actions/user";
 
 export const initialState = {
@@ -46,6 +48,11 @@ const reducer = (state = initialState, action = {}) => {
       return {
         ...state,
         subscribed: true,
+      };
+    case LOGIN:
+      return {
+        ...state,
+        logged: true,
       };
     /*
       case LOGOUT: {

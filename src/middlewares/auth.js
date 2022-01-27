@@ -20,14 +20,15 @@ const auth = (store) => (next) => (action) => {
           password: state.user.password,
         })
         .then((res) => {
-          console.log(res);
           // stockage du token dans le localStorage
-          localStorage.setItem("token", res.data.token);
-          console.log(localStorage);
+          localStorage.setItem("token", res.headers.authorization);
+          localStorage.setItem("user", state.user.logged);
+          console.log(localStorage.user);
           // stockage des infos de l'api dans le state
           store.dispatch(saveUser(res.data));
         })
         .catch((err) => console.log(err.response.data));
+      next(action);
       break;
     }
     case SUBSCRIBE: {
@@ -47,7 +48,7 @@ const auth = (store) => (next) => (action) => {
     case HANDLE_UPDATE_PROFILE_SUBMIT: {
       const state = store.getState();
       axios
-        .patch(`https://omyplant.herokuapp.com/member/${action.payload.id}`, {
+        .patch(`https://omyplant.herokuapp.com/member/${state.user.id}`, {
           mail: state.user.mail,
           pseudo: state.user.pseudo,
           firstname: state.user.firstname,
@@ -63,25 +64,27 @@ const auth = (store) => (next) => (action) => {
         .catch((err) => console.log("erreur: ", err.response.data));
       break;
     }
-    /*
+
     case FETCH_USER: {
+      // const state = store.getState();
       // on va vérifier si on a un token dans le localStorage
       const token = localStorage.getItem("token");
-
-      if (token) {
-        // si oui on enverra une requête à l'api pour récupérer le username
-        axios
-          .get("http://localhost:3000/username", {
-            // on passe le token dans le header Authorization de notre requête
-            headers: {
-              authorization: `Bearer ${token}`,
-            },
-          })
-          .then((res) => store.dispatch(saveUser(res.data)))
-          .catch((err) => console.log(err));
-      }
+      console.log(token);
+      // si oui on enverra une requête à l'api pour récupérer le username
+      axios
+        .get(`https://omyplant.herokuapp.com/member/connected`, {
+          // on passe le token dans le header Authorization de notre requête
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        })
+        .then((res) => {
+          console.log(res);
+          store.dispatch(saveUser(res.data));
+        })
+        .catch((err) => console.log("err", err.response.data));
       break;
-    }*/
+    } /*
     case LOGOUT: {
       // suppression du token dans le localStorage
       localStorage.removeItem("token");
@@ -90,7 +93,7 @@ const auth = (store) => (next) => (action) => {
       // il faut donc la passer
       next(action);
       break;
-    }
+    }*/
     default:
       next(action);
   }

@@ -20,9 +20,8 @@ export const updateProfile = () => ({
   type: UPDATE_PROFILE,
 });
 
-export const handleProfileUpdateSubmit = (id) => ({
+export const handleProfileUpdateSubmit = () => ({
   type: HANDLE_UPDATE_PROFILE_SUBMIT,
-  payload: id,
 });
 
 export const login = () => ({
