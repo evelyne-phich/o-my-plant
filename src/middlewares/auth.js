@@ -84,7 +84,7 @@ const auth = (store) => (next) => (action) => {
         })
         .catch((err) => console.log("err", err.response.data));
       break;
-    } /*
+    } /* 
     case LOGOUT: {
       // suppression du token dans le localStorage
       localStorage.removeItem("token");
