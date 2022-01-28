@@ -1,4 +1,4 @@
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Nav from "../Nav";
@@ -13,16 +13,10 @@ import { fetchUser } from "../../actions/user";
 
 const App = () => {
   const dispatch = useDispatch();
-  //const user = localStorage.getItem("user");
   const user = useSelector((state) => state.user);
   useEffect(() => {
     dispatch(fetchUser());
   }, []);
-
-  /*useEffect(() => {
-    console.log("pouet");
-    dispatch(fetchUser(user));
-  }, []);*/
 
   return (
     <>
@@ -31,10 +25,10 @@ const App = () => {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
-          <Route path="/sign-up" />
           <Route path="/login" element={<Login title="Se connecter" />} />
           <Route path="/subscribe" element={<Subscribe title="S'inscrire" />} />
           <Route path="/profile" element={<Profile />} />
+          <Route path="/logout" element={<Navigate to="/" replace />} />
         </Routes>
         <Footer />
       </div>

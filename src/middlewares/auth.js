@@ -22,8 +22,7 @@ const auth = (store) => (next) => (action) => {
         .then((res) => {
           // stockage du token dans le localStorage
           localStorage.setItem("token", res.headers.authorization);
-          localStorage.setItem("user", state.user.logged);
-          console.log(localStorage.user);
+
           // stockage des infos de l'api dans le state
           store.dispatch(saveUser(res.data));
         })
@@ -46,25 +45,34 @@ const auth = (store) => (next) => (action) => {
       break;
     }
     case HANDLE_UPDATE_PROFILE_SUBMIT: {
+      const token = localStorage.getItem("token");
       const state = store.getState();
       axios
-        .patch(`https://omyplant.herokuapp.com/member/${state.user.id}`, {
-          mail: state.user.mail,
-          pseudo: state.user.pseudo,
-          firstname: state.user.firstname,
-          lastname: state.user.lastname,
-          profilepicture: state.user.profilepicture,
-          dateofbirth: state.user.dateofbirth,
-          biography: state.user.biography,
-          telephone: state.user.telephone,
-        })
+        .patch(
+          `https://omyplant.herokuapp.com/member`,
+          {
+            mail: state.user.mail,
+            pseudo: state.user.pseudo,
+            firstname: state.user.firstname,
+            lastname: state.user.lastname,
+            profilepicture: state.user.profilepicture,
+            dateofbirth: state.user.dateofbirth,
+            biography: state.user.biography,
+            telephone: state.user.telephone,
+          },
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          },
+        )
         .then((res) => {
           console.log(res.data);
+          store.dispatch(saveUser(res.data));
         })
         .catch((err) => console.log("erreur: ", err.response.data));
       break;
     }
-
     case FETCH_USER: {
       // const state = store.getState();
       // on va vérifier si on a un token dans le localStorage
@@ -84,16 +92,16 @@ const auth = (store) => (next) => (action) => {
         })
         .catch((err) => console.log("err", err.response.data));
       break;
-    } /* 
+    }
     case LOGOUT: {
+      console.log("middleware auth.js LOGOUT");
       // suppression du token dans le localStorage
       localStorage.removeItem("token");
-
       // on traite cette action dans le user reducer
       // il faut donc la passer
       next(action);
       break;
-    }*/
+    }
     default:
       next(action);
   }

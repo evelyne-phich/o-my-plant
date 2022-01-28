@@ -23,9 +23,9 @@ const Field = ({ value, type, name, placeholder, onChange, disabled }) => {
 Field.propTypes = {
   value: PropTypes.string,
   type: PropTypes.string,
-  name: PropTypes.string.isRequired,
+  name: PropTypes.string,
   placeholder: PropTypes.string,
-  onChange: PropTypes.func.isRequired,
+  onChange: PropTypes.func,
   disabled: PropTypes.bool,
 };
 

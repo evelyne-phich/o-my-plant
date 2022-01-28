@@ -17,11 +17,16 @@ const Profile = () => {
     event.preventDefault();
     dispatch(updateProfile());
   };
-  const onSubmitClick = () => dispatch(handleProfileUpdateSubmit());
+
+  const onSubmitClick = (event) => {
+    event.preventDefault();
+    console.log("fonction handleProfileUpdateSubmit OK");
+    dispatch(handleProfileUpdateSubmit());
+  };
 
   return (
     <div className="profile-container">
-      <form className="profile-form">
+      <form className="profile-form" onSubmit={onSubmitClick}>
         <div className="profile">
           <div className="profile-left">
             <div className="profile-pseudo">
@@ -30,7 +35,7 @@ const Profile = () => {
                 name="pseudo"
                 type="text"
                 onChange={changeFieldInput}
-                value={currentState.user.pseudo}
+                value={currentState.user.pseudo || ""}
                 disabled={currentState.user.profileUpdateDisabled}
               />
             </div>
@@ -39,7 +44,7 @@ const Profile = () => {
               name="firstname"
               type="text"
               onChange={changeFieldInput}
-              value={currentState.user.firstname}
+              value={currentState.user.firstname || ""}
               disabled={currentState.user.profileUpdateDisabled}
             />
             <label htmlFor="lastname">Nom</label>
@@ -47,7 +52,7 @@ const Profile = () => {
               name="lastname"
               type="text"
               onChange={changeFieldInput}
-              value={currentState.user.lastname}
+              value={currentState.user.lastname || ""}
               disabled={currentState.user.profileUpdateDisabled}
             />
             <label htmlFor="dateofbirth">Date de naissance</label>
@@ -55,7 +60,7 @@ const Profile = () => {
               name="dateofbirth"
               type="date"
               onChange={changeFieldInput}
-              value={currentState.user.dateofbirth}
+              value={currentState.user.dateofbirth || ""}
               disabled={currentState.user.profileUpdateDisabled}
             />
             <label htmlFor="mail">Mail</label>
@@ -63,7 +68,7 @@ const Profile = () => {
               name="mail"
               type="email"
               onChange={changeFieldInput}
-              value={currentState.user.mail}
+              value={currentState.user.mail || ""}
               disabled={currentState.user.profileUpdateDisabled}
             />
             <label htmlFor="telephone">Téléphone</label>
@@ -71,7 +76,7 @@ const Profile = () => {
               name="telephone"
               type="tel"
               onChange={changeFieldInput}
-              value={currentState.user.telephone}
+              value={currentState.user.telephone || ""}
               disabled={currentState.user.profileUpdateDisabled}
             />
           </div>
@@ -83,7 +88,7 @@ const Profile = () => {
                 alt="avatar"
               ></img>
               <div className="profile-level">
-                Niveau : {currentState.user.level}
+                Niveau : {currentState.user.level || ""}
               </div>
             </div>
             <label htmlFor="profilepicture">Photo de profil</label>
@@ -91,7 +96,7 @@ const Profile = () => {
               name="profilepicture"
               type="file"
               onChange={changeFieldInput}
-              value={currentState.user.profilepicture}
+              value={currentState.user.profilepicture || ""}
               disabled={currentState.user.profileUpdateDisabled}
             />
             <div className="profile-biography">
@@ -101,7 +106,7 @@ const Profile = () => {
                 rows="18"
                 cols="33"
                 className="profile-biography-content"
-                value={currentState.user.biography}
+                value={currentState.user.biography || ""}
                 disabled={currentState.user.profileUpdateDisabled}
               ></textarea>
             </div>
@@ -117,11 +122,7 @@ const Profile = () => {
           </button>
         )}
         {!currentState.user.profileUpdateDisabled && (
-          <button
-            className="profile-button"
-            type="submit"
-            onClick={onSubmitClick}
-          >
+          <button className="profile-button" type="submit">
             Sauvegarder
           </button>
         )}
