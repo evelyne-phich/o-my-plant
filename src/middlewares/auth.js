@@ -22,12 +22,12 @@ const auth = (store) => (next) => (action) => {
         .then((res) => {
           // stockage du token dans le localStorage
           localStorage.setItem("token", res.headers.authorization);
-
+          console.log("reponse", res.data);
           // stockage des infos de l'api dans le state
           store.dispatch(saveUser(res.data));
+          next(action);
         })
-        .catch((err) => console.log(err.response.data));
-      next(action);
+        .catch((err) => console.log("erreur", err.response.data));
       break;
     }
     case SUBSCRIBE: {
@@ -68,6 +68,7 @@ const auth = (store) => (next) => (action) => {
         )
         .then((res) => {
           console.log(res.data);
+          console.log(res.data.member);
           store.dispatch(saveUser(res.data));
         })
         .catch((err) => console.log("erreur: ", err.response.data));
@@ -87,8 +88,8 @@ const auth = (store) => (next) => (action) => {
           },
         })
         .then((res) => {
-          console.log(res);
           store.dispatch(saveUser(res.data));
+          console.log("reponse fetch", res);
         })
         .catch((err) => console.log("err", err.response.data));
       break;

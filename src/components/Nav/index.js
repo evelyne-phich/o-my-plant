@@ -79,7 +79,10 @@ const Nav = () => {
         )}
         {user.logged && (
           <div className="nav-menu-loggedMessage">
-            Bonjour {user.pseudo} <AccountMenu />
+            <span className="nav-menu-loggedMessage-pseudo">
+              Bonjour {user.pseudo}
+            </span>{" "}
+            <AccountMenu />
           </div>
         )}
       </div>

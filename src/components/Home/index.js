@@ -3,7 +3,9 @@
 // import AppHeader from 'src/components/AppHeader';
 // import Content from 'src/components/Content';
 import Header from "../Header";
-import Footer from "../Footer";
+import PresVideo from "../PresVideo";
+import SocialNetwork from "../SocialNetwork";
+import PlantsCounter from "../PlantsCounter";
 
 const Home = () => {
   return (
@@ -17,6 +19,9 @@ const Home = () => {
     </Page>*/
     <div>
       <Header />
+      <PresVideo />
+      <PlantsCounter />
+      <SocialNetwork />
     </div>
 
     /*<main>

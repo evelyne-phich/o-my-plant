@@ -61,7 +61,7 @@ const AccountMenu = () => {
               display: "block",
               position: "absolute",
               top: 0,
-              left: 25,
+              right: 15,
               width: 10,
               height: 10,
               bgcolor: "background.paper",
@@ -74,7 +74,7 @@ const AccountMenu = () => {
         anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
       >
         <Link className="profile" to="/profile">
-          <MenuItem>
+          <MenuItem className="menuitem">
             <Avatar /> Profil
           </MenuItem>
         </Link>

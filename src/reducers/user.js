@@ -27,6 +27,7 @@ export const initialState = {
 const reducer = (state = initialState, action = {}) => {
   switch (action.type) {
     case CHANGE_FIELD:
+      console.log(action.payload);
       return {
         ...state,
         [action.payload.name]: action.payload.value,
@@ -34,13 +35,15 @@ const reducer = (state = initialState, action = {}) => {
     case UPDATE_PROFILE:
       return {
         ...state,
-        profileUpdateDisabled: false,
+        profileUpdateDisabled: !state.profileUpdateDisabled,
       };
     case SAVE_USER:
-      console.log(action.payload);
       return {
         ...state,
-        ...action.payload.member,
+        ...action.payload,
+        dateofbirth: action.payload.dateofbirth
+          ? action.payload.dateofbirth.substring(0, 10)
+          : "",
         logged: true,
         subscribed: false,
       };
