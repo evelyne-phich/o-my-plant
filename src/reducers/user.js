@@ -4,7 +4,7 @@ import {
   SAVE_SUBSCRIPTION,
   UPDATE_PROFILE,
   LOGIN,
-  FETCH_USER,
+  LOGOUT,
 } from "../actions/user";
 
 export const initialState = {
@@ -54,14 +54,11 @@ const reducer = (state = initialState, action = {}) => {
         ...state,
         logged: true,
       };
-    /*
-      case LOGOUT: {
-        // on vient faire un reset du state
-        // en déversant le state initial dans un nouvel objet
-        return {
-          ...initialState,
-        };
-      }*/
+    case LOGOUT:
+      return {
+        ...initialState,
+      };
+
     default:
       return state;
   }

@@ -5,18 +5,19 @@ import "./style.scss";
 import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import Button from "../Button";
+import AccountMenu from "../AccountMenu";
 
 const Nav = () => {
   const getActiveClassname = ({ isActive }) =>
     isActive ? "nav-menu-link nav-menu-link--active" : "nav-menu-link";
   /*
   const [navStatus, setNavStatus] = useState("transparent");
-  const [windowStatus, setWindowStatus] = useState(0);*/
-  /*
+  const [windowStatus, setWindowStatus] = useState(0);
+
   useEffect(() => {
     window.addEventListener("scroll", () => {
       setWindowStatus(document.scrollingElement.scrollTop);
-      if (windowStatus >= 20) {
+      if (windowStatus >= 10) {
         setNavStatus("color"); // the class where you add the chosen background below 15
       } else {
         setNavStatus("transparent"); // the class where you add the chosen background after 15
@@ -77,7 +78,9 @@ const Nav = () => {
           </>
         )}
         {user.logged && (
-          <div className="nav-menu-loggedMessage">Bonjour {user.pseudo}</div>
+          <div className="nav-menu-loggedMessage">
+            Bonjour {user.pseudo} <AccountMenu />
+          </div>
         )}
       </div>
     </nav>

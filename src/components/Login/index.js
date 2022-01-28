@@ -1,4 +1,4 @@
-// import Proptypes from "prop-types";
+import PropTypes from "prop-types";
 import { Navigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import LoginForm from "../LoginForm";
@@ -15,6 +15,10 @@ const Login = ({ title }) => {
       <LoginForm />
     </main>
   );
+};
+
+Login.propTypes = {
+  title: PropTypes.string.isRequired,
 };
 
 export default Login;
