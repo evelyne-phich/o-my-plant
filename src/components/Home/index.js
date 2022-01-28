@@ -6,7 +6,7 @@ import Header from "../Header";
 import PresVideo from "../PresVideo";
 import SocialNetwork from "../SocialNetwork";
 import PlantsCounter from "../PlantsCounter";
-
+import Quote from "../Quotes";
 const Home = () => {
   return (
     /*
@@ -21,6 +21,7 @@ const Home = () => {
       <Header />
       <PresVideo />
       <PlantsCounter />
+      <Quote page="home" />
       <SocialNetwork />
     </div>
 
