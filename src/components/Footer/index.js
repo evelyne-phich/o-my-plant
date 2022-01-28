@@ -36,18 +36,10 @@ const Footer = () => {
       </div>
 
       <div className="footer-right-part">
-        <Button
-          className="nav-menu-link nav-menu-link-btn nav-menu-link-signup"
-          buttonContent="Inscription"
-        />
-        <Button
-          className="nav-menu-link nav-menu-link-btn nav-menu-link-login"
-          buttonContent="Connexion"
-        />
         <p>
           Nous contacter: <br />
           <br />
-          Mail : contact@omyplant.fr
+          Mail : oomyplant@gmail.com
         </p>
       </div>
     </footer>

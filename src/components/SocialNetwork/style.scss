@@ -1,0 +1,23 @@
+@use '../../styles/vars.scss';
+
+.social-networks p{
+    font-size: 2em;
+    text-align:center;
+    font-weight: bold;
+    color: vars.$color-1; 
+}
+.network-ul{
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    &-li{
+    padding : 1rem;
+        & svg {
+            width: 5em;
+            fill: vars.$color-1
+        }
+        & svg:hover{
+            fill: vars.$color-2
+        }
+    }   
+}

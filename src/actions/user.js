@@ -11,7 +11,7 @@ export const HANDLE_UPDATE_PROFILE_SUBMIT = "HANDLE_UPDATE_PROFILE_SUBMIT";
 export const changeField = (value, name) => ({
   type: CHANGE_FIELD,
   payload: {
-    value,
+    value: value,
     name,
   },
 });

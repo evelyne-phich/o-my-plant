@@ -40,7 +40,7 @@
         margin-top: -0.5em;
         color: #5E8C7F;
     }
-
+    
     &-menu {
                 
         display: flex;
@@ -54,6 +54,8 @@
             text-transform: uppercase;
             font-weight: 600;
             position: relative;
+            display: flex;
+            align-items: center;
 
             &:after {
                 background: none repeat scroll 0 0 transparent;
@@ -83,6 +85,12 @@
             margin-left: 1rem;
             color: vars.$color-3;
             font-weight: 600;
+            display: flex;
+            align-items: center;
+
+            &-pseudo{
+                text-transform: capitalize;
+            }
         }
     }
 }

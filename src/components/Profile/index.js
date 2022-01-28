@@ -12,16 +12,18 @@ import "./style.scss";
 const Profile = () => {
   const currentState = useSelector((state) => state);
   const dispatch = useDispatch();
-  const changeFieldInput = (value, name) => dispatch(changeField(value, name));
+  const changeFieldInput = (value, name) => {
+    console.log(value);
+    dispatch(changeField(value, name));
+  };
   const enableProfileUpdate = (event) => {
     event.preventDefault();
     dispatch(updateProfile());
   };
-
   const onSubmitClick = (event) => {
     event.preventDefault();
-    console.log("fonction handleProfileUpdateSubmit OK");
     dispatch(handleProfileUpdateSubmit());
+    dispatch(updateProfile());
   };
 
   return (
@@ -106,7 +108,11 @@ const Profile = () => {
                 rows="18"
                 cols="33"
                 className="profile-biography-content"
-                value={currentState.user.biography || ""}
+                defaultValue={currentState.user.biography || ""}
+                onChange={(event) => {
+                  console.log(event.target.value);
+                  dispatch(changeField(event.target.value, event.target.name));
+                }}
                 disabled={currentState.user.profileUpdateDisabled}
               ></textarea>
             </div>
