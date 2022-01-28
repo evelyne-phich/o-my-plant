@@ -7,6 +7,16 @@ import PresVideo from "../PresVideo";
 import SocialNetwork from "../SocialNetwork";
 import PlantsCounter from "../PlantsCounter";
 import Quote from "../Quotes";
+
+const HomeQuote = () => {
+  return (
+    <span>
+      “Si tu veux des mangues,
+      <br /> plante un manguier”
+    </span>
+  );
+};
+
 const Home = () => {
   return (
     /*
@@ -21,7 +31,7 @@ const Home = () => {
       <Header />
       <PresVideo />
       <PlantsCounter />
-      <Quote page="home" />
+      <Quote page="home" quote={<HomeQuote />} author="Proverbe créole" />
       <SocialNetwork />
     </div>
 

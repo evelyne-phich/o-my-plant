@@ -21,7 +21,7 @@ const Footer = () => {
       </div>
 
       <div className="footer-middle-part">
-        <h1>Liens utiles :</h1>
+        <h1>Liens utiles</h1>
         <ul>
           <a href="#">
             <li>Mentions légales</li>
@@ -37,9 +37,9 @@ const Footer = () => {
 
       <div className="footer-right-part">
         <p>
-          Nous contacter: <br />
+          Nous contacter : <br />
           <br />
-          Mail : oomyplant@gmail.com
+          <a href="mailto:oomyplant@gmail.com">oomyplant@gmail.com</a>
         </p>
       </div>
     </footer>

@@ -1,16 +1,19 @@
 import Proptypes from "prop-types";
 import "./style.scss";
 
-const Quotes = ({ page }) => (
-  <div className={page}>
-    <p className="contain">
-      “Si tu veux des mangues,
-      <br /> plante un manguier"
-    </p>
-    <p className="author">Proverbe Créole</p>
-  </div>
-);
+const Quotes = ({ page, quote, author }) => {
+  return (
+    <div className={page}>
+      <p className="contain">{quote}</p>
+      <p className="author">{author}</p>
+    </div>
+  );
+};
 
-Quotes.propTypes = {};
+Quotes.propTypes = {
+  page: Proptypes.string.isRequired,
+  quote: Proptypes.element.isRequired,
+  author: Proptypes.string.isRequired,
+};
 
 export default Quotes;
