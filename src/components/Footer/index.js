@@ -1,7 +1,5 @@
-import Proptypes from "prop-types";
 import "./style.scss";
 import logo from "../../assets/img/logo/logo-footer.svg";
-import Button from "../Button";
 
 const Footer = () => {
   return (
@@ -39,12 +37,11 @@ const Footer = () => {
         <p>
           Nous contacter : <br />
           <br />
-          <a href="mailto:oomyplant@gmail.com">oomyplant@gmail.com</a>
+          <a href="mailto:oomyplant@gmail.com">omyplant@gmail.com</a>
         </p>
       </div>
     </footer>
   );
 };
-Footer.propTypes = {};
 
 export default Footer;

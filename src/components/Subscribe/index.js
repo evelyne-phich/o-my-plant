@@ -1,4 +1,4 @@
-// import Proptypes from "prop-types";
+import Proptypes from "prop-types";
 import { Navigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import SubscribeForm from "../SubscribeForm";
@@ -19,3 +19,7 @@ const Subscribe = ({ title }) => {
 };
 
 export default Subscribe;
+
+Subscribe.propTypes = {
+  title: Proptypes.string.isRequired,
+};

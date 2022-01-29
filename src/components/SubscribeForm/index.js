@@ -7,7 +7,7 @@ import "./style.scss";
 
 const SubscribeForm = () => {
   const dispatch = useDispatch();
-  const currentState = useSelector((state) => state);
+  const user = useSelector((state) => state.user);
   const changeFieldInput = (value, name) => dispatch(changeField(value, name));
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -26,28 +26,28 @@ const SubscribeForm = () => {
           type="text"
           placeholder="Pseudo"
           onChange={changeFieldInput}
-          value={currentState.pseudo}
+          value={user.pseudo}
         />
         <Field
           name="mail"
           type="email"
           placeholder="E-mail"
           onChange={changeFieldInput}
-          value={currentState.mail}
+          value={user.mail}
         />
         <Field
           name="password"
           type="password"
           placeholder="Mot de passe"
           onChange={changeFieldInput}
-          value={currentState.password}
+          value={user.password}
         />
         <Field
           name="passwordConfirmation"
           type="password"
           placeholder="Confirmation du mot de passe"
           onChange={changeFieldInput}
-          value={currentState.password}
+          value={user.password}
         />
         <button type="submit" className="subscribe-form-button">
           Valider
