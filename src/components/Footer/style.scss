@@ -19,7 +19,7 @@
         & h1{
             font-size: 1.5rem;
             font-weight: 600;
-            margin-bottom: 3rem;
+            margin: 3rem auto;
         }
         & ul {
             padding: inherit;
@@ -63,3 +63,14 @@
         }
     }
 }
+
+@media screen and (max-width: 600px) {
+    .footer {
+        display: block;
+        text-align: center;
+
+        &-left-part {
+            max-width: none;
+        }
+    }
+  }

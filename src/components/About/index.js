@@ -16,22 +16,14 @@ const About = () => {
       <h1 className="about-page-title">
         Avec O’My Plant, n'oubliez plus vos plantes !
       </h1>
-      <p className="about-page-title-description">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eget
-        imperdiet eli. Sit amet, consectetur
-      </p>
       <div className="about-page-section-introduction">
         <div className="about-page-section-text">
           <h2 className="about-page-section-title">A propos d'O'My Plant</h2>
           <p className="about-page-section-content">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eget
-            imperdiet elit vitae euismod enim. Nunc id nisi iaculis, maximus
-            odio eu. Semper risus. Morbi viverra dolor ipsum, lacinia tincidunt
-            erat luctus non. Etiam fringilla nec justo sit amet consequat.
-            Maecenas blandit hendrerit odio, id semper justo consequat ut.
-            Vestibulum tempus lorem ligula, sit amet volutpat justo gravida sit
-            amet. Pellentesque ac tortor dapibus, malesuada lacus eget, viverra
-            lectus. In non eros dolor. Suspendisse potenti.
+            O'My Plant a été développé pendant 1 mois par une team de 5
+            personnes en reconversion professionnelle. Ce projet est le fruit
+            d'un travail d'équipe après 4 mois de formation intensive chez
+            O'clock.
           </p>
         </div>
         <img

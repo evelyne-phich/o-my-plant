@@ -10,11 +10,10 @@ const Footer = () => {
           className="footer-logo-img footer-left-part-logo"
           alt="logo O'My Plant"
         />
+        <h2>O'My Plant</h2>
         <p>
-          Lorem ipsum dolor sit amet,
-          <br /> consectetur adipiscing elit.
-          <br /> Vivamus tristique velit vel <br />
-          pellentesque.
+          <br /> Même vos plantes
+          <br /> ont leur agenda.
         </p>
       </div>
 
@@ -25,7 +24,7 @@ const Footer = () => {
             <li>Mentions légales</li>
           </a>
           <a href="#">
-            <li>Politiques confidentialité</li>
+            <li>Politiques de confidentialité</li>
           </a>
           <a href="#">
             <li>CGU</li>
