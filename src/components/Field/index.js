@@ -2,7 +2,15 @@ import PropTypes from "prop-types";
 
 import "./style.scss";
 
-const Field = ({ value, type, name, placeholder, onChange, disabled }) => {
+const Field = ({
+  value,
+  type,
+  name,
+  placeholder,
+  onChange,
+  disabled,
+  className,
+}) => {
   const inputId = `field-${name}`;
   return (
     <div>
@@ -11,7 +19,7 @@ const Field = ({ value, type, name, placeholder, onChange, disabled }) => {
         onChange={(e) => onChange(e.target.value, name)}
         id={inputId}
         type={type}
-        className="field-input"
+        className={className ? `${className} field-input` : "field-input"}
         placeholder={placeholder}
         name={name}
         disabled={disabled}

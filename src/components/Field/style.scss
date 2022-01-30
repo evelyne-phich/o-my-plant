@@ -19,3 +19,13 @@
         border: 2px solid #2B5D62;
     }
 }
+
+.profile-input-field {
+    width: 260px;
+
+    &:focus{
+        outline: none;
+        border: 2px solid #2B5D62;
+    }
+}
+
