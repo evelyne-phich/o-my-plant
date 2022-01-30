@@ -1,18 +1,36 @@
-import { useDispatch, useSelector } from "react-redux";
+import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+
+import axios from "axios";
 
 import Field from "../Field";
-import { changeField, login } from "../../actions/user";
+import { saveUser } from "../../actions/user";
 
 import "./style.scss";
 
 const LoginForm = () => {
+  const navigate = useNavigate();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const dispatch = useDispatch();
 
-  const currentState = useSelector((state) => state);
-  const changeFieldInput = (value, name) => dispatch(changeField(value, name));
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(login());
+    axios
+      .post("https://omyplant.herokuapp.com/login", {
+        mail: email,
+        password: password,
+      })
+      .then((res) => {
+        // stockage du token dans le localStorage
+        localStorage.setItem("token", res.headers.authorization);
+        console.log("reponse", res.data);
+        // stockage des infos de l'api dans le state
+        dispatch(saveUser(res.data));
+        navigate("/");
+      })
+      .catch((err) => console.log("erreur", err.response.data));
   };
 
   return (
@@ -26,15 +44,15 @@ const LoginForm = () => {
           name="mail"
           type="email"
           placeholder="E-mail"
-          onChange={changeFieldInput}
-          value={currentState.mail}
+          onChange={(value) => setEmail(value)}
+          value={email}
         />
         <Field
           name="password"
           type="password"
           placeholder="Mot de passe"
-          onChange={changeFieldInput}
-          value={currentState.password}
+          onChange={(value) => setPassword(value)}
+          value={password}
         />
         <button type="submit" className="login-form-button">
           Valider
