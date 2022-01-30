@@ -4,6 +4,7 @@ import {
   UPDATE_PROFILE,
   LOGIN,
   LOGOUT,
+  ADD_IMAGE,
 } from "../actions/user";
 
 export const initialState = {
@@ -14,6 +15,7 @@ export const initialState = {
   firstname: "",
   lastname: "",
   profilepicture: "",
+  defaultProfilePic: "../assets/profilePic.png",
   dateofbirth: "",
   level: "",
   biography: "",
@@ -52,6 +54,12 @@ const reducer = (state = initialState, action = {}) => {
     case LOGOUT:
       return {
         ...initialState,
+      };
+    case ADD_IMAGE:
+      console.log(action.payload, "ADDIMAGE");
+      return {
+        ...state,
+        [action.payload.name]: action.payload.value,
       };
 
     default:
