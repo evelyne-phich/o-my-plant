@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import Box from "@mui/material/Box";
 import Avatar from "@mui/material/Avatar";
@@ -12,6 +12,7 @@ import Logout from "@mui/icons-material/Logout";
 import { logout } from "../../actions/user";
 
 const AccountMenu = () => {
+  const user = useSelector((state) => state.user);
   const dispatch = useDispatch();
 
   const [anchorEl, setAnchorEl] = useState(null);
@@ -34,7 +35,12 @@ const AccountMenu = () => {
             aria-haspopup="true"
             aria-expanded={open ? "true" : undefined}
           >
-            <Avatar sx={{ width: 32, height: 32 }}>M</Avatar>
+            <Avatar
+              sx={{ width: 32, height: 32 }}
+              src={
+                user.profilepicture ? user.profilepicture : "/broken-image.jpg"
+              }
+            ></Avatar>
           </IconButton>
         </Tooltip>
       </Box>

@@ -54,7 +54,7 @@ const Profile = () => {
     reader.onloadend = () => {
       // console.log(reader.result);
       // uploadImage(reader.result);
-      //dispatch(addImage(reader.result, fileInputName));
+      dispatch(addImage(reader.result, fileInputName));
     };
     reader.onerror = () => {
       console.error("La validation du formulaire a échoué :( => FileReader ");
@@ -75,7 +75,7 @@ const Profile = () => {
     event.preventDefault();
     dispatch(handleProfileUpdateSubmit());
     dispatch(updateProfile());
-    //dispatch(sendImage());
+    dispatch(sendImage());
   };
 
   return (
