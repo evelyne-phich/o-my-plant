@@ -1,6 +1,6 @@
-import { Routes, Route, Navigate } from "react-router-dom";
+import { Routes, Route, Navigate, useLocation } from "react-router-dom";
 import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import Nav from "../Nav";
 import Footer from "../Footer";
 import About from "../About";
@@ -13,10 +13,15 @@ import { fetchUser } from "../../actions/user";
 
 const App = () => {
   const dispatch = useDispatch();
-  const user = useSelector((state) => state.user);
   useEffect(() => {
     dispatch(fetchUser());
   }, []);
+
+  const location = useLocation();
+
+  useEffect(() => {
+    window.scroll(0, 0);
+  }, [location]);
 
   return (
     <>

@@ -63,13 +63,13 @@ const Nav = () => {
         )}
         {!user.logged && (
           <>
-            <Link to="/login">
+            <Link to="/login" className="no-underline">
               <Button
                 className="nav-menu-link nav-menu-link-btn nav-menu-link-login"
                 buttonContent="Connexion"
               />
             </Link>
-            <Link to="/subscribe">
+            <Link to="/subscribe" className="no-underline">
               <Button
                 className="nav-menu-link nav-menu-link-btn nav-menu-link-signup"
                 buttonContent="Inscription"

@@ -2,9 +2,6 @@ import axios from "axios";
 
 import {
   saveUser,
-  saveSubscription,
-  LOGIN,
-  SUBSCRIBE,
   FETCH_USER,
   LOGOUT,
   HANDLE_UPDATE_PROFILE_SUBMIT,
@@ -12,38 +9,6 @@ import {
 
 const auth = (store) => (next) => (action) => {
   switch (action.type) {
-    case LOGIN: {
-      const state = store.getState();
-      axios
-        .post("https://omyplant.herokuapp.com/login", {
-          mail: state.user.mail,
-          password: state.user.password,
-        })
-        .then((res) => {
-          // stockage du token dans le localStorage
-          localStorage.setItem("token", res.headers.authorization);
-          console.log("reponse", res.data);
-          // stockage des infos de l'api dans le state
-          store.dispatch(saveUser(res.data));
-          next(action);
-        })
-        .catch((err) => console.log("erreur", err.response.data));
-      break;
-    }
-    case SUBSCRIBE: {
-      const state = store.getState();
-      axios
-        .post("https://omyplant.herokuapp.com/subscribe", {
-          pseudo: state.user.pseudo,
-          mail: state.user.mail,
-          password: state.user.password,
-        })
-        .then((res) => {
-          store.dispatch(saveSubscription());
-        })
-        .catch((err) => console.log("erreur: ", err.response.data));
-      break;
-    }
     case HANDLE_UPDATE_PROFILE_SUBMIT: {
       const token = localStorage.getItem("token");
       const state = store.getState();

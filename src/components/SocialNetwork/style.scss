@@ -14,7 +14,8 @@
     padding : 1rem;
         & svg {
             width: 5em;
-            fill: vars.$color-1
+            fill: vars.$color-1;
+            transition: fill 0.2s ease-in-out;
         }
         & svg:hover{
             fill: vars.$color-2
