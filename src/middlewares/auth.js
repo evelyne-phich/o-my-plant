@@ -2,9 +2,7 @@ import axios from "axios";
 
 import {
   saveUser,
-  saveSubscription,
   LOGIN,
-  SUBSCRIBE,
   FETCH_USER,
   LOGOUT,
   HANDLE_UPDATE_PROFILE_SUBMIT,
@@ -28,20 +26,6 @@ const auth = (store) => (next) => (action) => {
           next(action);
         })
         .catch((err) => console.log("erreur", err.response.data));
-      break;
-    }
-    case SUBSCRIBE: {
-      const state = store.getState();
-      axios
-        .post("https://omyplant.herokuapp.com/subscribe", {
-          pseudo: state.user.pseudo,
-          mail: state.user.mail,
-          password: state.user.password,
-        })
-        .then((res) => {
-          store.dispatch(saveSubscription());
-        })
-        .catch((err) => console.log("erreur: ", err.response.data));
       break;
     }
     case HANDLE_UPDATE_PROFILE_SUBMIT: {

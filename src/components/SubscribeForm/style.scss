@@ -26,10 +26,19 @@
         background-color: vars.$color-3;
         color: vars.$color-1;
     }
+
+    &-error-message {
+        color: red;
+        font-weight: bold;
+        margin-top: 2rem;
+        text-align: center;
+        width: 100%;
+    }
 }
 
 @media screen and (max-width: 600px) {
     .subscribe-form {
         width: unset;
+        padding: 48px;
     }
   }

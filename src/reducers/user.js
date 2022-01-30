@@ -1,7 +1,6 @@
 import {
   CHANGE_FIELD,
   SAVE_USER,
-  SAVE_SUBSCRIPTION,
   UPDATE_PROFILE,
   LOGIN,
   LOGOUT,
@@ -9,7 +8,6 @@ import {
 
 export const initialState = {
   logged: false,
-  subscribed: false,
   id: "",
   mail: "",
   pseudo: "",
@@ -45,12 +43,6 @@ const reducer = (state = initialState, action = {}) => {
           ? action.payload.dateofbirth.substring(0, 10)
           : "",
         logged: true,
-        subscribed: false,
-      };
-    case SAVE_SUBSCRIPTION:
-      return {
-        ...state,
-        subscribed: true,
       };
     case LOGIN:
       return {
