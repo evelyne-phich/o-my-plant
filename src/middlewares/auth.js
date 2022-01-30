@@ -5,6 +5,7 @@ import {
   FETCH_USER,
   LOGOUT,
   HANDLE_UPDATE_PROFILE_SUBMIT,
+  SEND_IMAGE,
 } from "../actions/user";
 
 const auth = (store) => (next) => (action) => {
@@ -66,6 +67,31 @@ const auth = (store) => (next) => (action) => {
       // on traite cette action dans le user reducer
       // il faut donc la passer
       next(action);
+      break;
+    }
+    case SEND_IMAGE: {
+      const state = store.getState();
+      console.log("middleware send image");
+      console.log(state.user.profilepicture);
+      /*
+      axios
+        .post(
+          `https://omyplant.herokuapp.com/???`,
+          {
+            profilepicture: state.user.profilepicture,
+          },
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          },
+        )
+        .then((res) => {
+          store.dispatch(saveUser(res.data));
+          console.log("reponse fetch", res);
+        })
+        .catch((err) => console.log("err", err.response.data));
+        */
       break;
     }
     default:
