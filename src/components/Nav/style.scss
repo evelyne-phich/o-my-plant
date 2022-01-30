@@ -1,7 +1,8 @@
 @use '../../styles/vars.scss';
 
-.color {
-    background-color: #175846;
+.plain {
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
 .transparent {

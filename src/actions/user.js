@@ -7,6 +7,8 @@ export const SAVE_USER = "SAVE_USER";
 export const FETCH_USER = "FETCH_USER";
 export const UPDATE_PROFILE = "UPDATE_PROFILE";
 export const HANDLE_UPDATE_PROFILE_SUBMIT = "HANDLE_UPDATE_PROFILE_SUBMIT";
+export const ADD_IMAGE = "ADD_IMAGE";
+export const SEND_IMAGE = "SEND_IMAGE";
 
 export const changeField = (value, name) => ({
   type: CHANGE_FIELD,
@@ -22,6 +24,18 @@ export const updateProfile = () => ({
 
 export const handleProfileUpdateSubmit = () => ({
   type: HANDLE_UPDATE_PROFILE_SUBMIT,
+});
+
+export const addImage = (base64, fileInputName) => ({
+  type: ADD_IMAGE,
+  payload: {
+    value: base64,
+    name: fileInputName,
+  },
+});
+
+export const sendImage = () => ({
+  type: SEND_IMAGE,
 });
 
 export const login = () => ({
