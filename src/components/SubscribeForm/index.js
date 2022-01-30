@@ -14,9 +14,22 @@ const SubscribeForm = () => {
   const [password, setPassword] = useState("");
   const [passwordConfirmation, setPasswordConfirmation] = useState("");
   const [userAlreadyExists, setUserAlreadyExists] = useState(false);
+  const [clickedOnSubmitButton, setClickedOnSubmitButton] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setClickedOnSubmitButton(true);
+
+    if (
+      pseudo === "" ||
+      email === "" ||
+      password === "" ||
+      passwordConfirmation === ""
+    )
+      return;
+
+    if (password !== passwordConfirmation) return;
+
     axios
       .post("https://omyplant.herokuapp.com/subscribe", {
         pseudo: pseudo,
@@ -73,6 +86,20 @@ const SubscribeForm = () => {
         {userAlreadyExists ? (
           <div className="subscribe-form-error-message">
             Un utilisateur existe déjà avec cet email. Veuillez recommencer.
+          </div>
+        ) : null}
+        {clickedOnSubmitButton &&
+        (pseudo === "" ||
+          email === "" ||
+          password === "" ||
+          passwordConfirmation === "") ? (
+          <div className="subscribe-form-error-message">
+            Un des champs est vide. Veuillez remplir tous les champs.
+          </div>
+        ) : null}
+        {clickedOnSubmitButton && password !== passwordConfirmation ? (
+          <div className="subscribe-form-error-message">
+            La confirmation du mot de passe est incorrecte. Veuillez réessayer.
           </div>
         ) : null}
       </form>
