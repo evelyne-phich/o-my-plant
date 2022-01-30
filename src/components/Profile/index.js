@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useState, useEffect } from "react";
 
-import profilePic from "../../assets/img/profilePic.png";
+//import profilePic from "../../assets/img/profilePic.png";
 
 import Field from "../Field";
 import FieldImage from "../FieldImage";
@@ -54,7 +54,7 @@ const Profile = () => {
     reader.onloadend = () => {
       // console.log(reader.result);
       // uploadImage(reader.result);
-      dispatch(addImage(reader.result, fileInputName));
+      //dispatch(addImage(reader.result, fileInputName));
     };
     reader.onerror = () => {
       console.error("La validation du formulaire a échoué :( => FileReader ");
@@ -75,7 +75,7 @@ const Profile = () => {
     event.preventDefault();
     dispatch(handleProfileUpdateSubmit());
     dispatch(updateProfile());
-    dispatch(sendImage());
+    //dispatch(sendImage());
   };
 
   return (
@@ -160,7 +160,7 @@ const Profile = () => {
                 src={
                   currentState.user.profilepicture
                     ? currentState.user.profilepicture
-                    : profilePic
+                    : "profilePic"
                 }
                 alt="avatar"
               />
