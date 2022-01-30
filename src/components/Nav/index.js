@@ -1,4 +1,4 @@
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useLocation } from "react-router-dom";
 import logo from "../../assets/img/logo/logo.svg";
 
 import "./style.scss";
@@ -10,25 +10,28 @@ import AccountMenu from "../AccountMenu";
 const Nav = () => {
   const getActiveClassname = ({ isActive }) =>
     isActive ? "nav-menu-link nav-menu-link--active" : "nav-menu-link";
-  /*
+
   const [navStatus, setNavStatus] = useState("transparent");
   const [windowStatus, setWindowStatus] = useState(0);
+  const location = useLocation();
 
   useEffect(() => {
     window.addEventListener("scroll", () => {
       setWindowStatus(document.scrollingElement.scrollTop);
-      if (windowStatus >= 10) {
-        setNavStatus("color"); // the class where you add the chosen background below 15
-      } else {
-        setNavStatus("transparent"); // the class where you add the chosen background after 15
+      if (location.pathname === "/") {
+        if (windowStatus >= 700) {
+          setNavStatus("plain"); // the class where you add the chosen background below 15
+        } else {
+          setNavStatus("transparent"); // the class where you add the chosen background after 15
+        }
       }
     });
-  }, [windowStatus]);*/
+  }, [windowStatus, location]);
 
   const user = useSelector((state) => state.user);
 
   return (
-    <nav className={`nav`}>
+    <nav className={`nav ${location.pathname === "/" ? navStatus : "plain"}`}>
       <div className="nav-logo">
         <Link
           className="nav-logo-container"
