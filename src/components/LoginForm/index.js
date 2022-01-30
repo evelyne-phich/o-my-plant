@@ -13,6 +13,8 @@ const LoginForm = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [invalidCredentials, setInvalidCredentials] = useState(false);
+
   const dispatch = useDispatch();
 
   const handleSubmit = (e) => {
@@ -30,7 +32,10 @@ const LoginForm = () => {
         dispatch(saveUser(res.data));
         navigate("/");
       })
-      .catch((err) => console.log("erreur", err.response.data));
+      .catch((err) => {
+        console.log("erreur", err.response.data);
+        setInvalidCredentials(true);
+      });
   };
 
   return (
@@ -57,6 +62,11 @@ const LoginForm = () => {
         <button type="submit" className="login-form-button">
           Valider
         </button>
+        {invalidCredentials ? (
+          <div className="login-form-error-message">
+            Les identifiants sont incorrects. Veuillez réessayer.
+          </div>
+        ) : null}
       </form>
     </div>
   );
