@@ -30,23 +30,25 @@ const Database = () => {
   return (
     <div className="database">
       <h1 className="database-title">
-        Ajoutez des nouvelles plantes dans votre jardin !
+        Ajoutez des plantes dans votre jardin !
       </h1>
       <p className="database-description">
         Si votre plante n'existe pas encore dans notre base de données,
         n'hésitez pas à la rajouter !
       </p>
-      <div className="database-search">
-        <input
-          type="search"
-          placeholder="Rechercher une plante"
-          className="database-search-input"
-        />
-        <SearchIcon className="database-search-icon" />
+      <div className="database-top">
+        <div className="database-search">
+          <input
+            type="search"
+            placeholder="Rechercher une plante"
+            className="database-search-input"
+          />
+          <SearchIcon className="database-search-icon" />
+        </div>
+        <button type="button" className="database-add-plant">
+          Ajouter une nouvelle plante
+        </button>
       </div>
-      <button type="button" className="database-add-plant">
-        Ajouter une nouvelle plante
-      </button>
       <div className="database-plants">
         {plants.map((plant) => (
           <CardPlant
