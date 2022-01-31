@@ -82,7 +82,7 @@ const AccountMenu = () => {
         <Link
           className="profile"
           to="/profile"
-          style={{ textDecoration: "none", fontFamily: "Montserrat" }}
+          style={{ textDecoration: "none" }}
         >
           <MenuItem
             className="menuitem"
@@ -90,6 +90,7 @@ const AccountMenu = () => {
               color: "#2B5D62",
               width: "100%",
               fontWeight: "bold",
+              fontFamily: "Montserrat",
             }}
           >
             <Avatar /> Profil
@@ -104,6 +105,7 @@ const AccountMenu = () => {
           <MenuItem
             sx={{
               color: "#2B5D62",
+              fontFamily: "Montserrat",
             }}
           >
             <ListItemIcon>
