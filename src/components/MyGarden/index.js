@@ -1,7 +1,10 @@
+import Proptypes from "prop-types";
 import SearchIcon from "@mui/icons-material/Search";
 import { Link } from "react-router-dom";
 
 import "./style.scss";
+
+import CardPlant from "../CardPlant";
 
 const MyGarden = () => {
   return (
@@ -20,7 +23,9 @@ const MyGarden = () => {
           Ajouter une plante
         </Link>
       </div>
-      <div className="myGarden-plants"></div>
+      <div className="myGarden-plants">
+        <CardPlant contentButton="Modifier" />
+      </div>
     </div>
   );
 };

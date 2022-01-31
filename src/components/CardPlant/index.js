@@ -1,15 +1,18 @@
 import Proptypes from "prop-types";
 import "./style.scss";
 
-const CardPlant = () => (
+const CardPlant = ({ contentButton, img }) => (
   <div className="card">
-    <div className="card-image"></div>
-    <div className="card-desc">
-      <p>titre</p>
-      <p>Description</p>
+    <div className="card-image">
+      <img src={img} alt="photo plant"></img>
     </div>
-    <div className="card-button">
-      <button>Modifier</button>
+    <div className="card-bottom-part">
+      <div className="card-desc">
+        <p className="card-desc-title">titre</p>
+      </div>
+      <div className="card-button">
+        <button>{contentButton}</button>
+      </div>
     </div>
   </div>
 );

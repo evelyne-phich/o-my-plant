@@ -1,5 +1,7 @@
 import SearchIcon from "@mui/icons-material/Search";
 
+import CardPlant from "../CardPlant";
+
 import "./style.scss";
 
 const Database = () => {
@@ -20,7 +22,9 @@ const Database = () => {
         />
         <SearchIcon className="database-search-icon" />
       </div>
-      <div className="database-plants"></div>
+      <div className="database-plants">
+        <CardPlant contentButton="Ajouter" />
+      </div>
     </div>
   );
 };

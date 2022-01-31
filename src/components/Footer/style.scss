@@ -7,13 +7,13 @@
     padding: 3em;
     background-color: vars.$color-1;
     color: #ffffff;
+    margin-top: 2rem;
+
     &-left-part{
         max-width: 20%;
         & img {
             width: 45%;
         }
-        
-
     }
     &-middle-part{
         & h1{
