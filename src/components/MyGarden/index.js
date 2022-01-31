@@ -1,7 +1,12 @@
 import Proptypes from "prop-types";
+import CardPlant from "../CardPlant";
 import "./style.scss";
 
-const MyGarden = () => <div className="mygarden"></div>;
+const MyGarden = () => (
+  <div className="mygarden">
+    <CardPlant />
+  </div>
+);
 
 MyGarden.propTypes = {};
 
