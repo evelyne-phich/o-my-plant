@@ -1,6 +1,6 @@
 @use '../../styles/vars.scss';
 
-.myGarden {
+.database {
     padding-top: 140px;
     min-height: 80vh;
 
@@ -9,11 +9,10 @@
             padding-left: 3rem;
         }
     
-        &-top {
-            display: flex;
-            justify-content: space-between;
+        &-description {
+            padding-left: 3rem;
         }
-
+    
         &-search {
             width: 460px;
             background-color: vars.$color-3;
@@ -40,29 +39,9 @@
             }
         }
 
-        &-add-plant {
-            display: flex;
-            align-items: center;
-            text-decoration: none;
-            background-color: vars.$color-3;
-            color: vars.$color-1;
-            border-radius: 5px;
-            padding: 12px;
-            margin-right: 3rem;
-            font-weight: bold;
-            transition: 0.2s ease-in-out;
-            
-            &:hover {
-                cursor: pointer;
-                background-color: vars.$color-2;
-                color: vars.$color-4;
-            }
-        }
-
         &-plants {
             display: flex;
             flex-wrap: wrap;
         }
-        
 }
 
