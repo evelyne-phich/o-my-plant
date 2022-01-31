@@ -79,8 +79,19 @@ const AccountMenu = () => {
         transformOrigin={{ horizontal: "right", vertical: "top" }}
         anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
       >
-        <Link className="profile" to="/profile">
-          <MenuItem className="menuitem">
+        <Link
+          className="profile"
+          to="/profile"
+          style={{ textDecoration: "none", fontFamily: "Montserrat" }}
+        >
+          <MenuItem
+            className="menuitem"
+            sx={{
+              color: "#2B5D62",
+              width: "100%",
+              fontWeight: "bold",
+            }}
+          >
             <Avatar /> Profil
           </MenuItem>
         </Link>
@@ -88,8 +99,13 @@ const AccountMenu = () => {
           className="logout"
           to="/logout"
           onClick={() => dispatch(logout())}
+          style={{ textDecoration: "none" }}
         >
-          <MenuItem>
+          <MenuItem
+            sx={{
+              color: "#2B5D62",
+            }}
+          >
             <ListItemIcon>
               <Logout fontSize="small" />
             </ListItemIcon>
