@@ -9,6 +9,7 @@ import Login from "../Login";
 import Subscribe from "../Subscribe";
 import Profile from "../Profile";
 import MyGarden from "../MyGarden";
+import Database from "../Database";
 import "./style.scss";
 import { fetchUser } from "../../actions/user";
 
@@ -36,6 +37,7 @@ const App = () => {
           <Route path="/profile" element={<Profile />} />
           <Route path="/logout" element={<Navigate to="/" replace />} />
           <Route path="/my-garden" element={<MyGarden />} />
+          <Route path="/add-plant" element={<Database />} />
         </Routes>
         <Footer />
       </div>
