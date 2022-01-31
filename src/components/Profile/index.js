@@ -8,7 +8,7 @@ import FieldImage from "../FieldImage";
 import {
   changeField,
   addImage,
-  sendImage,
+  //sendImage,
   updateProfile,
   handleProfileUpdateSubmit,
 } from "../../actions/user";
@@ -24,7 +24,7 @@ const Profile = () => {
   useEffect(() => {
     if (image) {
       console.log(image);
-      const imgUrl = URL.createObjectURL(image);
+      const imgUrl = URL.createObjectURL(image); //blob
       setImageUrl(imgUrl);
       updateImage();
     }
@@ -33,27 +33,11 @@ const Profile = () => {
   const currentState = useSelector((state) => state);
   const dispatch = useDispatch();
 
-  // Envoi de l'objet image créé au submit du formulaire
-  // via une requête vers le serveur
-  /*const uploadImage = async (base64EncodedImage) => {
-    try {
-      await fetch("http://localhost:8000/image/upload", {
-        method: "POST",
-        body: JSON.stringify({ data: base64EncodedImage }),
-        headers: { "Content-Type": "application/json" },
-      });
-    } catch (err) {
-      console.error(err);
-    }
-  };*/
-
   const updateImage = () => {
     console.log(imageUrl);
     const reader = new FileReader();
     reader.readAsDataURL(image);
     reader.onloadend = () => {
-      // console.log(reader.result);
-      // uploadImage(reader.result);
       dispatch(addImage(reader.result, fileInputName));
     };
     reader.onerror = () => {
@@ -75,7 +59,6 @@ const Profile = () => {
     event.preventDefault();
     dispatch(handleProfileUpdateSubmit());
     dispatch(updateProfile());
-    dispatch(sendImage());
   };
 
   return (
