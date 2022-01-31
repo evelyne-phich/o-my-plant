@@ -6,7 +6,7 @@
 
         &-title {
             color: vars.$color-1;
-            padding-left: 3rem;
+            margin-left: 3rem;
         }
     
         &-top {
@@ -15,7 +15,7 @@
         }
 
         &-search {
-            width: 460px;
+            width: 220px;
             background-color: vars.$color-3;
             border-radius: 5px;
             padding: 12px;
@@ -66,3 +66,29 @@
         }
 }
 
+@media screen and (max-width: 830px) {
+    .myGarden {
+        &-title {
+            margin-left: 0;
+            text-align: center;
+        }
+        
+        &-top {
+            flex-direction: column;
+            align-items: center;
+        }
+
+        &-search {
+            margin-left: 0;
+        }
+
+        &-add-plant {
+            margin-top: 2rem;
+            margin-left: 0;
+            width: 220px;
+            display: flex;
+            justify-content: center;
+            margin-right: 0;
+        }
+    }
+}

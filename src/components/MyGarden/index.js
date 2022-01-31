@@ -14,7 +14,7 @@ const MyGarden = () => {
         <div className="myGarden-search">
           <input
             type="search"
-            placeholder="Rechercher une plante dans mon jardin..."
+            placeholder="Rechercher une plante"
             className="myGarden-search-input"
           />
           <SearchIcon className="myGarden-search-icon" />
@@ -24,6 +24,14 @@ const MyGarden = () => {
         </Link>
       </div>
       <div className="myGarden-plants">
+        <CardPlant contentButton="Modifier" />
+        <CardPlant contentButton="Modifier" />
+        <CardPlant contentButton="Modifier" />
+        <CardPlant contentButton="Modifier" />
+        <CardPlant contentButton="Modifier" />
+        <CardPlant contentButton="Modifier" />
+        <CardPlant contentButton="Modifier" />
+        <CardPlant contentButton="Modifier" />
         <CardPlant contentButton="Modifier" />
       </div>
     </div>

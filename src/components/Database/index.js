@@ -17,7 +17,7 @@ const Database = () => {
       <div className="database-search">
         <input
           type="search"
-          placeholder="Rechercher une plante dans la base de données..."
+          placeholder="Rechercher une plante"
           className="database-search-input"
         />
         <SearchIcon className="database-search-icon" />
