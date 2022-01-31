@@ -8,6 +8,7 @@ import Home from "../Home";
 import Login from "../Login";
 import Subscribe from "../Subscribe";
 import Profile from "../Profile";
+import MyGarden from "../MyGarden";
 import "./style.scss";
 import { fetchUser } from "../../actions/user";
 
@@ -34,6 +35,7 @@ const App = () => {
           <Route path="/subscribe" element={<Subscribe title="S'inscrire" />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/logout" element={<Navigate to="/" replace />} />
+          <Route path="/my-garden" element={<MyGarden />} />
         </Routes>
         <Footer />
       </div>
