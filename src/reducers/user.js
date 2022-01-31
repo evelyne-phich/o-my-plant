@@ -43,7 +43,7 @@ const reducer = (state = initialState, action = {}) => {
         ...action.payload,
         dateofbirth: action.payload.dateofbirth
           ? action.payload.dateofbirth.substring(0, 10)
-          : "",
+          : null,
         logged: true,
       };
     case LOGIN:
