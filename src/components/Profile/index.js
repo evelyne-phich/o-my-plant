@@ -1,5 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useState, useEffect } from "react";
+//import cloudinary from "cloudinary";
 
 //import profilePic from "../../assets/img/profilePic.png";
 
@@ -8,7 +9,7 @@ import FieldImage from "../FieldImage";
 import {
   changeField,
   addImage,
-  sendImage,
+  //sendImage,
   updateProfile,
   handleProfileUpdateSubmit,
 } from "../../actions/user";
@@ -55,11 +56,23 @@ const Profile = () => {
       // console.log(reader.result);
       // uploadImage(reader.result);
       dispatch(addImage(reader.result, fileInputName));
+      //sendToCloud(reader.result);
     };
     reader.onerror = () => {
       console.error("La validation du formulaire a échoué :( => FileReader ");
     };
   };
+  /*
+  const sendToCloud = async (file) => {
+    try {
+      const { secure_url } = await cloudinary.uploader.upload(file, {
+        upload_preset: "user-profile",
+      });
+      console.log(secure_url);
+    } catch (error) {
+      console.log(error);
+    }
+  };*/
 
   const changeFieldInput = (value, name) => {
     console.log(value);
@@ -75,7 +88,7 @@ const Profile = () => {
     event.preventDefault();
     dispatch(handleProfileUpdateSubmit());
     dispatch(updateProfile());
-    dispatch(sendImage());
+    // dispatch(sendImage());
   };
 
   return (

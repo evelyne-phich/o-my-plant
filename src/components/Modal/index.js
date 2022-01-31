@@ -6,7 +6,7 @@ import Fade from "@mui/material/Fade";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 
-import "./style.css";
+import "./style.scss";
 
 const style = {
   position: "absolute",
