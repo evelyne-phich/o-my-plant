@@ -29,8 +29,8 @@ const Field = ({
 };
 
 Field.propTypes = {
-  value: PropTypes.string,
-  type: PropTypes.string,
+  value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  type: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   name: PropTypes.string,
   placeholder: PropTypes.string,
   onChange: PropTypes.func,

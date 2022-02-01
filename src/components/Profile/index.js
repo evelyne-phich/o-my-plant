@@ -57,6 +57,7 @@ const Profile = () => {
 
   const onSubmitClick = (event) => {
     event.preventDefault();
+    console.log("je submit le profil");
     dispatch(handleProfileUpdateSubmit());
     dispatch(updateProfile());
   };

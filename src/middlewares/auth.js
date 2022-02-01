@@ -34,7 +34,6 @@ const auth = (store) => (next) => (action) => {
         )
         .then((res) => {
           console.log(res.data);
-          console.log(res.data.member);
           store.dispatch(saveUser(res.data));
         })
         .catch((err) => console.log("erreur: ", err.response.data));

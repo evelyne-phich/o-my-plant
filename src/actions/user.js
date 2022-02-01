@@ -33,10 +33,10 @@ export const addImage = (base64, fileInputName) => ({
     name: fileInputName,
   },
 });
-
+/*
 export const sendImage = () => ({
   type: SEND_IMAGE,
-});
+});*/
 
 export const login = () => ({
   type: LOGIN,
