@@ -3,6 +3,7 @@ import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
 import Fade from "@mui/material/Fade";
 import PlantGardenForm from "../PlantGardenForm";
+import PlantBddForm from "../PlantBddForm";
 
 import "./style.scss";
 
@@ -38,6 +39,7 @@ export default function TransitionsModal({ onClose, open, form }) {
         <Fade in={open}>
           <Box sx={style}>
             {form === "user-plant-form" && <PlantGardenForm />}
+            {form === "bdd-plant-form" && <PlantBddForm />}
           </Box>
         </Fade>
       </Modal>

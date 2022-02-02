@@ -10,6 +10,7 @@ const Field = ({
   onChange,
   disabled,
   className,
+  required,
 }) => {
   const inputId = `field-${name}`;
   return (
@@ -23,6 +24,7 @@ const Field = ({
         placeholder={placeholder}
         name={name}
         disabled={disabled}
+        required={required ? required : false}
       />
     </div>
   );
