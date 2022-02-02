@@ -18,7 +18,7 @@ const App = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchUser());
-    dispatch(fetchPlant());
+    // dispatch(fetchPlant());
   }, []);
 
   const location = useLocation();

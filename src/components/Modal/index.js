@@ -1,9 +1,7 @@
-import { useState } from "react";
 import Backdrop from "@mui/material/Backdrop";
 import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
 import Fade from "@mui/material/Fade";
-import Button from "@mui/material/Button";
 import PlantGardenForm from "../PlantGardenForm";
 
 import "./style.scss";
@@ -18,23 +16,19 @@ const style = {
   p: 4,
   border: "none",
   borderRadius: 5,
-  width: "75",
-  height: "90",
+  overflow: "auto",
+  maxHeight: "85vh",
+  maxWidth: "80%",
 };
 
-export default function TransitionsModal() {
-  const [open, setOpen] = useState(false);
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
-
+export default function TransitionsModal({ onClose, open, form }) {
   return (
-    <div>
-      <Button onClick={handleOpen}>Open modal</Button>
+    <>
       <Modal
         aria-labelledby="transition-modal-title"
         aria-describedby="transition-modal-description"
         open={open}
-        onClose={handleClose}
+        onClose={onClose}
         closeAfterTransition
         BackdropComponent={Backdrop}
         BackdropProps={{
@@ -43,10 +37,10 @@ export default function TransitionsModal() {
       >
         <Fade in={open}>
           <Box sx={style}>
-            <PlantGardenForm />
+            {form === "user-plant-form" && <PlantGardenForm />}
           </Box>
         </Fade>
       </Modal>
-    </div>
+    </>
   );
 }

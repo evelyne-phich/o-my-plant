@@ -16,7 +16,7 @@ const plant = (store) => (next) => (action) => {
 
       axios
         .patch(
-          `https://omyplant.herokuapp.com/garden/1`,
+          `https://omyplant.herokuapp.com/garden/${plant.id}`,
           {
             nickname: plant.nickname,
             wateringfrequency: plant.wateringfrequency,
@@ -37,8 +37,6 @@ const plant = (store) => (next) => (action) => {
           },
         )
         .then((res) => {
-          console.log("middleware plant", res.data);
-          console.log(res.data);
           store.dispatch(savePlant(res.data));
         })
         .catch((err) => console.log("erreur:", err.response.data));

@@ -1,14 +1,22 @@
 import SearchIcon from "@mui/icons-material/Search";
 import { Link } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useState, useEffect, Fragment } from "react";
+import { useDispatch } from "react-redux";
 import axios from "axios";
+
+import { fetchPlant } from "../../actions/plant";
 
 import "./style.scss";
 
 import CardPlant from "../CardPlant";
-
+import Modal from "../Modal";
+//<Button onClick={handleOpen}>Open modal</Button>
 const MyGarden = () => {
   const [plants, setPlants] = useState([]);
+  const [open, setOpen] = useState(false);
+  const handleOpenGardenPlant = () => setOpen(true);
+  const handleCloseGardenPlant = () => setOpen(false);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -46,12 +54,21 @@ const MyGarden = () => {
       </div>
       <div className="myGarden-plants">
         {plants.map((plant) => (
-          <CardPlant
-            key={plant.id}
-            title={plant.commonname}
-            img={plant.photo_member ? plant.photo_member : plant.photo}
-            contentButton="Modifier"
-          />
+          <Fragment key={plant.id}>
+            <CardPlant
+              title={plant.commonname}
+              img={plant.photo_member ? plant.photo_member : plant.photo}
+              onClick={() => {
+                handleOpenGardenPlant();
+                dispatch(fetchPlant());
+              }}
+            />
+            <Modal
+              onClose={handleCloseGardenPlant}
+              open={open}
+              form="user-plant-form"
+            />
+          </Fragment>
         ))}
       </div>
     </div>

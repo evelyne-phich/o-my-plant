@@ -35,6 +35,7 @@ Field.propTypes = {
   placeholder: PropTypes.string,
   onChange: PropTypes.func,
   disabled: PropTypes.bool,
+  className: PropTypes.string,
 };
 
 export default Field;
