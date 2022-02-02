@@ -159,7 +159,7 @@ const PlantGardenForm = () => {
                   : "plant-input-field"
               }`}
               onChange={changeFieldInput}
-              value={currentState.plant.numberoftimes || ""}
+              value={currentState.plant.numberoftimes || null}
               disabled={currentState.plant.plantUpdateDisabled}
             />
           </fieldset>

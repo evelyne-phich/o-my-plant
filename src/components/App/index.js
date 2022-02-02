@@ -1,6 +1,6 @@
 import { Routes, Route, Navigate, useLocation } from "react-router-dom";
 import { useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import Nav from "../Nav";
 import Footer from "../Footer";
 import About from "../About";
@@ -27,6 +27,8 @@ const App = () => {
     window.scroll(0, 0);
   }, [location]);
 
+  const userLogged = useSelector((state) => state.user.logged);
+
   return (
     <>
       <div className="app">
@@ -36,10 +38,14 @@ const App = () => {
           <Route path="/about" element={<About />} />
           <Route path="/login" element={<Login title="Se connecter" />} />
           <Route path="/subscribe" element={<Subscribe title="S'inscrire" />} />
-          <Route path="/profile" element={<Profile />} />
-          <Route path="/logout" element={<Navigate to="/" replace />} />
-          <Route path="/my-garden" element={<MyGarden />} />
-          <Route path="/add-plant" element={<Database />} />
+          {userLogged && (
+            <>
+              <Route path="/profile" element={<Profile />} />
+              <Route path="/logout" element={<Navigate to="/" replace />} />
+              <Route path="/my-garden" element={<MyGarden />} />
+              <Route path="/add-plant" element={<Database />} />
+            </>
+          )}
         </Routes>
         <Footer />
       </div>

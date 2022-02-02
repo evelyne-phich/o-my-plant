@@ -49,7 +49,7 @@ const MyGarden = () => {
           <CardPlant
             key={plant.id}
             title={plant.commonname}
-            img={plant.photo}
+            img={plant.photo_member ? plant.photo_member : plant.photo}
             contentButton="Modifier"
           />
         ))}

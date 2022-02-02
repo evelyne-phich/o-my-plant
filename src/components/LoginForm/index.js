@@ -21,7 +21,7 @@ const LoginForm = () => {
     e.preventDefault();
     axios
       .post("https://omyplant.herokuapp.com/login", {
-        mail: email,
+        mail: email.toLowerCase(),
         password: password,
       })
       .then((res) => {
