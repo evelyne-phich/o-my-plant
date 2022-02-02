@@ -54,6 +54,9 @@ const Nav = () => {
             <NavLink className={getActiveClassname} to="/my-garden">
               Mon jardin
             </NavLink>
+            <NavLink className={getActiveClassname} to="/add-plant">
+              Ajouter une plante
+            </NavLink>
             <NavLink className={getActiveClassname} to="/water-today">
               Water today
             </NavLink>

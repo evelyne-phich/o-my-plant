@@ -1,11 +1,13 @@
 import { combineReducers } from "redux";
 
 import userReducer from "./user";
-import userPLantReducer from "./plantUser";
+import userPlantReducer from "./plantUser";
+import plantBddReducer from "./plantBdd";
 
 const rootReducer = combineReducers({
   user: userReducer,
-  plant: userPLantReducer,
+  plant: userPlantReducer,
+  plantBdd: plantBddReducer,
 });
 
 export default rootReducer;

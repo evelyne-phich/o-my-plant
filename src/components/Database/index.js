@@ -1,13 +1,18 @@
 import SearchIcon from "@mui/icons-material/Search";
-import { useState, useEffect } from "react";
+import { useState, useEffect, Fragment } from "react";
 import axios from "axios";
 
 import CardPlant from "../CardPlant";
+import Modal from "../Modal";
 
 import "./style.scss";
 
 const Database = () => {
+  const [search, setSearch] = useState("");
   const [plants, setPlants] = useState([]);
+  const [open, setOpen] = useState(false);
+  const handleOpenGardenPlant = () => setOpen(true);
+  const handleCloseGardenPlant = () => setOpen(false);
 
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -42,22 +47,46 @@ const Database = () => {
             type="search"
             placeholder="Rechercher une plante"
             className="database-search-input"
+            value={search}
+            onChange={(event) => {
+              setSearch(event.target.value);
+            }}
           />
           <SearchIcon className="database-search-icon" />
         </div>
-        <button type="button" className="database-add-plant">
+        <button
+          type="button"
+          className="database-add-plant"
+          onClick={() => {
+            handleOpenGardenPlant();
+          }}
+        >
           Ajouter une nouvelle plante
         </button>
       </div>
       <div className="database-plants">
-        {plants.map((plant) => (
-          <CardPlant
-            key={plant.id}
-            title={plant.commonname}
-            img={plant.photo}
-            contentButton="Ajouter"
-          />
-        ))}
+        {plants.length > 0 ? (
+          plants
+            .filter((plant) =>
+              plant.commonname.toLowerCase().includes(search.toLowerCase()),
+            )
+            .map((plant) => (
+              <Fragment key={`bdd${plant.id}`}>
+                <CardPlant
+                  title={plant.commonname}
+                  img={plant.photo}
+                  contentButton="Ajouter"
+                />
+                <Modal
+                  onClose={handleCloseGardenPlant}
+                  open={open}
+                  form="bdd-plant-form"
+                />
+              </Fragment>
+            ))
+        ) : (
+          <div className="database-empty">Votre jardin est vide.</div>
+        )}
       </div>
     </div>
   );

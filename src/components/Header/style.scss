@@ -1,22 +1,28 @@
 @use '../../styles/vars.scss';
 
 .header {
-    height: 100vh;
+    height: 85vh;
     display: flex;
     z-index: 3;
+    margin : 7.5rem;
+    
+
     
         &-part-left {
-            background-color: vars.$color-4;
+
             width: 50vw;
             height: 100%;
             background: url(../../assets/img/home/home-bgd.jpg);
             background-size: cover;
             background-position: center;
+            border-radius: 15px 0px 0px 15px;
+            box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
         }
         &-part-right {
             background-color: vars.$color-1;
             width: 50vw;
-        }
+            border-radius: 0px 15px 15px 0px;
+            box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;        }
         &-img {
             width: 100%;
             height: 100VH;

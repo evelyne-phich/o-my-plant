@@ -54,15 +54,13 @@ const PlantGardenForm = () => {
   // l'image en cours s'affiche sur la page
   useEffect(() => {
     if (image) {
-      console.log(image);
       const imgUrl = URL.createObjectURL(image); //blob
       setImageUrl(imgUrl);
       updateImage();
     }
-  }, [image]);
+  }, [image, imageUrl]);
 
   const updateImage = () => {
-    console.log(imageUrl);
     const reader = new FileReader();
     reader.readAsDataURL(image);
     reader.onloadend = () => {
@@ -74,7 +72,6 @@ const PlantGardenForm = () => {
   };
 
   const changeFieldInput = (value, name) => {
-    console.log("select TEST", value, name);
     dispatch(changeField(value, name));
   };
 
@@ -85,7 +82,6 @@ const PlantGardenForm = () => {
 
   const onSubmitClick = (event) => {
     event.preventDefault();
-    console.log("je passe dans le submit form", event);
     dispatch(handlePlantUpdateSubmit());
     dispatch(updatePlant());
     dispatch(fetchPlant());
@@ -194,9 +190,9 @@ const PlantGardenForm = () => {
           </fieldset>
           <label htmlFor="site" className="label">
             Emplacement:{" "}
-            {currentState.plant.plantUpdateDisabled &&
-              (currentState.plant.site || "A définir")}
           </label>
+          {currentState.plant.plantUpdateDisabled &&
+            (currentState.plant.site || "A définir")}
           <Field
             name="site"
             type="text"
@@ -211,94 +207,94 @@ const PlantGardenForm = () => {
           />
           <label htmlFor="exposure" className="label">
             Exposition:{" "}
-            {currentState.plant.plantUpdateDisabled &&
-              (currentState.plant.exposure || "A définir")}
-            <select
-              value={exposure}
-              id="exposure"
-              name="exposure"
-              onChange={(event) =>
-                changeExposure(event.target.value, event.target.name)
-              }
-              disabled={currentState.plant.plantUpdateDisabled}
-              className={`${
-                currentState.plant.plantUpdateDisabled
-                  ? "hidden-input"
-                  : "plant-input-select"
-              }`}
-            >
-              <option>Sélectionnez l'exposition de votre plante</option>
-              <option value="faible">Faible</option>
-              <option value="modérée">Modérée</option>
-              <option value="elevée">Elevée</option>
-            </select>
           </label>
+          {currentState.plant.plantUpdateDisabled &&
+            (currentState.plant.exposure || "A définir")}
+          <select
+            value={exposure}
+            id="exposure"
+            name="exposure"
+            onChange={(event) =>
+              changeExposure(event.target.value, event.target.name)
+            }
+            disabled={currentState.plant.plantUpdateDisabled}
+            className={`${
+              currentState.plant.plantUpdateDisabled
+                ? "hidden-input"
+                : "plant-input-select"
+            }`}
+          >
+            <option>Sélectionnez l'exposition de votre plante</option>
+            <option value="faible">Faible</option>
+            <option value="modérée">Modérée</option>
+            <option value="elevée">Elevée</option>
+          </select>
           <label htmlFor="trimming" className="label">
             Taille:{" "}
-            {currentState.plant.plantUpdateDisabled &&
-              (currentState.plant.trimming || "A définir")}
-            <select
-              value={trimming}
-              id="trimming"
-              name="trimming"
-              onChange={(event) =>
-                changeTrimming(event.target.value, event.target.name)
-              }
-              disabled={currentState.plant.plantUpdateDisabled}
-              className={`${
-                currentState.plant.plantUpdateDisabled
-                  ? "hidden-input"
-                  : "plant-input-select"
-              }`}
-            >
-              <option>Sélectionnez votre mois de taille</option>
-              <option value="janvier">Janvier</option>
-              <option value="février">Février</option>
-              <option value="mars">Mars</option>
-              <option value="avril">Avril</option>
-              <option value="mai">Mai</option>
-              <option value="juin">Juin</option>
-              <option value="juillet">Juillet</option>
-              <option value="août">Août</option>
-              <option value="septembre">Septembre</option>
-              <option value="octobre">Octobre</option>
-              <option value="novembre">Novembre</option>
-              <option value="décembre">Décembre</option>
-            </select>
           </label>
+          {currentState.plant.plantUpdateDisabled &&
+            (currentState.plant.trimming || "A définir")}
+          <select
+            value={trimming}
+            id="trimming"
+            name="trimming"
+            onChange={(event) =>
+              changeTrimming(event.target.value, event.target.name)
+            }
+            disabled={currentState.plant.plantUpdateDisabled}
+            className={`${
+              currentState.plant.plantUpdateDisabled
+                ? "hidden-input"
+                : "plant-input-select"
+            }`}
+          >
+            <option>Sélectionnez votre mois de taille</option>
+            <option value="janvier">Janvier</option>
+            <option value="février">Février</option>
+            <option value="mars">Mars</option>
+            <option value="avril">Avril</option>
+            <option value="mai">Mai</option>
+            <option value="juin">Juin</option>
+            <option value="juillet">Juillet</option>
+            <option value="août">Août</option>
+            <option value="septembre">Septembre</option>
+            <option value="octobre">Octobre</option>
+            <option value="novembre">Novembre</option>
+            <option value="décembre">Décembre</option>
+          </select>
           <label htmlFor="reppoting" className="label">
             Rempotage:{" "}
-            {currentState.plant.plantUpdateDisabled &&
-              (currentState.plant.reppoting || "A définir")}
-            <select
-              value={reppoting}
-              id="reppoting"
-              name="reppoting"
-              onChange={(event) =>
-                changeReppoting(event.target.value, event.target.name)
-              }
-              disabled={currentState.plant.plantUpdateDisabled}
-              className={`${
-                currentState.plant.plantUpdateDisabled
-                  ? "hidden-input"
-                  : "plant-input-select"
-              }`}
-            >
-              <option>Sélectionnez votre mois de taille</option>
-              <option value="janvier">Janvier</option>
-              <option value="février">Février</option>
-              <option value="mars">Mars</option>
-              <option value="avril">Avril</option>
-              <option value="mai">Mai</option>
-              <option value="juin">Juin</option>
-              <option value="juillet">Juillet</option>
-              <option value="août">Août</option>
-              <option value="septembre">Septembre</option>
-              <option value="octobre">Octobre</option>
-              <option value="novembre">Novembre</option>
-              <option value="décembre">Décembre</option>
-            </select>
           </label>
+          {currentState.plant.plantUpdateDisabled &&
+            (currentState.plant.reppoting || "A définir")}
+          <select
+            value={reppoting}
+            id="reppoting"
+            name="reppoting"
+            onChange={(event) =>
+              changeReppoting(event.target.value, event.target.name)
+            }
+            disabled={currentState.plant.plantUpdateDisabled}
+            className={`${
+              currentState.plant.plantUpdateDisabled
+                ? "hidden-input"
+                : "plant-input-select"
+            }`}
+          >
+            <option>Sélectionnez votre mois de taille</option>
+            <option value="janvier">Janvier</option>
+            <option value="février">Février</option>
+            <option value="mars">Mars</option>
+            <option value="avril">Avril</option>
+            <option value="mai">Mai</option>
+            <option value="juin">Juin</option>
+            <option value="juillet">Juillet</option>
+            <option value="août">Août</option>
+            <option value="septembre">Septembre</option>
+            <option value="octobre">Octobre</option>
+            <option value="novembre">Novembre</option>
+            <option value="décembre">Décembre</option>
+          </select>
         </div>
       </div>
       {currentState.plant.plantUpdateDisabled && (
