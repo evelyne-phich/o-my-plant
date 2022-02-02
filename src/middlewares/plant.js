@@ -12,11 +12,11 @@ const plant = (store) => (next) => (action) => {
       console.log("je suis dans le middleware HANDLE_UPDATE_PLANT_SUBMIT");
       const token = localStorage.getItem("token");
       const plant = store.getState().plant;
-      console.log(plant);
+      console.log(plant.plantdb_id, plant.garden_id);
 
       axios
         .patch(
-          `https://omyplant.herokuapp.com/garden/1`,
+          `https://omyplant.herokuapp.com/garden/${plant.id}`,
           {
             nickname: plant.nickname,
             wateringfrequency: plant.wateringfrequency,
@@ -26,6 +26,9 @@ const plant = (store) => (next) => (action) => {
             exposure: plant.exposure,
             site: plant.site,
             photo_member: plant.photo_member,
+            plantdb_id: plant.plantdb_id,
+            garden_id: plant.garden_id,
+            id: plant.id,
           },
           {
             headers: {
@@ -34,8 +37,6 @@ const plant = (store) => (next) => (action) => {
           },
         )
         .then((res) => {
-          console.log("middleware plant", res.data);
-          console.log(res.data);
           store.dispatch(savePlant(res.data));
         })
         .catch((err) => console.log("erreur:", err.response.data));

@@ -1,4 +1,3 @@
-import Proptypes from "prop-types";
 import { useSelector, useDispatch } from "react-redux";
 import { useState, useEffect } from "react";
 
@@ -17,6 +16,36 @@ import "./style.scss";
 const PlantGardenForm = () => {
   const currentState = useSelector((state) => state);
   const dispatch = useDispatch();
+
+  const [wateringfrequency, setWateringfrequency] = useState(
+    currentState.plant.wateringfrequency,
+  );
+
+  const changeWateringfrequency = (newWateringfrequency, name) => {
+    setWateringfrequency(newWateringfrequency);
+    changeFieldInput(newWateringfrequency, name);
+  };
+
+  const [exposure, setExposure] = useState(currentState.plant.exposure);
+
+  const changeExposure = (newExposure, name) => {
+    setExposure(newExposure);
+    changeFieldInput(newExposure, name);
+  };
+
+  const [trimming, setTrimming] = useState(currentState.plant.trimming);
+
+  const changeTrimming = (newTrimming, name) => {
+    setTrimming(newTrimming);
+    changeFieldInput(newTrimming, name);
+  };
+
+  const [reppoting, setReppoting] = useState(currentState.plant.reppoting);
+
+  const changeReppoting = (newReppoting, name) => {
+    setReppoting(newReppoting);
+    changeFieldInput(newReppoting, name);
+  };
 
   const [image, setImage] = useState(""); // fichier image sélectionné
   const [imageUrl, setImageUrl] = useState(""); // blob image url
@@ -45,7 +74,7 @@ const PlantGardenForm = () => {
   };
 
   const changeFieldInput = (value, name) => {
-    console.log(value);
+    console.log("select TEST", value, name);
     dispatch(changeField(value, name));
   };
 
@@ -59,16 +88,17 @@ const PlantGardenForm = () => {
     console.log("je passe dans le submit form", event);
     dispatch(handlePlantUpdateSubmit());
     dispatch(updatePlant());
-    //dispatch(fetchPlant());
+    dispatch(fetchPlant());
   };
 
   return (
     <form className="user-plant-form" onSubmit={onSubmitClick}>
       <div className="form-container">
         <div className="form-description-part">
-          <h2>Titre</h2>
+          <h2>{currentState.plant.commonname}</h2>
           <label htmlFor="nickname">
-            {currentState.plant.nickname || "Surnom"}
+            {currentState.plant.plantUpdateDisabled &&
+              (currentState.plant.nickname || "Surnom à définir")}
           </label>
           <Field
             name="nickname"
@@ -80,7 +110,9 @@ const PlantGardenForm = () => {
             }`}
             onChange={changeFieldInput}
             placeholder="Surnom de la plante"
-            value={currentState.plant.nickname || ""}
+            value={
+              currentState.plant.nickname ? currentState.plant.nickname : ""
+            }
             disabled={currentState.plant.plantUpdateDisabled}
           />
 
@@ -89,7 +121,7 @@ const PlantGardenForm = () => {
             src={
               currentState.plant.photo_member
                 ? currentState.plant.photo_member
-                : "https://res.cloudinary.com/dtnoanxmt/image/upload/v1643722681/plant-img/plant_urtcoa.jpg"
+                : currentState.plant.photo
             }
             alt="plant"
           />
@@ -109,25 +141,17 @@ const PlantGardenForm = () => {
             }}
           />
           <h3>Description</h3>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus
-            tristique velit vel nisl pellentesque, eu finibus erat dapibus.
-            Pellentesque tempor odio aliquam odio lacinia, sagittis feugiat mi
-            accumsan. Donec eget risus felis. Mauris justo magna, finibus eget
-            molestie id, interdum quis lectus. Curabitur pretium enim quis magna
-            placerat feugiat. Curabitur hendrerit placerat metus, a tempus nisi
-            vestibulum at. In vel neque rhoncus, tempus nisl sit amet, rutrum
-            tellus. Etiam finibus semper urna et auctor. Aliquam erat volutpat.{" "}
-          </p>
+          <p>{currentState.plant.description}</p>
         </div>
         <div className="form-care-part">
           <h3>Entretien</h3>
           <fieldset className="form-care-watering">
             <legend>Fréquence d'arrosage</legend>
             <label htmlFor="wateringfrequency">
-              Périodicité: {currentState.plant.wateringfrequency || "A définir"}
+              Périodicité:{" "}
+              {currentState.plant.plantUpdateDisabled &&
+                (currentState.plant.wateringfrequency || "A définir")}
               <select
-                //value={currentState.plant.wateringfrequency}
                 id="wateringfrequency"
                 name="wateringfrequency"
                 disabled={currentState.plant.plantUpdateDisabled}
@@ -136,7 +160,10 @@ const PlantGardenForm = () => {
                     ? "hidden-input"
                     : "plant-input-select"
                 }`}
-                onChange={changeFieldInput}
+                onChange={(event) =>
+                  changeWateringfrequency(event.target.value, event.target.name)
+                }
+                value={wateringfrequency}
               >
                 <option value="">
                   Sélectionnez votre périodicité d'arrosage
@@ -148,7 +175,9 @@ const PlantGardenForm = () => {
             </label>
 
             <label htmlFor="numberoftimes">
-              Nombre de fois: {currentState.plant.numberoftimes || "A définir"}
+              Nombre de fois:{" "}
+              {currentState.plant.plantUpdateDisabled &&
+                (currentState.plant.numberoftimes || "A définir")}
             </label>
             <Field
               name="numberoftimes"
@@ -163,8 +192,10 @@ const PlantGardenForm = () => {
               disabled={currentState.plant.plantUpdateDisabled}
             />
           </fieldset>
-          <label htmlFor="site">
-            Emplacement: {currentState.plant.site || "A définir"}
+          <label htmlFor="site" className="label">
+            Emplacement:{" "}
+            {currentState.plant.plantUpdateDisabled &&
+              (currentState.plant.site || "A définir")}
           </label>
           <Field
             name="site"
@@ -178,12 +209,17 @@ const PlantGardenForm = () => {
             value={currentState.plant.site || ""}
             disabled={currentState.plant.plantUpdateDisabled}
           />
-          <label htmlFor="exposure">
-            Exposition: {currentState.plant.exposure || "A définir"}
+          <label htmlFor="exposure" className="label">
+            Exposition:{" "}
+            {currentState.plant.plantUpdateDisabled &&
+              (currentState.plant.exposure || "A définir")}
             <select
+              value={exposure}
               id="exposure"
               name="exposure"
-              onChange={changeFieldInput}
+              onChange={(event) =>
+                changeExposure(event.target.value, event.target.name)
+              }
               disabled={currentState.plant.plantUpdateDisabled}
               className={`${
                 currentState.plant.plantUpdateDisabled
@@ -197,12 +233,17 @@ const PlantGardenForm = () => {
               <option value="elevée">Elevée</option>
             </select>
           </label>
-          <label htmlFor="trimming">
-            Taille: {currentState.plant.trimming || "A définir"}
+          <label htmlFor="trimming" className="label">
+            Taille:{" "}
+            {currentState.plant.plantUpdateDisabled &&
+              (currentState.plant.trimming || "A définir")}
             <select
+              value={trimming}
               id="trimming"
               name="trimming"
-              onChange={changeFieldInput}
+              onChange={(event) =>
+                changeTrimming(event.target.value, event.target.name)
+              }
               disabled={currentState.plant.plantUpdateDisabled}
               className={`${
                 currentState.plant.plantUpdateDisabled
@@ -225,12 +266,17 @@ const PlantGardenForm = () => {
               <option value="décembre">Décembre</option>
             </select>
           </label>
-          <label htmlFor="reppoting">
-            Rempotage: {currentState.plant.reppoting || "A définir"}
+          <label htmlFor="reppoting" className="label">
+            Rempotage:{" "}
+            {currentState.plant.plantUpdateDisabled &&
+              (currentState.plant.reppoting || "A définir")}
             <select
-              id="trimming"
-              name="trimming"
-              onChange={changeFieldInput}
+              value={reppoting}
+              id="reppoting"
+              name="reppoting"
+              onChange={(event) =>
+                changeReppoting(event.target.value, event.target.name)
+              }
               disabled={currentState.plant.plantUpdateDisabled}
               className={`${
                 currentState.plant.plantUpdateDisabled
@@ -272,7 +318,5 @@ const PlantGardenForm = () => {
     </form>
   );
 };
-
-PlantGardenForm.propTypes = {};
 
 export default PlantGardenForm;

@@ -1,12 +1,25 @@
 @use '../../styles/vars.scss';
 
+.MuiBox-root {
+    outline: none;
+}
+
 .card{
+    cursor: pointer;
     border-radius: 5px;
     box-shadow: 0px 0px 20px 8px rgba(0, 0, 0, 0.118);
     width: 240px;
-    margin-top: 2rem;
+    margin-top: 3rem;
+    transition: 0.3s ease-in-out;
+    
+    &:hover{
+        box-shadow: 0px 0px 20px 8px rgba(0, 0, 0, 0.164);
+        transform: scale(1.05)
+    }
     
     &-image img{
+    min-height: 300px;
+    object-fit: cover;
     width: 100%;
     border-radius: 5px 5px 0px 0px;
     }
