@@ -7,7 +7,7 @@ import PresVideo from "../PresVideo";
 import SocialNetwork from "../SocialNetwork";
 import PlantsCounter from "../PlantsCounter";
 import Quote from "../Quotes";
-
+import Modal from "../Modal";
 const HomeQuote = () => {
   return (
     <span>
@@ -27,13 +27,16 @@ const Home = () => {
         text="Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, explicabo."
       />
     </Page>*/
-    <div>
+    <>
       <Header />
-      <PresVideo />
-      <PlantsCounter />
-      <Quote page="home" quote={<HomeQuote />} author="Proverbe créole" />
-      <SocialNetwork />
-    </div>
+      <main className="main">
+        <PresVideo />
+        <Modal />
+        <PlantsCounter />
+        <Quote page="home" quote={<HomeQuote />} author="Proverbe créole" />
+        <SocialNetwork />
+      </main>
+    </>
 
     /*<main>
         <section></section>

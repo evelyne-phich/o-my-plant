@@ -12,11 +12,13 @@ import MyGarden from "../MyGarden";
 import Database from "../Database";
 import "./style.scss";
 import { fetchUser } from "../../actions/user";
+import { fetchPlant } from "../../actions/plant";
 
 const App = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchUser());
+    dispatch(fetchPlant());
   }, []);
 
   const location = useLocation();
