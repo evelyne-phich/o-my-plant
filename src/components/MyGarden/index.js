@@ -12,7 +12,7 @@ import CardPlant from "../CardPlant";
 import Modal from "../Modal";
 
 const MyGarden = () => {
-  const currentPlant = useSelector((state) => state.plant);
+  // const currentPlant = useSelector((state) => state.plant);
 
   const [search, setSearch] = useState("");
   const [plants, setPlants] = useState([]);
@@ -21,7 +21,7 @@ const MyGarden = () => {
   const handleCloseGardenPlant = () => setOpen(false);
   const dispatch = useDispatch();
 
-  useEffect(() => {
+  const request = () => {
     const token = localStorage.getItem("token");
 
     axios
@@ -37,7 +37,17 @@ const MyGarden = () => {
       .catch((err) => {
         console.log("erreur: ", err.response.data);
       });
+  };
+
+  useEffect(() => {
+    console.log("first time");
+    request();
   }, []);
+
+  useEffect(() => {
+    console.log("on click modal change");
+    request();
+  }, [open]);
 
   return (
     <div className="myGarden">
@@ -78,11 +88,7 @@ const MyGarden = () => {
               <Fragment key={plant.id}>
                 <CardPlant
                   title={plant.commonname}
-                  img={
-                    currentPlant.photo_member
-                      ? currentPlant.photo_member
-                      : plant.photo
-                  }
+                  img={plant.photo_member ? plant.photo_member : plant.photo}
                   onCardClick={() => {
                     handleOpenGardenPlant();
                     dispatch(fetchPlant(plant.id));

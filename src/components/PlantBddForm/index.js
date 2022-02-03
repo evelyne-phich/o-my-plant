@@ -28,7 +28,6 @@ const PlantBddForm = () => {
   }, [image]);
 
   const updateImage = () => {
-    console.log(imageUrl);
     const reader = new FileReader();
     reader.readAsDataURL(image);
     reader.onloadend = () => {

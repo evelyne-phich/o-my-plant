@@ -21,7 +21,7 @@ const Database = () => {
     dispatch(handleAddClick(event.target.value));
   };
 
-  useEffect(() => {
+  const request = () => {
     const token = localStorage.getItem("token");
 
     axios
@@ -37,7 +37,15 @@ const Database = () => {
       .catch((err) => {
         console.log("erreur: ", err.response.data);
       });
+  };
+
+  useEffect(() => {
+    request();
   }, []);
+
+  useEffect(() => {
+    request();
+  }, [open]);
 
   return (
     <div className="database">
