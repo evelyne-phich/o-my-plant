@@ -58,7 +58,7 @@ const PlantGardenForm = () => {
       setImageUrl(imgUrl);
       updateImage();
     }
-  }, [image, imageUrl]);
+  }, [image]);
 
   const updateImage = () => {
     const reader = new FileReader();

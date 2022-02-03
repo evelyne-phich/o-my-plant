@@ -4,6 +4,7 @@ const initialState = {
   commonname: "",
   description: "",
   photo: "",
+  member_id: "",
 };
 
 const reducer = (state = initialState, action = {}) => {
