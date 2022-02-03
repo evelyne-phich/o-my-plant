@@ -1,3 +1,5 @@
+@use '../../styles/vars.scss';
+
 .form{
     &-description{
         display: flex;
@@ -10,7 +12,18 @@
         background-size: cover;
         background-repeat: no-repeat;
         background-position: center;
-        
-        
-    }
+    }        
+}
+
+label {
+    color: vars.$color-1;
+    font-weight: bold;
+}   
+
+.plant-input-field, .plant-file-input {
+    font-weight: 500;
+}
+
+.profile-biography-content {
+    color: vars.$color-1;
 }

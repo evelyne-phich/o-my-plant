@@ -31,7 +31,7 @@ const MyGarden = () => {
         },
       })
       .then((res) => {
-        console.log(res.data);
+        console.log("my garden", res.data);
         setPlants(res.data);
       })
       .catch((err) => {
@@ -63,7 +63,16 @@ const MyGarden = () => {
         {plants.length > 0 ? (
           plants
             .filter((plant) =>
-              plant.commonname.toLowerCase().includes(search.toLowerCase()),
+              plant.commonname
+                .toLowerCase()
+                .normalize("NFD")
+                .replace(/[\u0300-\u036f]/g, "")
+                .includes(
+                  search
+                    .toLowerCase()
+                    .normalize("NFD")
+                    .replace(/[\u0300-\u036f]/g, ""),
+                ),
             )
             .map((plant) => (
               <Fragment key={plant.id}>
@@ -74,9 +83,9 @@ const MyGarden = () => {
                       ? currentPlant.photo_member
                       : plant.photo
                   }
-                  onClick={() => {
+                  onCardClick={() => {
                     handleOpenGardenPlant();
-                    dispatch(fetchPlant());
+                    dispatch(fetchPlant(plant.id));
                   }}
                 />
                 <Modal

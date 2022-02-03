@@ -1,6 +1,7 @@
 import {
   CHANGE_FIELD,
   SAVE_USER,
+  SAVE_GARDEN_ID,
   UPDATE_PROFILE,
   LOGIN,
   LOGOUT,
@@ -21,6 +22,7 @@ export const initialState = {
   biography: "",
   telephone: "",
   role: "",
+  garden_id: "",
   profileUpdateDisabled: true,
 };
 
@@ -45,6 +47,11 @@ const reducer = (state = initialState, action = {}) => {
           ? action.payload.dateofbirth.substring(0, 10)
           : null,
         logged: true,
+      };
+    case SAVE_GARDEN_ID:
+      return {
+        ...state,
+        garden_id: action.payload,
       };
     case LOGIN:
       return {

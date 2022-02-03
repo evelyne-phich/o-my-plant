@@ -5,7 +5,6 @@ import {
   changeField,
   updatePlant,
   handlePlantUpdateSubmit,
-  fetchPlant,
 } from "../../actions/plant";
 
 import Field from "../Field";
@@ -48,14 +47,14 @@ const PlantGardenForm = () => {
   };
 
   const [image, setImage] = useState(""); // fichier image sélectionné
-  const [imageUrl, setImageUrl] = useState(""); // blob image url
+  //const [imageUrl, setImageUrl] = useState("");  blob image url
   const [fileInputName, setFileInputName] = useState(""); // to set the name of the fieldImage
   // à chaque changement du state image
   // l'image en cours s'affiche sur la page
   useEffect(() => {
     if (image) {
       const imgUrl = URL.createObjectURL(image); //blob
-      setImageUrl(imgUrl);
+      //setImageUrl(imgUrl);
       updateImage();
     }
   }, [image]);
@@ -84,7 +83,6 @@ const PlantGardenForm = () => {
     event.preventDefault();
     dispatch(handlePlantUpdateSubmit());
     dispatch(updatePlant());
-    dispatch(fetchPlant());
   };
 
   return (

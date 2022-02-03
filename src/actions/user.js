@@ -9,6 +9,8 @@ export const UPDATE_PROFILE = "UPDATE_PROFILE";
 export const HANDLE_UPDATE_PROFILE_SUBMIT = "HANDLE_UPDATE_PROFILE_SUBMIT";
 export const ADD_IMAGE = "ADD_IMAGE";
 export const SEND_IMAGE = "SEND_IMAGE";
+export const FETCH_GARDEN_ID = "FETCH_GARDEN_ID";
+export const SAVE_GARDEN_ID = "SAVE_GARDEN_ID";
 
 export const changeField = (value, name) => ({
   type: CHANGE_FIELD,
@@ -63,4 +65,13 @@ export const saveSubscription = () => ({
 
 export const fetchUser = () => ({
   type: FETCH_USER,
+});
+
+export const fetchGardenId = () => ({
+  type: FETCH_GARDEN_ID,
+});
+
+export const saveGardenId = (gardenId) => ({
+  type: SAVE_GARDEN_ID,
+  payload: gardenId.id,
 });
