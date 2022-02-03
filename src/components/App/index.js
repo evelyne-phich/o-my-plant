@@ -12,7 +12,6 @@ import MyGarden from "../MyGarden";
 import Database from "../Database";
 import "./style.scss";
 import { fetchUser } from "../../actions/user";
-import { fetchPlant } from "../../actions/plant";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -41,7 +40,6 @@ const App = () => {
           {userLogged && (
             <>
               <Route path="/profile" element={<Profile />} />
-              <Route path="/logout" element={<Navigate to="/" replace />} />
               <Route path="/my-garden" element={<MyGarden />} />
               <Route path="/add-plant" element={<Database />} />
             </>

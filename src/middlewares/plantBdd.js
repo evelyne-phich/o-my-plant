@@ -7,6 +7,8 @@ const plantBdd = (store) => (next) => (action) => {
     case HANDLE_CREATION_PLANT_SUBMIT: {
       const token = localStorage.getItem("token");
       const plant = store.getState().plantBdd;
+      const user = store.getState().user;
+      console.log(user.id);
       axios
         .post(
           "https://omyplant.herokuapp.com/plantdb",
@@ -14,6 +16,7 @@ const plantBdd = (store) => (next) => (action) => {
             commonname: plant.commonname,
             photo: plant.photo,
             description: plant.description,
+            member_id: user.id,
           },
           {
             headers: {

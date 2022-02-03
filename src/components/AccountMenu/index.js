@@ -98,7 +98,7 @@ const AccountMenu = () => {
         </Link>
         <Link
           className="logout"
-          to="/logout"
+          to="/"
           onClick={() => dispatch(logout())}
           style={{ textDecoration: "none" }}
         >

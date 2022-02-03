@@ -1,8 +1,7 @@
-import { Link, NavLink, useLocation } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import logo from "../../assets/img/logo/logo.svg";
 
 import "./style.scss";
-import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import Button from "../Button";
 import AccountMenu from "../AccountMenu";
@@ -11,27 +10,10 @@ const Nav = () => {
   const getActiveClassname = ({ isActive }) =>
     isActive ? "nav-menu-link nav-menu-link--active" : "nav-menu-link";
 
-  const [navStatus, setNavStatus] = useState("transparent");
-  const [windowStatus, setWindowStatus] = useState(0);
-  const location = useLocation();
-
-  useEffect(() => {
-    window.addEventListener("scroll", () => {
-      setWindowStatus(document.scrollingElement.scrollTop);
-      if (location.pathname === "/") {
-        if (windowStatus >= 700) {
-          setNavStatus("plain"); // the class where you add the chosen background below 15
-        } else {
-          setNavStatus("transparent"); // the class where you add the chosen background after 15
-        }
-      }
-    });
-  }, [windowStatus, location]);
-
   const user = useSelector((state) => state.user);
 
   return (
-    <nav className={`nav ${location.pathname === "/" ? navStatus : "plain"}`}>
+    <nav className="nav">
       <div className="nav-logo">
         <Link
           className="nav-logo-container"

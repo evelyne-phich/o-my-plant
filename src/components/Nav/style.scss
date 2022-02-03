@@ -1,15 +1,5 @@
 @use '../../styles/vars.scss';
 
-.plain {
-    background-color: white;
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-}
-
-.transparent {
-    transition-duration: 0.4s ease;
-    background-color: transparent;
-}
-
 .nav {
     height: auto;
     position: fixed;
@@ -22,6 +12,9 @@
     z-index: 2;
     left: 0;
     right: 0;
+    background-color: rgba(255, 255, 255, 0.897);
+    box-shadow: 0px 10px 23px -1px rgba(0,0,0,0.1);
+
 
     &-logo-container {
         display: flex;
@@ -50,7 +43,7 @@
         &-link {
             padding: 1rem;
             margin-left: 1rem;
-            color: vars.$color-3;
+            color: vars.$color-2;
             text-decoration: none;
             text-transform: uppercase;
             font-weight: 600;
@@ -77,7 +70,7 @@
             }
 
             &--active {
-                color: vars.$color-2;
+                color: vars.$color-1;
             }
         }
 
