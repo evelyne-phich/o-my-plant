@@ -1,10 +1,17 @@
 import PropTypes from "prop-types";
 import "./style.scss";
 
-const CardPlant = ({ title, contentButton, img, onClick }) => (
-  <div className="card" onClick={onClick}>
+const CardPlant = ({
+  title,
+  contentButton,
+  img,
+  onCardClick,
+  onAddClick,
+  value,
+}) => (
+  <div className="card" onClick={onCardClick}>
     <div className="card-image">
-      <img src={img} alt="photo plant"></img>
+      <img src={img} alt={title} />
     </div>
     <div className="card-bottom-part">
       <div className="card-desc">
@@ -12,7 +19,9 @@ const CardPlant = ({ title, contentButton, img, onClick }) => (
       </div>
       {contentButton && (
         <div className="card-button">
-          <button>{contentButton}</button>
+          <button onClick={onAddClick} value={value}>
+            {contentButton}
+          </button>
         </div>
       )}
     </div>
@@ -23,7 +32,9 @@ CardPlant.propTypes = {
   title: PropTypes.string,
   contentButton: PropTypes.string,
   img: PropTypes.string,
-  onClick: PropTypes.func,
+  onCardClick: PropTypes.func,
+  onAddClick: PropTypes.func,
+  value: PropTypes.number,
 };
 
 export default CardPlant;

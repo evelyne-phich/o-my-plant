@@ -2,6 +2,7 @@ import axios from "axios";
 
 import {
   HANDLE_UPDATE_PLANT_SUBMIT,
+  HANDLE_ADD_CLICK,
   savePlant,
   FETCH_PLANT,
 } from "../actions/plant";
@@ -42,15 +43,36 @@ const plant = (store) => (next) => (action) => {
         .catch((err) => console.log("erreur:", err.response.data));
       break;
     }
-    case FETCH_PLANT: {
-      // const state = store.getState();
-      // on va vérifier si on a un token dans le localStorage
+    case HANDLE_ADD_CLICK: {
       const token = localStorage.getItem("token");
-      console.log(token);
-      // si oui on enverra une requête à l'api pour récupérer le username
+      const user = store.getState().user;
+      console.log(typeof parseInt(action.payload, 10));
+      console.log(typeof parseInt(user.garden_id, 10));
       axios
-        .get(`https://omyplant.herokuapp.com/garden/1`, {
-          // on passe le token dans le header Authorization de notre requête
+        .post(
+          `https://omyplant.herokuapp.com/garden`,
+          {
+            plantdb_id: parseInt(action.payload, 10),
+            garden_id: parseInt(user.garden_id, 10),
+          },
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          },
+        )
+        .then((res) => {
+          console.log(res.data);
+        })
+        .catch((err) => console.log("erreur:", err.response.data));
+      break;
+    }
+    case FETCH_PLANT: {
+      const token = localStorage.getItem("token");
+      const plant = store.getState().plant;
+      console.log("fetch plant", plant.id);
+      axios
+        .get(`https://omyplant.herokuapp.com/garden/${action.payload}`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },

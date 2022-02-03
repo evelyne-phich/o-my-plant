@@ -138,7 +138,7 @@ const Profile = () => {
           </div>
 
           <div className="profile-right">
-            <div>
+            <div className="profile-img-container">
               <img
                 className="profile-picture"
                 src={

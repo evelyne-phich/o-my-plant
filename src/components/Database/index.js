@@ -1,9 +1,12 @@
 import SearchIcon from "@mui/icons-material/Search";
 import { useState, useEffect, Fragment } from "react";
+import { useDispatch } from "react-redux";
 import axios from "axios";
 
 import CardPlant from "../CardPlant";
 import Modal from "../Modal";
+
+import { handleAddClick } from "../../actions/plant";
 
 import "./style.scss";
 
@@ -13,6 +16,10 @@ const Database = () => {
   const [open, setOpen] = useState(false);
   const handleOpenGardenPlant = () => setOpen(true);
   const handleCloseGardenPlant = () => setOpen(false);
+  const dispatch = useDispatch();
+  const handleAddPlantClick = (event) => {
+    dispatch(handleAddClick(event.target.value));
+  };
 
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -24,7 +31,7 @@ const Database = () => {
         },
       })
       .then((res) => {
-        console.log(res.data);
+        console.log("database", res.data);
         setPlants(res.data);
       })
       .catch((err) => {
@@ -76,6 +83,8 @@ const Database = () => {
                   title={plant.commonname}
                   img={plant.photo}
                   contentButton="Ajouter"
+                  onAddClick={handleAddPlantClick}
+                  value={plant.id}
                 />
                 <Modal
                   onClose={handleCloseGardenPlant}

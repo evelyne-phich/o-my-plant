@@ -5,6 +5,7 @@
     color: white;
     font-weight: Bold;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     padding: 2rem;
@@ -20,6 +21,7 @@
         color: white;
         font-weight: Bold;
         display: flex;
+        flex-direction: column;
         justify-content: center;
         align-items: center;
         padding: 2rem;

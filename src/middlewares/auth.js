@@ -2,10 +2,11 @@ import axios from "axios";
 
 import {
   saveUser,
+  saveGardenId,
   FETCH_USER,
   LOGOUT,
   HANDLE_UPDATE_PROFILE_SUBMIT,
-  SEND_IMAGE,
+  FETCH_GARDEN_ID,
 } from "../actions/user";
 
 const auth = (store) => (next) => (action) => {
@@ -40,7 +41,6 @@ const auth = (store) => (next) => (action) => {
       break;
     }
     case FETCH_USER: {
-      // const state = store.getState();
       // on va vérifier si on a un token dans le localStorage
       const token = localStorage.getItem("token");
       console.log(token);
@@ -68,29 +68,21 @@ const auth = (store) => (next) => (action) => {
       next(action);
       break;
     }
-    case SEND_IMAGE: {
-      const state = store.getState();
-      console.log("middleware send image");
-      console.log(state.user.profilepicture);
-      /*
+    case FETCH_GARDEN_ID: {
+      const token = localStorage.getItem("token");
+
       axios
-        .post(
-          `https://omyplant.herokuapp.com/???`,
-          {
-            profilepicture: state.user.profilepicture,
+        .get(`https://omyplant.herokuapp.com/memberGarden`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
           },
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          },
-        )
+        })
         .then((res) => {
-          store.dispatch(saveUser(res.data));
-          console.log("reponse fetch", res);
+          store.dispatch(saveGardenId(res.data));
+          console.log("reponse fetch garden ID", res);
         })
         .catch((err) => console.log("err", err.response.data));
-        */
+
       break;
     }
     default:
