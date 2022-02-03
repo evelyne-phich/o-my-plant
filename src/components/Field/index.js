@@ -5,6 +5,7 @@ import "./style.scss";
 const Field = ({
   value,
   type,
+  minNumber,
   name,
   placeholder,
   onChange,
@@ -13,6 +14,7 @@ const Field = ({
   required,
 }) => {
   const inputId = `field-${name}`;
+
   return (
     <div>
       <input
@@ -20,6 +22,7 @@ const Field = ({
         onChange={(e) => onChange(e.target.value, name)}
         id={inputId}
         type={type}
+        min={minNumber}
         className={className ? `${className} field-input` : "field-input"}
         placeholder={placeholder}
         name={name}
@@ -33,6 +36,7 @@ const Field = ({
 Field.propTypes = {
   value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   type: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  minNumber: PropTypes.string,
   name: PropTypes.string,
   placeholder: PropTypes.string,
   onChange: PropTypes.func,

@@ -157,7 +157,7 @@ const PlantGardenForm = () => {
                 onChange={(event) =>
                   changeWateringfrequency(event.target.value, event.target.name)
                 }
-                value={wateringfrequency}
+                value={wateringfrequency || ""}
               >
                 <option value="">
                   Sélectionnez votre périodicité d'arrosage
@@ -176,6 +176,7 @@ const PlantGardenForm = () => {
             <Field
               name="numberoftimes"
               type="number"
+              minNumber="0"
               className={`${
                 currentState.plant.plantUpdateDisabled
                   ? "hidden-input"
@@ -209,7 +210,7 @@ const PlantGardenForm = () => {
           {currentState.plant.plantUpdateDisabled &&
             (currentState.plant.exposure || "A définir")}
           <select
-            value={exposure}
+            value={exposure || ""}
             id="exposure"
             name="exposure"
             onChange={(event) =>
@@ -233,7 +234,7 @@ const PlantGardenForm = () => {
           {currentState.plant.plantUpdateDisabled &&
             (currentState.plant.trimming || "A définir")}
           <select
-            value={trimming}
+            value={trimming || ""}
             id="trimming"
             name="trimming"
             onChange={(event) =>
@@ -266,7 +267,7 @@ const PlantGardenForm = () => {
           {currentState.plant.plantUpdateDisabled &&
             (currentState.plant.reppoting || "A définir")}
           <select
-            value={reppoting}
+            value={reppoting || ""}
             id="reppoting"
             name="reppoting"
             onChange={(event) =>
@@ -279,7 +280,7 @@ const PlantGardenForm = () => {
                 : "plant-input-select"
             }`}
           >
-            <option>Sélectionnez votre mois de taille</option>
+            <option>Sélectionnez votre mois de rempotage</option>
             <option value="janvier">Janvier</option>
             <option value="février">Février</option>
             <option value="mars">Mars</option>
