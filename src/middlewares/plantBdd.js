@@ -17,6 +17,7 @@ const plantBdd = (store) => (next) => (action) => {
             photo: plant.photo,
             description: plant.description,
             member_id: user.id,
+            dateadded: "06/06/2022",
           },
           {
             headers: {

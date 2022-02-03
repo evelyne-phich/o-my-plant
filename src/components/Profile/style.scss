@@ -96,3 +96,52 @@
         }
     }
 }
+
+@media screen and (max-width: 1300px) {
+
+}
+
+@media screen and (max-width: 1300px) {
+    .profile {
+        flex-direction: column-reverse;
+        &-input {
+            flex-direction: column;
+            align-items: unset;
+        }
+        &-form {
+            box-shadow: none;
+            padding: 0;
+            width: 100%;
+        }
+        &-container {
+            justify-content: unset;
+            margin-top: 10rem;
+            height: auto;
+        }
+        &-right {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        &-left {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        &-img-container {
+            text-align: center;
+        }
+        &-biography {
+            width: 85vw;
+        }
+        &-button {
+            width: 70vw;
+        }
+        & label {
+            width: 100%;
+        }
+    
+    }
+}
