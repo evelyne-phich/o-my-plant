@@ -1,6 +1,8 @@
 import { useSelector, useDispatch } from "react-redux";
 import { useState, useEffect } from "react";
 
+import SaveIcon from "@mui/icons-material/Save";
+
 import { changeField, handlePlantCreationSubmit } from "../../actions/plantBdd";
 
 import Field from "../Field";
@@ -99,6 +101,7 @@ const PlantBddForm = ({ onClose, addPlant }) => {
       </div>
       <button className="profile-button" type="submit">
         Sauvegarder
+        <SaveIcon />
       </button>
     </form>
   );
