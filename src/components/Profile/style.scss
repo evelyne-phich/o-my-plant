@@ -6,6 +6,12 @@
     align-items: center;
     width: 100%;
 
+    &-button-container {
+        display: flex;
+        justify-content: space-around;
+        width: 100%;
+    }
+
     &-container {
         display: flex;
         width: 100%;
@@ -84,12 +90,11 @@
         border: none;
         border-radius: 5px;
         padding: 18px;
-        width: 70%;
+        width: 40%;
         background-color: vars.$color-1;
-        margin: 24px 0;
+        margin: 24px 0 0 0;
         cursor: pointer;
         transition: 0.2s ease-in-out;
-        width: 100%;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -145,6 +150,9 @@
         & label {
             width: 100%;
         }
-    
+        &-button-container {
+            flex-direction: column;
+            align-items: center;
+        }
     }
 }

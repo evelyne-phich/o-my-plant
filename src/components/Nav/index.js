@@ -113,7 +113,7 @@ const Nav = () => {
                 <NavLink
                   onClick={handleLogout}
                   className={getActiveClassname}
-                  to="/logout"
+                  to="/"
                 >
                   Déconnexion
                 </NavLink>
