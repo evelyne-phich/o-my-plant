@@ -10,12 +10,14 @@ import IconButton from "@mui/material/IconButton";
 import Tooltip from "@mui/material/Tooltip";
 import Logout from "@mui/icons-material/Logout";
 import { logout } from "../../actions/user";
+import { setMenuIsOpen } from "../Nav";
 
-const AccountMenu = () => {
+const AccountMenu = ({ onClick }) => {
   const user = useSelector((state) => state.user);
   const dispatch = useDispatch();
 
   const [anchorEl, setAnchorEl] = useState(null);
+
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -85,6 +87,7 @@ const AccountMenu = () => {
           style={{ textDecoration: "none" }}
         >
           <MenuItem
+            onClick={onClick}
             className="menuitem"
             sx={{
               color: "#2B5D62",
@@ -93,7 +96,7 @@ const AccountMenu = () => {
               fontFamily: "Montserrat",
             }}
           >
-            <Avatar /> Profil
+            <Avatar /> Mon profil
           </MenuItem>
         </Link>
         <Link
@@ -103,6 +106,7 @@ const AccountMenu = () => {
           style={{ textDecoration: "none" }}
         >
           <MenuItem
+            onClick={onClick}
             sx={{
               color: "#2B5D62",
               fontFamily: "Montserrat",
