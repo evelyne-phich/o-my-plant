@@ -34,7 +34,6 @@ const auth = (store) => (next) => (action) => {
           },
         )
         .then((res) => {
-          console.log(res.data);
           store.dispatch(saveUser(res.data));
         })
         .catch((err) => console.log("erreur: ", err.response.data));
@@ -43,7 +42,6 @@ const auth = (store) => (next) => (action) => {
     case FETCH_USER: {
       // on va vérifier si on a un token dans le localStorage
       const token = localStorage.getItem("token");
-      console.log(token);
       // si oui on enverra une requête à l'api pour récupérer le username
       axios
         .get(`https://omyplant.herokuapp.com/member/connected`, {
@@ -54,7 +52,6 @@ const auth = (store) => (next) => (action) => {
         })
         .then((res) => {
           store.dispatch(saveUser(res.data));
-          console.log("reponse fetch", res);
         })
         .catch((err) => console.log("err", err.response.data));
       break;

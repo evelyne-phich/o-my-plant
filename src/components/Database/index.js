@@ -1,19 +1,22 @@
 import SearchIcon from "@mui/icons-material/Search";
 import { useState, useEffect, Fragment } from "react";
-import { useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import axios from "axios";
 
 import CardPlant from "../CardPlant";
 import Modal from "../Modal";
+import Loader from "../Loader";
 
 import { handleAddClick } from "../../actions/plant";
 
 import "./style.scss";
 
 const Database = () => {
+  const currentState = useSelector((state) => state.plantBdd);
   const [search, setSearch] = useState("");
   const [plants, setPlants] = useState([]);
   const [open, setOpen] = useState(false);
+  const [loading, setLoading] = useState(false);
   const handleOpenGardenPlant = () => setOpen(true);
   const handleCloseGardenPlant = () => setOpen(false);
   const dispatch = useDispatch();
@@ -23,6 +26,7 @@ const Database = () => {
 
   const request = () => {
     const token = localStorage.getItem("token");
+    setLoading(true);
 
     axios
       .get("https://omyplant.herokuapp.com/plantdb", {
@@ -31,21 +35,23 @@ const Database = () => {
         },
       })
       .then((res) => {
-        console.log("database", res.data);
         setPlants(res.data);
       })
       .catch((err) => {
         console.log("erreur: ", err.response.data);
+      })
+      .finally(() => {
+        setLoading(false);
       });
   };
 
   useEffect(() => {
     request();
-  }, []);
+  }, [currentState.plantCreated]);
 
-  useEffect(() => {
-    request();
-  }, [open]);
+  if (loading) {
+    return <Loader />;
+  }
 
   return (
     <div className="database">
@@ -102,7 +108,7 @@ const Database = () => {
               </Fragment>
             ))
         ) : (
-          <div className="database-empty">Votre jardin est vide.</div>
+          <div className="database-empty">La base de données est vide.</div>
         )}
       </div>
     </div>

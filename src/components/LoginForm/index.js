@@ -33,7 +33,7 @@ const LoginForm = () => {
         navigate("/");
       })
       .catch((err) => {
-        console.log("erreur", err.response.data);
+        console.log("erreur", err);
         setInvalidCredentials(true);
       });
   };

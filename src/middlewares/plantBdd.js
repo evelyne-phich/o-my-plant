@@ -1,6 +1,9 @@
 import axios from "axios";
 
-import { HANDLE_CREATION_PLANT_SUBMIT } from "../actions/plantBdd";
+import {
+  HANDLE_CREATION_PLANT_SUBMIT,
+  updatePlantsDatabasePage,
+} from "../actions/plantBdd";
 
 const plantBdd = (store) => (next) => (action) => {
   switch (action.type) {
@@ -30,7 +33,11 @@ const plantBdd = (store) => (next) => (action) => {
         })
         .catch((err) => {
           console.log("erreur: ", err.response.data);
+        })
+        .finally(() => {
+          store.dispatch(updatePlantsDatabasePage());
         });
+      next(action);
       break;
     }
     default:

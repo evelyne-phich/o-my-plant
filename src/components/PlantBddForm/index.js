@@ -8,7 +8,8 @@ import FieldImage from "../FieldImage";
 
 import "./style.scss";
 
-const PlantBddForm = () => {
+const PlantBddForm = ({ onClose, addPlant }) => {
+  //const [submitClicked, setSubmitClicked] = useState(false);
   const currentState = useSelector((state) => state.plantBdd);
   const dispatch = useDispatch();
 
@@ -46,6 +47,8 @@ const PlantBddForm = () => {
     event.preventDefault();
     console.log("je passe dans le submit form", event);
     dispatch(handlePlantCreationSubmit());
+    //setSubmitClicked(true);
+    onClose();
   };
 
   return (
