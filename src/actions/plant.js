@@ -4,6 +4,7 @@ export const HANDLE_UPDATE_PLANT_SUBMIT = "HANDLE_UPDATE_PLANT_SUBMIT";
 export const SAVE_PLANT = "SAVE_PLANT";
 export const FETCH_PLANT = "FETCH_PLANT";
 export const HANDLE_ADD_CLICK = "HANDLE_ADD_CLICK";
+export const DELETE_PLANT = "DELETE_PLANT";
 
 export const changeField = (value, name) => ({
   type: CHANGE_FIELD,
@@ -36,4 +37,8 @@ export const savePlant = (plant) => ({
   payload: {
     ...plant,
   },
+});
+
+export const deletePlant = () => ({
+  type: DELETE_PLANT,
 });

@@ -8,10 +8,14 @@ import FieldImage from "../FieldImage";
 import {
   changeField,
   addImage,
-  //sendImage,
+  deleteUser,
   updateProfile,
   handleProfileUpdateSubmit,
 } from "../../actions/user";
+
+import EditIcon from "@mui/icons-material/Edit";
+import DeleteIcon from "@mui/icons-material/Delete";
+import SaveIcon from "@mui/icons-material/Save";
 
 import "./style.scss";
 
@@ -189,17 +193,29 @@ const Profile = () => {
           </div>
         </div>
         {currentState.user.profileUpdateDisabled && (
-          <button
-            className="profile-button"
-            type="button"
-            onClick={enableProfileUpdate}
-          >
-            Modifier
-          </button>
+          <div className="profile-button-container">
+            <button
+              className="profile-button"
+              type="button"
+              onClick={enableProfileUpdate}
+            >
+              Modifier
+              <EditIcon />
+            </button>
+            <button
+              className="profile-button"
+              type="button"
+              onClick={() => dispatch(deleteUser())}
+            >
+              Supprimer
+              <DeleteIcon />
+            </button>
+          </div>
         )}
         {!currentState.user.profileUpdateDisabled && (
           <button className="profile-button" type="submit">
             Sauvegarder
+            <SaveIcon />
           </button>
         )}
       </form>

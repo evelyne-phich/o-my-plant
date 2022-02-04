@@ -16,9 +16,15 @@
         margin-bottom: 0.5rem;
     }
     
-    & button{
+    button{
         width: 30%;
     }
+
+    .button-container {
+        width: 100%;
+        justify-content: space-around;
+    }
+
     select{
         padding: 0.4rem;
         margin-top: 1rem;
@@ -77,6 +83,10 @@
         font-weight: bold;
     }
     
+}
+
+.button-container {
+    display: flex;
 }
 
 @media screen and (max-width: 830px) {

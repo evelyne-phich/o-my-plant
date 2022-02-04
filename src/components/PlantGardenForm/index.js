@@ -5,10 +5,15 @@ import {
   changeField,
   updatePlant,
   handlePlantUpdateSubmit,
+  deletePlant,
 } from "../../actions/plant";
 
 import Field from "../Field";
 import FieldImage from "../FieldImage";
+
+import EditIcon from "@mui/icons-material/Edit";
+import DeleteIcon from "@mui/icons-material/Delete";
+import SaveIcon from "@mui/icons-material/Save";
 
 import "./style.scss";
 
@@ -46,15 +51,11 @@ const PlantGardenForm = () => {
     changeFieldInput(newReppoting, name);
   };
 
-  const [image, setImage] = useState(""); // fichier image sélectionné
-  //const [imageUrl, setImageUrl] = useState("");
-  const [fileInputName, setFileInputName] = useState(""); // to set the name of the fieldImage
-  // à chaque changement du state image
-  // l'image en cours s'affiche sur la page
+  const [image, setImage] = useState("");
+  const [fileInputName, setFileInputName] = useState("");
+
   useEffect(() => {
     if (image) {
-      //const imgUrl = URL.createObjectURL(image); //blob
-      //setImageUrl(imgUrl);
       updateImage();
     }
   }, [image]);
@@ -146,7 +147,6 @@ const PlantGardenForm = () => {
               {currentState.plant.plantUpdateDisabled &&
                 (currentState.plant.wateringfrequency || "A définir")}
               <select
-                id="wateringfrequency"
                 name="wateringfrequency"
                 disabled={currentState.plant.plantUpdateDisabled}
                 className={`${
@@ -211,7 +211,6 @@ const PlantGardenForm = () => {
             (currentState.plant.exposure || "A définir")}
           <select
             value={exposure || ""}
-            id="exposure"
             name="exposure"
             onChange={(event) =>
               changeExposure(event.target.value, event.target.name)
@@ -235,7 +234,6 @@ const PlantGardenForm = () => {
             (currentState.plant.trimming || "A définir")}
           <select
             value={trimming || ""}
-            id="trimming"
             name="trimming"
             onChange={(event) =>
               changeTrimming(event.target.value, event.target.name)
@@ -268,7 +266,6 @@ const PlantGardenForm = () => {
             (currentState.plant.reppoting || "A définir")}
           <select
             value={reppoting || ""}
-            id="reppoting"
             name="reppoting"
             onChange={(event) =>
               changeReppoting(event.target.value, event.target.name)
@@ -297,17 +294,29 @@ const PlantGardenForm = () => {
         </div>
       </div>
       {currentState.plant.plantUpdateDisabled && (
-        <button
-          className="profile-button"
-          type="button"
-          onClick={enablePlantUpdate}
-        >
-          Modifier
-        </button>
+        <div className="button-container">
+          <button
+            className="profile-button"
+            type="button"
+            onClick={enablePlantUpdate}
+          >
+            Modifier
+            <EditIcon />
+          </button>
+          <button
+            className="profile-button"
+            type="button"
+            onClick={() => dispatch(deletePlant())}
+          >
+            Supprimer
+            <DeleteIcon />
+          </button>
+        </div>
       )}
       {!currentState.plant.plantUpdateDisabled && (
         <button className="profile-button" type="submit">
           Sauvegarder
+          <SaveIcon />
         </button>
       )}
     </form>

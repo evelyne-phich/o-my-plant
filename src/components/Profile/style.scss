@@ -90,6 +90,9 @@
         cursor: pointer;
         transition: 0.2s ease-in-out;
         width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
 
         &:hover {
         background-color: vars.$color-2;

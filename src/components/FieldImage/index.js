@@ -13,13 +13,11 @@ const FieldImage = ({
   className,
   required,
 }) => {
-  const inputId = `field-${name}`;
   return (
     <div>
       <input
         value={value}
         onChange={onChange}
-        id={inputId}
         type={type}
         className={className ? `${className} field-input` : "field-input"}
         placeholder={placeholder}
