@@ -1,7 +1,7 @@
 import SearchIcon from "@mui/icons-material/Search";
 import { Link } from "react-router-dom";
 import { useState, useEffect, Fragment } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import axios from "axios";
 
 import { fetchPlant } from "../../actions/plant";
@@ -10,20 +10,20 @@ import "./style.scss";
 
 import CardPlant from "../CardPlant";
 import Modal from "../Modal";
+import Loader from "../Loader";
 
 const MyGarden = () => {
-  // const currentPlant = useSelector((state) => state.plant);
-
   const [search, setSearch] = useState("");
   const [plants, setPlants] = useState([]);
   const [open, setOpen] = useState(false);
+  const [loading, setLoading] = useState(false);
   const handleOpenGardenPlant = () => setOpen(true);
   const handleCloseGardenPlant = () => setOpen(false);
   const dispatch = useDispatch();
 
   const request = () => {
     const token = localStorage.getItem("token");
-
+    setLoading(true);
     axios
       .get("https://omyplant.herokuapp.com/garden", {
         headers: {
@@ -31,23 +31,27 @@ const MyGarden = () => {
         },
       })
       .then((res) => {
-        console.log("my garden", res.data);
         setPlants(res.data);
       })
       .catch((err) => {
         console.log("erreur: ", err.response.data);
+      })
+      .finally(() => {
+        setLoading(false);
       });
   };
 
   useEffect(() => {
-    console.log("first time");
     request();
   }, []);
 
   useEffect(() => {
-    console.log("on click modal change");
     request();
   }, [open]);
+
+  if (loading) {
+    return <Loader />;
+  }
 
   return (
     <div className="myGarden">
