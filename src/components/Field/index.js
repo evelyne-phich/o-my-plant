@@ -13,14 +13,11 @@ const Field = ({
   className,
   required,
 }) => {
-  const inputId = `field-${name}`;
-
   return (
     <div>
       <input
         value={value}
         onChange={(e) => onChange(e.target.value, name)}
-        id={inputId}
         type={type}
         min={minNumber}
         className={className ? `${className} field-input` : "field-input"}

@@ -11,6 +11,7 @@ export const ADD_IMAGE = "ADD_IMAGE";
 export const SEND_IMAGE = "SEND_IMAGE";
 export const FETCH_GARDEN_ID = "FETCH_GARDEN_ID";
 export const SAVE_GARDEN_ID = "SAVE_GARDEN_ID";
+export const DELETE_USER = "DELETE_USER";
 
 export const changeField = (value, name) => ({
   type: CHANGE_FIELD,
@@ -35,10 +36,6 @@ export const addImage = (base64, fileInputName) => ({
     name: fileInputName,
   },
 });
-/*
-export const sendImage = () => ({
-  type: SEND_IMAGE,
-});*/
 
 export const login = () => ({
   type: LOGIN,
@@ -74,4 +71,8 @@ export const fetchGardenId = () => ({
 export const saveGardenId = (gardenId) => ({
   type: SAVE_GARDEN_ID,
   payload: gardenId.id,
+});
+
+export const deleteUser = () => ({
+  type: DELETE_USER,
 });

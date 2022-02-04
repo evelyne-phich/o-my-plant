@@ -7,6 +7,7 @@ import {
   LOGOUT,
   HANDLE_UPDATE_PROFILE_SUBMIT,
   FETCH_GARDEN_ID,
+  DELETE_USER,
 } from "../actions/user";
 
 const auth = (store) => (next) => (action) => {
@@ -80,6 +81,20 @@ const auth = (store) => (next) => (action) => {
         })
         .catch((err) => console.log("err", err.response.data));
 
+      break;
+    }
+    case DELETE_USER: {
+      const token = localStorage.getItem("token");
+      axios
+        .delete(`https://omyplant.herokuapp.com/member`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        })
+        .then((res) => {
+          console.log("reponse delete user", res.data[0]);
+        })
+        .catch((err) => console.log("err", err.response.data));
       break;
     }
     default:

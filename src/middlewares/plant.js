@@ -5,6 +5,7 @@ import {
   HANDLE_ADD_CLICK,
   savePlant,
   FETCH_PLANT,
+  DELETE_PLANT,
 } from "../actions/plant";
 
 const plant = (store) => (next) => (action) => {
@@ -80,6 +81,22 @@ const plant = (store) => (next) => (action) => {
         .then((res) => {
           console.log("reponse fetch plant", res.data[0]);
           store.dispatch(savePlant(res.data[0]));
+        })
+        .catch((err) => console.log("err", err.response.data));
+      break;
+    }
+    case DELETE_PLANT: {
+      const token = localStorage.getItem("token");
+      const plant = store.getState().plant;
+      console.log("delete plant", plant.id);
+      axios
+        .delete(`https://omyplant.herokuapp.com/garden/${plant.id}`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        })
+        .then((res) => {
+          console.log("reponse delete plant", res.data[0]);
         })
         .catch((err) => console.log("err", err.response.data));
       break;
