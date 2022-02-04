@@ -11,6 +11,7 @@ const FieldImage = ({
   disabled,
   accept,
   className,
+  required,
 }) => {
   const inputId = `field-${name}`;
   return (
@@ -25,6 +26,7 @@ const FieldImage = ({
         name={name}
         disabled={disabled}
         accept={accept}
+        required={required}
       />
     </div>
   );
