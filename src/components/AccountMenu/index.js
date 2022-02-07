@@ -10,7 +10,6 @@ import IconButton from "@mui/material/IconButton";
 import Tooltip from "@mui/material/Tooltip";
 import Logout from "@mui/icons-material/Logout";
 import { logout } from "../../actions/user";
-import { setMenuIsOpen } from "../Nav";
 
 const AccountMenu = ({ onClick }) => {
   const user = useSelector((state) => state.user);

@@ -77,13 +77,13 @@ const PlantGardenForm = () => {
 
   const enablePlantUpdate = (event) => {
     event.preventDefault();
-    dispatch(updatePlant());
+    dispatch(updatePlant(false));
   };
 
   const onSubmitClick = (event) => {
     event.preventDefault();
     dispatch(handlePlantUpdateSubmit());
-    dispatch(updatePlant());
+    dispatch(updatePlant(true));
   };
 
   return (

@@ -23,10 +23,9 @@ const reducer = (state = initialState, action = {}) => {
         [action.payload.name]: action.payload.value,
       };
     case UPDATE_PLANT:
-      console.log("je passe ds l'update plant");
       return {
         ...state,
-        plantUpdateDisabled: !state.plantUpdateDisabled,
+        plantUpdateDisabled: action.payload,
       };
     case SAVE_PLANT:
       return {
