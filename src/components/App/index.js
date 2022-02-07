@@ -1,4 +1,4 @@
-import { Routes, Route, Navigate, useLocation } from "react-router-dom";
+import { Routes, Route, useLocation } from "react-router-dom";
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import Nav from "../Nav";
@@ -14,19 +14,19 @@ import "./style.scss";
 import { fetchUser, fetchGardenId } from "../../actions/user";
 
 const App = () => {
+  const userLogged = useSelector((state) => state.user.logged);
   const dispatch = useDispatch();
+
   useEffect(() => {
     dispatch(fetchUser());
     dispatch(fetchGardenId());
-  }, []);
+  }, [userLogged]);
 
   const location = useLocation();
 
   useEffect(() => {
     window.scroll(0, 0);
   }, [location]);
-
-  const userLogged = useSelector((state) => state.user.logged);
 
   return (
     <>
