@@ -84,6 +84,11 @@ const Database = () => {
         >
           Ajouter une nouvelle plante
         </button>
+        <Modal
+          onClose={handleCloseGardenPlant}
+          open={open}
+          form="bdd-plant-form"
+        />
       </div>
       <div className="database-plants">
         {plants.length > 0 ? (
@@ -99,11 +104,6 @@ const Database = () => {
                   contentButton="Ajouter"
                   onAddClick={handleAddPlantClick}
                   value={plant.id}
-                />
-                <Modal
-                  onClose={handleCloseGardenPlant}
-                  open={open}
-                  form="bdd-plant-form"
                 />
               </Fragment>
             ))

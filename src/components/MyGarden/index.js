@@ -80,6 +80,11 @@ const MyGarden = () => {
           Ajouter une plante
         </Link>
       </div>
+      <Modal
+        onClose={handleCloseGardenPlant}
+        open={open}
+        form="user-plant-form"
+      />
       <div className="myGarden-plants">
         {plants.length > 0 ? (
           plants
@@ -104,11 +109,6 @@ const MyGarden = () => {
                     handleOpenGardenPlant();
                     dispatch(fetchPlant(plant.id));
                   }}
-                />
-                <Modal
-                  onClose={handleCloseGardenPlant}
-                  open={open}
-                  form="user-plant-form"
                 />
               </Fragment>
             ))
