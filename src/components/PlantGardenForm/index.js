@@ -17,6 +17,7 @@ import {
   deletePlant,
 } from "../../actions/plant";
 
+import Dialog from "../Dialog";
 import Field from "../Field";
 import FieldImage from "../FieldImage";
 
@@ -97,6 +98,17 @@ const PlantGardenForm = () => {
     event.preventDefault();
     dispatch(handlePlantUpdateSubmit());
     dispatch(updatePlant(true));
+  };
+
+  // Dialog
+  const [open, setOpen] = useState(false);
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
   };
 
   return (
@@ -319,13 +331,16 @@ const PlantGardenForm = () => {
           <button
             className="profile-button"
             type="button"
-            onClick={() => dispatch(deletePlant())}
+            onClick={() => {
+              handleClickOpen();
+            }}
           >
             Supprimer
             <DeleteIcon />
           </button>
         </div>
       )}
+      <Dialog open={open} onCloseClick={handleClose} />
       {/* <Dialog
         open={open}
         TransitionComponent={Transition}
