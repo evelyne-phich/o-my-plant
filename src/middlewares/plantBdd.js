@@ -11,7 +11,6 @@ const plantBdd = (store) => (next) => (action) => {
       const token = localStorage.getItem("token");
       const plant = store.getState().plantBdd;
       const user = store.getState().user;
-      console.log(user.id);
       axios
         .post(
           "https://omyplant.herokuapp.com/plantdb",

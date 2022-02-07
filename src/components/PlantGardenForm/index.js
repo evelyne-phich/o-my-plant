@@ -1,3 +1,12 @@
+// import * as React from 'react';
+// import Button from '@mui/material/Button';
+// import Dialog from '@mui/material/Dialog';
+// import DialogActions from '@mui/material/DialogActions';
+// import DialogContent from '@mui/material/DialogContent';
+// import DialogContentText from '@mui/material/DialogContentText';
+// import DialogTitle from '@mui/material/DialogTitle';
+// import Slide from '@mui/material/Slide';
+
 import { useSelector, useDispatch } from "react-redux";
 import { useState, useEffect } from "react";
 
@@ -16,6 +25,10 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import SaveIcon from "@mui/icons-material/Save";
 
 import "./style.scss";
+
+// const Transition = React.forwardRef(function Transition(props, ref) {
+//   return <Slide direction="up" ref={ref} {...props} />;
+// });
 
 const PlantGardenForm = () => {
   const currentState = useSelector((state) => state);
@@ -162,9 +175,9 @@ const PlantGardenForm = () => {
                 <option value="">
                   Sélectionnez votre périodicité d'arrosage
                 </option>
-                <option value="jour">Jour</option>
-                <option value="semaine">Semaine</option>
-                <option value="mois">Mois</option>
+                <option value="jour">jour</option>
+                <option value="semaine">semaine</option>
+                <option value="mois">mois</option>
               </select>
             </label>
 
@@ -223,9 +236,9 @@ const PlantGardenForm = () => {
             }`}
           >
             <option>Sélectionnez l'exposition de votre plante</option>
-            <option value="faible">Faible</option>
-            <option value="modérée">Modérée</option>
-            <option value="elevée">Elevée</option>
+            <option value="faible">faible</option>
+            <option value="modérée">modérée</option>
+            <option value="elevée">élevée</option>
           </select>
           <label htmlFor="trimming" className="label">
             Taille:{" "}
@@ -246,18 +259,18 @@ const PlantGardenForm = () => {
             }`}
           >
             <option>Sélectionnez votre mois de taille</option>
-            <option value="janvier">Janvier</option>
-            <option value="février">Février</option>
-            <option value="mars">Mars</option>
-            <option value="avril">Avril</option>
-            <option value="mai">Mai</option>
-            <option value="juin">Juin</option>
-            <option value="juillet">Juillet</option>
-            <option value="août">Août</option>
-            <option value="septembre">Septembre</option>
-            <option value="octobre">Octobre</option>
-            <option value="novembre">Novembre</option>
-            <option value="décembre">Décembre</option>
+            <option value="janvier">janvier</option>
+            <option value="février">février</option>
+            <option value="mars">mars</option>
+            <option value="avril">avril</option>
+            <option value="mai">mai</option>
+            <option value="juin">juin</option>
+            <option value="juillet">juillet</option>
+            <option value="août">août</option>
+            <option value="septembre">septembre</option>
+            <option value="octobre">octobre</option>
+            <option value="novembre">novembre</option>
+            <option value="décembre">décembre</option>
           </select>
           <label htmlFor="reppoting" className="label">
             Rempotage:{" "}
@@ -278,18 +291,18 @@ const PlantGardenForm = () => {
             }`}
           >
             <option>Sélectionnez votre mois de rempotage</option>
-            <option value="janvier">Janvier</option>
-            <option value="février">Février</option>
-            <option value="mars">Mars</option>
-            <option value="avril">Avril</option>
-            <option value="mai">Mai</option>
-            <option value="juin">Juin</option>
-            <option value="juillet">Juillet</option>
-            <option value="août">Août</option>
-            <option value="septembre">Septembre</option>
-            <option value="octobre">Octobre</option>
-            <option value="novembre">Novembre</option>
-            <option value="décembre">Décembre</option>
+            <option value="janvier">janvier</option>
+            <option value="février">février</option>
+            <option value="mars">mars</option>
+            <option value="avril">avril</option>
+            <option value="mai">mai</option>
+            <option value="juin">juin</option>
+            <option value="juillet">juillet</option>
+            <option value="août">août</option>
+            <option value="septembre">septembre</option>
+            <option value="octobre">octobre</option>
+            <option value="novembre">novembre</option>
+            <option value="décembre">décembre</option>
           </select>
         </div>
       </div>
@@ -313,6 +326,25 @@ const PlantGardenForm = () => {
           </button>
         </div>
       )}
+      {/* <Dialog
+        open={open}
+        TransitionComponent={Transition}
+        keepMounted
+        onClose={handleClose}
+        aria-describedby="alert-dialog-slide-description"
+      >
+        <DialogTitle>{"Use Google's location service?"}</DialogTitle>
+        <DialogContent>
+          <DialogContentText id="alert-dialog-slide-description">
+            Let Google help apps determine location. This means sending
+            anonymous location data to Google, even when no apps are running.
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleClose}>Disagree</Button>
+          <Button onClick={handleClose}>Agree</Button>
+        </DialogActions>
+      </Dialog> */}
       {!currentState.plant.plantUpdateDisabled && (
         <button className="profile-button" type="submit">
           Sauvegarder

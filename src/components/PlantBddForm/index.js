@@ -22,7 +22,6 @@ const PlantBddForm = ({ onClose, addPlant }) => {
 
   useEffect(() => {
     if (image) {
-      console.log(image);
       const imgUrl = URL.createObjectURL(image); //blob
       setImageUrl(imgUrl);
       updateImage();
@@ -46,7 +45,6 @@ const PlantBddForm = ({ onClose, addPlant }) => {
 
   const onSubmitClick = (event) => {
     event.preventDefault();
-    console.log("je passe dans le submit form", event);
     dispatch(handlePlantCreationSubmit());
     onClose();
   };

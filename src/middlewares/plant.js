@@ -47,8 +47,8 @@ const plant = (store) => (next) => (action) => {
     case HANDLE_ADD_CLICK: {
       const token = localStorage.getItem("token");
       const user = store.getState().user;
-      console.log(typeof parseInt(action.payload, 10));
-      console.log(typeof parseInt(user.garden_id, 10));
+      console.log(action.payload);
+      console.log(user.garden_id);
       axios
         .post(
           `https://omyplant.herokuapp.com/garden`,
@@ -88,7 +88,6 @@ const plant = (store) => (next) => (action) => {
     case DELETE_PLANT: {
       const token = localStorage.getItem("token");
       const plant = store.getState().plant;
-      console.log("delete plant", plant.id);
       axios
         .delete(`https://omyplant.herokuapp.com/garden/${plant.id}`, {
           headers: {
