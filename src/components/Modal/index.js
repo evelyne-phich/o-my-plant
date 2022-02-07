@@ -38,7 +38,9 @@ export default function TransitionsModal({ onClose, open, form }) {
       >
         <Fade in={open}>
           <Box sx={style}>
-            {form === "user-plant-form" && <PlantGardenForm />}
+            {form === "user-plant-form" && (
+              <PlantGardenForm onClose={onClose} />
+            )}
             {form === "bdd-plant-form" && <PlantBddForm onClose={onClose} />}
           </Box>
         </Fade>

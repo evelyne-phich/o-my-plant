@@ -1,12 +1,3 @@
-// import * as React from 'react';
-// import Button from '@mui/material/Button';
-// import Dialog from '@mui/material/Dialog';
-// import DialogActions from '@mui/material/DialogActions';
-// import DialogContent from '@mui/material/DialogContent';
-// import DialogContentText from '@mui/material/DialogContentText';
-// import DialogTitle from '@mui/material/DialogTitle';
-// import Slide from '@mui/material/Slide';
-
 import { useSelector, useDispatch } from "react-redux";
 import { useState, useEffect } from "react";
 
@@ -27,11 +18,7 @@ import SaveIcon from "@mui/icons-material/Save";
 
 import "./style.scss";
 
-// const Transition = React.forwardRef(function Transition(props, ref) {
-//   return <Slide direction="up" ref={ref} {...props} />;
-// });
-
-const PlantGardenForm = () => {
+const PlantGardenForm = ({ onClose }) => {
   const currentState = useSelector((state) => state);
   const dispatch = useDispatch();
 
@@ -331,35 +318,20 @@ const PlantGardenForm = () => {
           <button
             className="profile-button"
             type="button"
-            onClick={() => {
-              handleClickOpen();
-            }}
+            onClick={handleClickOpen}
           >
             Supprimer
             <DeleteIcon />
           </button>
         </div>
       )}
-      <Dialog open={open} onCloseClick={handleClose} />
-      {/* <Dialog
+      <Dialog
         open={open}
-        TransitionComponent={Transition}
-        keepMounted
-        onClose={handleClose}
-        aria-describedby="alert-dialog-slide-description"
-      >
-        <DialogTitle>{"Use Google's location service?"}</DialogTitle>
-        <DialogContent>
-          <DialogContentText id="alert-dialog-slide-description">
-            Let Google help apps determine location. This means sending
-            anonymous location data to Google, even when no apps are running.
-          </DialogContentText>
-        </DialogContent>
-        <DialogActions>
-          <Button onClick={handleClose}>Disagree</Button>
-          <Button onClick={handleClose}>Agree</Button>
-        </DialogActions>
-      </Dialog> */}
+        onCloseClick={handleClose}
+        onCloseModal={onClose}
+        onConfirmDelete={() => dispatch(deletePlant())}
+        message="Souhaitez-vous réellement supprimer cette plante?"
+      />
       {!currentState.plant.plantUpdateDisabled && (
         <button className="profile-button" type="submit">
           Sauvegarder
