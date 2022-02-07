@@ -1,5 +1,7 @@
+import Snackbar from "@mui/material/Snackbar";
+import MuiAlert from "@mui/material/Alert";
 import SearchIcon from "@mui/icons-material/Search";
-import { useState, useEffect, Fragment } from "react";
+import { useState, useEffect, Fragment, forwardRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import axios from "axios";
 
@@ -12,12 +14,18 @@ import { emptyFields } from "../../actions/plantBdd";
 
 import "./style.scss";
 
+const Alert = forwardRef(function Alert(props, ref) {
+  return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
+});
+
 const Database = () => {
+  const [openSnackbar, setOpenSnackbar] = useState(false);
   const currentState = useSelector((state) => state.plantBdd);
   const [search, setSearch] = useState("");
   const [plants, setPlants] = useState([]);
   const [open, setOpen] = useState(false);
   const [loading, setLoading] = useState(false);
+
   const handleOpenGardenPlant = () => setOpen(true);
   const handleCloseGardenPlant = () => {
     setOpen(false);
@@ -26,6 +34,13 @@ const Database = () => {
   const dispatch = useDispatch();
   const handleAddPlantClick = (event) => {
     dispatch(handleAddClick(event.target.value));
+    setOpenSnackbar(true);
+  };
+  const handleCloseSnackbar = (event, reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
+    setOpenSnackbar(false);
   };
 
   const request = () => {
@@ -93,6 +108,19 @@ const Database = () => {
           open={open}
           form="bdd-plant-form"
         />
+        <Snackbar
+          open={openSnackbar}
+          autoHideDuration={2000}
+          onClose={handleCloseSnackbar}
+        >
+          <Alert
+            onClose={handleCloseSnackbar}
+            severity="success"
+            sx={{ width: "100%" }}
+          >
+            La plante a bien été ajoutée à votre jardin !
+          </Alert>
+        </Snackbar>
       </div>
       <div className="database-plants">
         {plants.length > 0 ? (
