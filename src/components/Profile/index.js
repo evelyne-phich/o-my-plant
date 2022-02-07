@@ -1,7 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useState, useEffect } from "react";
-
-//import profilePic from "../../assets/img/profilePic.png";
+import { useNavigate } from "react-router-dom";
 
 import Field from "../Field";
 import FieldImage from "../FieldImage";
@@ -13,6 +12,8 @@ import {
   handleProfileUpdateSubmit,
 } from "../../actions/user";
 
+import Dialog from "../Dialog";
+
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
 import SaveIcon from "@mui/icons-material/Save";
@@ -20,6 +21,8 @@ import SaveIcon from "@mui/icons-material/Save";
 import "./style.scss";
 
 const Profile = () => {
+  const navigate = useNavigate();
+  const userDeleted = useSelector((state) => state.user.profile_deleted);
   const [image, setImage] = useState(""); // fichier image sélectionné
   const [imageUrl, setImageUrl] = useState(""); // blob image url
   const [fileInputName, setFileInputName] = useState(""); // to set the name of the fieldImage
@@ -33,6 +36,12 @@ const Profile = () => {
       updateImage();
     }
   }, [image]);
+
+  useEffect(() => {
+    if (userDeleted) {
+      navigate("/");
+    }
+  }, [userDeleted]);
 
   const currentState = useSelector((state) => state);
   const dispatch = useDispatch();
@@ -64,6 +73,17 @@ const Profile = () => {
     console.log("je submit le profil");
     dispatch(handleProfileUpdateSubmit());
     dispatch(updateProfile());
+  };
+
+  // Dialog
+  const [open, setOpen] = useState(false);
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
   };
 
   return (
@@ -184,7 +204,6 @@ const Profile = () => {
                 className="profile-biography-content"
                 defaultValue={currentState.user.biography || ""}
                 onChange={(event) => {
-                  console.log(event.target.value);
                   dispatch(changeField(event.target.value, event.target.name));
                 }}
                 disabled={currentState.user.profileUpdateDisabled}
@@ -205,13 +224,19 @@ const Profile = () => {
             <button
               className="profile-button"
               type="button"
-              onClick={() => dispatch(deleteUser())}
+              onClick={handleClickOpen}
             >
               Supprimer
               <DeleteIcon />
             </button>
           </div>
         )}
+        <Dialog
+          open={open}
+          onCloseClick={handleClose}
+          onConfirmDelete={() => dispatch(deleteUser())}
+          message="Souhaitez-vous réellement supprimer votre compte?"
+        />
         {!currentState.user.profileUpdateDisabled && (
           <button className="profile-button" type="submit">
             Sauvegarder

@@ -95,9 +95,13 @@ const plant = (store) => (next) => (action) => {
           },
         })
         .then((res) => {
-          console.log("reponse delete plant", res.data[0]);
+          console.log("reponse delete plant", res.data);
+          localStorage.setItem("deletePlant", "success");
         })
-        .catch((err) => console.log("err", err.response.data));
+        .catch((err) => {
+          console.log("err", err.response.data);
+          localStorage.setItem("deletePlant", "error");
+        });
       break;
     }
     default:

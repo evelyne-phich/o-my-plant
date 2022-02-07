@@ -1,19 +1,21 @@
-import { useState, forwardRef } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { forwardRef } from "react";
 import Button from "@mui/material/Button";
 import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";
 import DialogTitle from "@mui/material/DialogTitle";
 import Slide from "@mui/material/Slide";
 
-import { deletePlant } from "../../actions/plant";
-
 const Transition = forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
 
-export default function AlertDialogSlide({ open, onCloseClick }) {
-  const dispatch = useDispatch();
+export default function AlertDialogSlide({
+  open,
+  onCloseClick,
+  onConfirmDelete,
+  message,
+  onCloseModal,
+}) {
   return (
     <div>
       <Dialog
@@ -23,14 +25,15 @@ export default function AlertDialogSlide({ open, onCloseClick }) {
         onClose={onCloseClick}
         aria-describedby="alert-dialog-slide-description"
       >
-        <DialogTitle>
-          {"Souhaitez-vous réellement supprimer cette plante?"}
-        </DialogTitle>
+        <DialogTitle>{message}</DialogTitle>
         <DialogActions>
           <Button
             onClick={() => {
               onCloseClick();
-              dispatch(deletePlant());
+              onConfirmDelete();
+              if (onCloseModal) {
+                onCloseModal();
+              }
             }}
           >
             Oui
