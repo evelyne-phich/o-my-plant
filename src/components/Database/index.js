@@ -8,6 +8,7 @@ import Modal from "../Modal";
 import Loader from "../Loader";
 
 import { handleAddClick } from "../../actions/plant";
+import { emptyFields } from "../../actions/plantBdd";
 
 import "./style.scss";
 
@@ -18,7 +19,10 @@ const Database = () => {
   const [open, setOpen] = useState(false);
   const [loading, setLoading] = useState(false);
   const handleOpenGardenPlant = () => setOpen(true);
-  const handleCloseGardenPlant = () => setOpen(false);
+  const handleCloseGardenPlant = () => {
+    setOpen(false);
+    dispatch(emptyFields());
+  };
   const dispatch = useDispatch();
   const handleAddPlantClick = (event) => {
     dispatch(handleAddClick(event.target.value));

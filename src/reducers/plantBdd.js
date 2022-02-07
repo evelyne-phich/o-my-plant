@@ -1,4 +1,8 @@
-import { CHANGE_FIELD, UPDATE_PLANTS_DATABASE_PAGE } from "../actions/plantBdd";
+import {
+  CHANGE_FIELD,
+  UPDATE_PLANTS_DATABASE_PAGE,
+  EMPTY_FIELDS,
+} from "../actions/plantBdd";
 
 const initialState = {
   commonname: "",
@@ -20,6 +24,10 @@ const reducer = (state = initialState, action = {}) => {
       return {
         ...state,
         plantCreated: !state.plantCreated,
+      };
+    case EMPTY_FIELDS:
+      return {
+        ...initialState,
       };
     default:
       return state;
