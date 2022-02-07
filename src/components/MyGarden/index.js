@@ -4,7 +4,7 @@ import { useState, useEffect, Fragment } from "react";
 import { useDispatch } from "react-redux";
 import axios from "axios";
 
-import { fetchPlant } from "../../actions/plant";
+import { fetchPlant, updatePlant } from "../../actions/plant";
 
 import "./style.scss";
 
@@ -17,9 +17,16 @@ const MyGarden = () => {
   const [plants, setPlants] = useState([]);
   const [open, setOpen] = useState(false);
   const [loading, setLoading] = useState(false);
-  const handleOpenGardenPlant = () => setOpen(true);
-  const handleCloseGardenPlant = () => setOpen(false);
+
   const dispatch = useDispatch();
+
+  const handleOpenGardenPlant = () => {
+    setOpen(true);
+  };
+  const handleCloseGardenPlant = () => {
+    setOpen(false);
+    dispatch(updatePlant(true));
+  };
 
   const request = () => {
     const token = localStorage.getItem("token");

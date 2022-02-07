@@ -14,8 +14,9 @@ export const changeField = (value, name) => ({
   },
 });
 
-export const updatePlant = () => ({
+export const updatePlant = (disabled) => ({
   type: UPDATE_PLANT,
+  payload: disabled,
 });
 
 export const handlePlantUpdateSubmit = () => ({
