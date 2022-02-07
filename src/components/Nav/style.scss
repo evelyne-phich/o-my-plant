@@ -94,7 +94,6 @@
     text-align: end;
     height: 23px;
     width: 23px;
-    margin: 50px;
     overflow: visible;
     position: relative;
     z-index:2;
@@ -102,64 +101,64 @@
 .burger-menu span,
 .burger-menu span:before,
 .burger-menu span:after {
-      background: vars.$color-1;
-      display: block;
-      height: 2px;
-      opacity: 1;
-      position: absolute;
-      transition: 0.3s ease-in-out;
+    background: vars.$color-1;
+    display: block;
+    height: 2px;
+    opacity: 1;
+    position: absolute;
+    transition: 0.3s ease-in-out;
 }
 .burger-menu span:before,
 .burger-menu span:after {
-     content: "";
+    content: "";
 }
 .burger-menu span {
     right: 0px;
     top: 13px;
     width: 27px;
-  }
-  .burger-menu span:before {
+}
+.burger-menu span:before {
     left: 0px;
     top: -10px;
     width: 16px;
-  }
-  .burger-menu span:after {
+}
+.burger-menu span:after {
     left: 0px;
     top: 10px;
     width: 20px;
-  }
+}
 
-  .burger-menu.close span {
+.burger-menu.close span {
     transform: rotate(-45deg);
     top: 0px;
     width: 27px;
-  }
-  .burger-menu.close span:before {
+}
+.burger-menu.close span:before {
     top: 0px;
     transform: rotate(90deg);
     width: 27px;
-  }
-  .burger-menu.close span:after {
+}
+.burger-menu.close span:after {
     top: 0px;
     left:0;
     transform: rotate(50deg);
     opacity:0;
     width:0;
-  }
-  .greetingMobile {
-      display: flex;
-      flex-direction: column-reverse;
-      align-items: center;
-      color: vars.$color-1;
-      font-weight: bold;
-      font-size: 1.3rem;
-      & img{
+}
+.greetingMobile {
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    color: vars.$color-1;
+    font-weight: bold;
+    font-size: 1.3rem;
+    & img{
         width: 60px;
         border-radius: 50%;
-      }
+    }
 
-  }
-  
+}
+
 
   /* ==> media querries */
 @media screen and (max-width: 900px) {
