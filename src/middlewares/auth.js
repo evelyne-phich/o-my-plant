@@ -58,7 +58,6 @@ const auth = (store) => (next) => (action) => {
       break;
     }
     case LOGOUT: {
-      console.log("middleware auth.js LOGOUT");
       // suppression du token dans le localStorage
       localStorage.removeItem("token");
       // on traite cette action dans le user reducer
@@ -77,7 +76,6 @@ const auth = (store) => (next) => (action) => {
         })
         .then((res) => {
           store.dispatch(saveGardenId(res.data));
-          console.log("reponse fetch garden ID", res);
         })
         .catch((err) => console.log("err", err.response.data));
 
@@ -92,9 +90,11 @@ const auth = (store) => (next) => (action) => {
           },
         })
         .then((res) => {
-          console.log("reponse delete user", res.data[0]);
+          console.log("user deleted", res.data);
+          next(action);
         })
         .catch((err) => console.log("err", err.response.data));
+
       break;
     }
     default:
