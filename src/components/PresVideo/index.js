@@ -5,7 +5,13 @@ import "./style.scss";
 const PresVideo = () => (
   <div className="pres-video">
     <h1>Découvrir O’My Plant</h1>
-    <ReactPlayer url="https://www.youtube.com/watch?v=Jh5oX0VRnzk" />
+    <div className="player-video">
+      <ReactPlayer
+        url="https://www.youtube.com/watch?v=Jh5oX0VRnzk"
+        width="65vw"
+        height="45vh"
+      />
+    </div>
   </div>
 );
 
