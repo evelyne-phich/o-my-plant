@@ -6,6 +6,7 @@ import {
   LOGIN,
   LOGOUT,
   ADD_IMAGE,
+  DELETE_USER,
 } from "../actions/user";
 
 export const initialState = {
@@ -24,6 +25,7 @@ export const initialState = {
   role: "",
   garden_id: "",
   profileUpdateDisabled: true,
+  profile_deleted: false,
 };
 
 const reducer = (state = initialState, action = {}) => {
@@ -63,10 +65,15 @@ const reducer = (state = initialState, action = {}) => {
         ...initialState,
       };
     case ADD_IMAGE:
-      console.log(action.payload, "ADDIMAGE");
       return {
         ...state,
         [action.payload.name]: action.payload.value,
+      };
+    case DELETE_USER:
+      return {
+        ...state,
+        profile_deleted: true,
+        logged: false,
       };
 
     default:

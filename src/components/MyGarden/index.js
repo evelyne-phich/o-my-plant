@@ -11,12 +11,27 @@ import "./style.scss";
 import CardPlant from "../CardPlant";
 import Modal from "../Modal";
 import Loader from "../Loader";
+import Snackbar from "../Snackbar";
 
 const MyGarden = () => {
+  const plantDeleted = localStorage.getItem("deletePlant");
+
   const [search, setSearch] = useState("");
   const [plants, setPlants] = useState([]);
   const [open, setOpen] = useState(false);
   const [loading, setLoading] = useState(false);
+
+  const [openSnackbar, setOpenSnackbar] = useState(false);
+
+  useEffect(() => {
+    if (plantDeleted) {
+      setOpenSnackbar(true);
+      setTimeout(() => {
+        setOpenSnackbar(false);
+        localStorage.removeItem("deletePlant");
+      }, 1500);
+    }
+  }, [plantDeleted]);
 
   const dispatch = useDispatch();
 
@@ -26,6 +41,12 @@ const MyGarden = () => {
   const handleCloseGardenPlant = () => {
     setOpen(false);
     dispatch(updatePlant(true));
+  };
+  const handleCloseSnackbar = (event, reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
+    setOpenSnackbar(false);
   };
 
   const request = () => {
@@ -47,10 +68,6 @@ const MyGarden = () => {
         setLoading(false);
       });
   };
-
-  useEffect(() => {
-    request();
-  }, []);
 
   useEffect(() => {
     request();
@@ -85,6 +102,14 @@ const MyGarden = () => {
         open={open}
         form="user-plant-form"
       />
+
+      <Snackbar
+        open={openSnackbar}
+        onCloseClick={handleCloseSnackbar}
+        message={"La plante a bien été supprimée de votre jardin !"}
+        severity={plantDeleted}
+      />
+
       <div className="myGarden-plants">
         {plants.length > 0 ? (
           plants
