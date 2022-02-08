@@ -116,7 +116,16 @@ const Database = () => {
         {plants.length > 0 ? (
           plants
             .filter((plant) =>
-              plant.commonname.toLowerCase().includes(search.toLowerCase()),
+              plant.commonname
+                .toLowerCase()
+                .normalize("NFD")
+                .replace(/[\u0300-\u036f]/g, "")
+                .includes(
+                  search
+                    .toLowerCase()
+                    .normalize("NFD")
+                    .replace(/[\u0300-\u036f]/g, ""),
+                ),
             )
             .map((plant) => (
               <Fragment key={`bdd${plant.id}`}>
