@@ -1,4 +1,4 @@
-import { Routes, Route, useLocation } from "react-router-dom";
+import { Routes, Route, useLocation, useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import Nav from "../Nav";
@@ -15,6 +15,8 @@ import "./style.scss";
 import { fetchUser, fetchGardenId } from "../../actions/user";
 
 const App = () => {
+  const navigate = useNavigate();
+  const userDeleted = useSelector((state) => state.user.profile_deleted);
   const userLogged = useSelector((state) => state.user.logged);
   const dispatch = useDispatch();
 
@@ -22,6 +24,12 @@ const App = () => {
     dispatch(fetchUser());
     dispatch(fetchGardenId());
   }, [userLogged]);
+
+  useEffect(() => {
+    if (userDeleted) {
+      navigate("/");
+    }
+  }, [userDeleted]);
 
   const location = useLocation();
 

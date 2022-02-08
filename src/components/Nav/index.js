@@ -35,7 +35,7 @@ const Nav = () => {
   };
   return (
     <nav className="nav">
-      <div className="nav-logo">
+      <section className="nav-logo">
         <Link
           className="nav-logo-container"
           to="/"
@@ -44,7 +44,7 @@ const Nav = () => {
           <img src={logo} className="nav-logo-img" alt="logo O'My Plant" />
           <h1 className="nav-title">O'My Plant</h1>
         </Link>
-      </div>
+      </section>
       {screenWidth <= 900 && (
         <div
           className={menuIsOpen ? "burger-menu close" : "burger-menu"}
@@ -54,7 +54,7 @@ const Nav = () => {
         </div>
       )}
       {(menuIsOpen || screenWidth > 900) && (
-        <div className="nav-menu">
+        <section className="nav-menu">
           {user.logged && screenWidth <= 900 && (
             <div className="greetingMobile">
               <p> Bonjour {user.pseudo}</p>
@@ -152,7 +152,7 @@ const Nav = () => {
               <AccountMenu onClick={() => setMenuIsOpen(false)} />
             </div>
           )}
-        </div>
+        </section>
       )}
     </nav>
   );

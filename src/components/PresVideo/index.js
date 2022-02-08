@@ -3,7 +3,7 @@ import ReactPlayer from "react-player/youtube";
 import "./style.scss";
 
 const PresVideo = () => (
-  <div className="pres-video">
+  <section className="pres-video">
     <h1>Découvrir O’My Plant</h1>
     <div className="player-video">
       <ReactPlayer
@@ -12,7 +12,7 @@ const PresVideo = () => (
         height="45vh"
       />
     </div>
-  </div>
+  </section>
 );
 
 PresVideo.propTypes = {};

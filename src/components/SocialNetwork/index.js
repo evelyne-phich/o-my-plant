@@ -2,7 +2,7 @@ import Proptypes from "prop-types";
 import "./style.scss";
 
 const SocialNetwork = () => (
-  <div className="social-networks">
+  <section className="social-networks">
     <p>Nous suivre sur les réseaux sociaux </p>
     <ul className="network-ul">
       <li className="network-ul-li">
@@ -27,7 +27,7 @@ const SocialNetwork = () => (
         <span className="iconify" data-icon="simple-icons:tiktok"></span>
       </li>
     </ul>
-  </div>
+  </section>
 );
 
 SocialNetwork.propTypes = {};

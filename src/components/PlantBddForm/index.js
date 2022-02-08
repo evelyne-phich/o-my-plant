@@ -10,7 +10,7 @@ import FieldImage from "../FieldImage";
 
 import "./style.scss";
 
-const PlantBddForm = ({ onClose, addPlant }) => {
+const PlantBddForm = ({ onClose }) => {
   const currentState = useSelector((state) => state.plantBdd);
   const dispatch = useDispatch();
 

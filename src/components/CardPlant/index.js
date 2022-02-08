@@ -10,10 +10,10 @@ const CardPlant = ({
   value,
   cursorPointerNone,
 }) => (
-  <div className={`card ${cursorPointerNone}`} onClick={onCardClick}>
-    <div className="card-image">
+  <article className={`card ${cursorPointerNone}`} onClick={onCardClick}>
+    <section className="card-image">
       <img src={img} alt={title} />
-    </div>
+    </section>
     <div className="card-bottom-part">
       <div className="card-desc">
         <p className="card-desc-title">{title}</p>
@@ -26,7 +26,7 @@ const CardPlant = ({
         </div>
       )}
     </div>
-  </div>
+  </article>
 );
 
 CardPlant.propTypes = {

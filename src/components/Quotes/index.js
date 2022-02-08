@@ -3,10 +3,10 @@ import "./style.scss";
 
 const Quotes = ({ page, quote, author }) => {
   return (
-    <div className={page}>
+    <section className={page}>
       <p className="contain">{quote}</p>
       <p className="author">{author}</p>
-    </div>
+    </section>
   );
 };
 

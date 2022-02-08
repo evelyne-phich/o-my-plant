@@ -68,7 +68,7 @@ const Database = () => {
   }
 
   return (
-    <div className="database">
+    <main className="database">
       <h1 className="database-title">
         Ajoutez des plantes dans votre jardin !
       </h1>
@@ -76,7 +76,7 @@ const Database = () => {
         Si votre plante n'existe pas encore dans notre base de données,
         n'hésitez pas à la rajouter !
       </p>
-      <div className="database-top">
+      <section className="database-top">
         <div className="database-search">
           <input
             type="search"
@@ -109,8 +109,8 @@ const Database = () => {
           message={"La plante a bien été ajoutée à votre jardin !"}
           severity={"success"}
         />
-      </div>
-      <div className="database-plants">
+      </section>
+      <section className="database-plants">
         {plants.length > 0 ? (
           plants
             .filter((plant) =>
@@ -140,8 +140,8 @@ const Database = () => {
         ) : (
           <div className="database-empty">La base de données est vide.</div>
         )}
-      </div>
-    </div>
+      </section>
+    </main>
   );
 };
 
