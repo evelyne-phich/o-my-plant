@@ -13,7 +13,7 @@ import { emptyFields } from "../../actions/plantBdd";
 
 import "./style.scss";
 
-const Database = () => {
+const Database = ({ cursorPointerNone }) => {
   const [openSnackbar, setOpenSnackbar] = useState(false);
   const currentState = useSelector((state) => state.plantBdd);
   const [search, setSearch] = useState("");
@@ -135,6 +135,7 @@ const Database = () => {
                   contentButton="Ajouter"
                   onAddClick={handleAddPlantClick}
                   value={plant.id}
+                  cursorPointerNone={"cursorPointerNone"}
                 />
               </Fragment>
             ))
