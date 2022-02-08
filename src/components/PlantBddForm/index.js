@@ -96,7 +96,7 @@ const PlantBddForm = ({ onClose }) => {
       </div>
       <button className="profile-button" type="submit">
         Sauvegarder
-        <SaveIcon />
+        <SaveIcon sx={{ marginLeft: "1rem" }} />
       </button>
     </form>
   );

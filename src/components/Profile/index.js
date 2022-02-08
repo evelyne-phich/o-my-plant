@@ -225,7 +225,7 @@ const Profile = () => {
               onClick={enableProfileUpdate}
             >
               Modifier
-              <EditIcon />
+              <EditIcon sx={{ marginLeft: "1rem" }} />
             </button>
             <button
               className="profile-button"
@@ -233,7 +233,7 @@ const Profile = () => {
               onClick={handleClickOpen}
             >
               Supprimer
-              <DeleteIcon />
+              <DeleteIcon sx={{ marginLeft: "1rem" }} />
             </button>
           </div>
         )}
@@ -246,7 +246,7 @@ const Profile = () => {
         {!currentState.user.profileUpdateDisabled && (
           <button className="profile-button" type="submit">
             Sauvegarder
-            <SaveIcon />
+            <SaveIcon sx={{ marginLeft: "1rem" }} />
           </button>
         )}
         <Snackbar
