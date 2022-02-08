@@ -313,7 +313,7 @@ const PlantGardenForm = ({ onClose }) => {
             onClick={enablePlantUpdate}
           >
             Modifier
-            <EditIcon />
+            <EditIcon sx={{ marginLeft: "1rem" }} />
           </button>
           <button
             className="profile-button"
@@ -321,7 +321,7 @@ const PlantGardenForm = ({ onClose }) => {
             onClick={handleClickOpen}
           >
             Supprimer
-            <DeleteIcon />
+            <DeleteIcon sx={{ marginLeft: "1rem" }} />
           </button>
         </div>
       )}
@@ -335,7 +335,7 @@ const PlantGardenForm = ({ onClose }) => {
       {!currentState.plant.plantUpdateDisabled && (
         <button className="profile-button" type="submit">
           Sauvegarder
-          <SaveIcon />
+          <SaveIcon sx={{ marginLeft: "1rem" }} />
         </button>
       )}
     </form>
