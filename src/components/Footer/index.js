@@ -20,14 +20,11 @@ const Footer = () => {
       <div className="footer-middle-part">
         <h1>Liens utiles</h1>
         <ul>
-          <a href="#">
+          <a href="/legal-notice">
             <li>Mentions légales</li>
           </a>
-          <a href="#">
+          <a href="/privacy-policy">
             <li>Politiques de confidentialité</li>
-          </a>
-          <a href="#">
-            <li>CGU</li>
           </a>
         </ul>
       </div>
@@ -36,7 +33,7 @@ const Footer = () => {
         <p>
           Nous contacter : <br />
           <br />
-          <a href="mailto:oomyplant@gmail.com">omyplant@gmail.com</a>
+          <a href="mailto:oomyplant@gmail.com">oomyplant@gmail.com</a>
         </p>
       </div>
     </footer>
