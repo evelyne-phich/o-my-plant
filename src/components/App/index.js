@@ -10,6 +10,7 @@ import Subscribe from "../Subscribe";
 import Profile from "../Profile";
 import MyGarden from "../MyGarden";
 import Database from "../Database";
+import Page404 from "../Page404";
 import "./style.scss";
 import { fetchUser, fetchGardenId } from "../../actions/user";
 
@@ -37,6 +38,7 @@ const App = () => {
           <Route path="/about" element={<About />} />
           <Route path="/login" element={<Login title="Se connecter" />} />
           <Route path="/subscribe" element={<Subscribe title="S'inscrire" />} />
+          <Route path="*" element={<Page404 />} />
           {userLogged && (
             <>
               <Route path="/profile" element={<Profile />} />

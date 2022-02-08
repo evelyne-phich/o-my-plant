@@ -6,7 +6,7 @@ const Header = () => {
     <header className="header">
       <div className="header-part-left">
         <div className="header-part-left-contain">
-          <h1>O M'y Plant</h1>
+          <h1>O'My Plant</h1>
           <p>
             Même vos plantes
             <br /> ont leur agenda
