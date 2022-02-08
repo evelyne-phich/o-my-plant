@@ -8,8 +8,9 @@ const CardPlant = ({
   onCardClick,
   onAddClick,
   value,
+  cursorPointerNone,
 }) => (
-  <div className="card" onClick={onCardClick}>
+  <div className={`card ${cursorPointerNone}`} onClick={onCardClick}>
     <div className="card-image">
       <img src={img} alt={title} />
     </div>
