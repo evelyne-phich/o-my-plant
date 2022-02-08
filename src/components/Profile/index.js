@@ -12,6 +12,7 @@ import {
 } from "../../actions/user";
 
 import Dialog from "../Dialog";
+import Snackbar from "../Snackbar";
 
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
@@ -26,7 +27,6 @@ const Profile = () => {
   // l'image en cours s'affiche sur la page
   useEffect(() => {
     if (image) {
-      const imgUrl = URL.createObjectURL(image); //blob
       updateImage();
     }
   }, [image]);
@@ -56,7 +56,7 @@ const Profile = () => {
 
   const onSubmitClick = (event) => {
     event.preventDefault();
-    dispatch(handleProfileUpdateSubmit());
+    dispatch(handleProfileUpdateSubmit(true));
     dispatch(updateProfile());
   };
 
@@ -69,6 +69,27 @@ const Profile = () => {
 
   const handleClose = () => {
     setOpen(false);
+  };
+
+  // Snackbar
+  const profileUpdated = useSelector((state) => state.user.profile_updated);
+  console.log(profileUpdated);
+  const [openSnackbar, setOpenSnackbar] = useState(false);
+
+  useEffect(() => {
+    if (profileUpdated) {
+      setOpenSnackbar(true);
+      setTimeout(() => {
+        dispatch(handleProfileUpdateSubmit(false));
+      }, 2000);
+    }
+  }, [profileUpdated]);
+
+  const handleCloseSnackbar = (event, reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
+    setOpenSnackbar(false);
   };
 
   return (
@@ -228,6 +249,12 @@ const Profile = () => {
             <SaveIcon />
           </button>
         )}
+        <Snackbar
+          open={openSnackbar}
+          onCloseClick={handleCloseSnackbar}
+          message={"Votre profil a bien été mis à jour !"}
+          severity={"success"}
+        />
       </form>
     </main>
   );

@@ -25,8 +25,9 @@ export const updateProfile = () => ({
   type: UPDATE_PROFILE,
 });
 
-export const handleProfileUpdateSubmit = () => ({
+export const handleProfileUpdateSubmit = (profileUpdated) => ({
   type: HANDLE_UPDATE_PROFILE_SUBMIT,
+  payload: profileUpdated,
 });
 
 export const addImage = (base64, fileInputName) => ({

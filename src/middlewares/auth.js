@@ -36,6 +36,7 @@ const auth = (store) => (next) => (action) => {
         )
         .then((res) => {
           store.dispatch(saveUser(res.data));
+          next(action);
         })
         .catch((err) => console.log("erreur: ", err.response.data));
       break;

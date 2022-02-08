@@ -1,4 +1,3 @@
-import Proptypes from "prop-types";
 import ReactPlayer from "react-player/youtube";
 import "./style.scss";
 
@@ -14,7 +13,5 @@ const PresVideo = () => (
     </div>
   </section>
 );
-
-PresVideo.propTypes = {};
 
 export default PresVideo;

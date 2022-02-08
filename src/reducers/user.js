@@ -7,6 +7,7 @@ import {
   LOGOUT,
   ADD_IMAGE,
   DELETE_USER,
+  HANDLE_UPDATE_PROFILE_SUBMIT,
 } from "../actions/user";
 
 export const initialState = {
@@ -26,6 +27,7 @@ export const initialState = {
   garden_id: "",
   profileUpdateDisabled: true,
   profile_deleted: false,
+  profile_updated: false,
 };
 
 const reducer = (state = initialState, action = {}) => {
@@ -72,6 +74,11 @@ const reducer = (state = initialState, action = {}) => {
       return {
         ...initialState,
         profile_deleted: true,
+      };
+    case HANDLE_UPDATE_PROFILE_SUBMIT:
+      return {
+        ...state,
+        profile_updated: action.payload,
       };
     default:
       return state;
