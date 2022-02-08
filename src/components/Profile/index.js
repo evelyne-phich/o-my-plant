@@ -30,7 +30,6 @@ const Profile = () => {
   // l'image en cours s'affiche sur la page
   useEffect(() => {
     if (image) {
-      console.log(image);
       const imgUrl = URL.createObjectURL(image); //blob
       setImageUrl(imgUrl);
       updateImage();
@@ -47,7 +46,6 @@ const Profile = () => {
   const dispatch = useDispatch();
 
   const updateImage = () => {
-    console.log(imageUrl);
     const reader = new FileReader();
     reader.readAsDataURL(image);
     reader.onloadend = () => {
@@ -59,7 +57,6 @@ const Profile = () => {
   };
 
   const changeFieldInput = (value, name) => {
-    console.log(value);
     dispatch(changeField(value, name));
   };
 
@@ -70,7 +67,6 @@ const Profile = () => {
 
   const onSubmitClick = (event) => {
     event.preventDefault();
-    console.log("je submit le profil");
     dispatch(handleProfileUpdateSubmit());
     dispatch(updateProfile());
   };

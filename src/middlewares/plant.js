@@ -11,10 +11,8 @@ import {
 const plant = (store) => (next) => (action) => {
   switch (action.type) {
     case HANDLE_UPDATE_PLANT_SUBMIT: {
-      console.log("je suis dans le middleware HANDLE_UPDATE_PLANT_SUBMIT");
       const token = localStorage.getItem("token");
       const plant = store.getState().plant;
-      console.log(plant.plantdb_id, plant.garden_id);
 
       axios
         .patch(
@@ -47,8 +45,6 @@ const plant = (store) => (next) => (action) => {
     case HANDLE_ADD_CLICK: {
       const token = localStorage.getItem("token");
       const user = store.getState().user;
-      console.log(action.payload);
-      console.log(user.garden_id);
       axios
         .post(
           `https://omyplant.herokuapp.com/garden`,
@@ -62,16 +58,12 @@ const plant = (store) => (next) => (action) => {
             },
           },
         )
-        .then((res) => {
-          console.log(res.data);
-        })
+        .then((res) => {})
         .catch((err) => console.log("erreur:", err.response.data));
       break;
     }
     case FETCH_PLANT: {
       const token = localStorage.getItem("token");
-      const plant = store.getState().plant;
-      console.log("fetch plant", plant.id);
       axios
         .get(`https://omyplant.herokuapp.com/garden/${action.payload}`, {
           headers: {
@@ -79,7 +71,6 @@ const plant = (store) => (next) => (action) => {
           },
         })
         .then((res) => {
-          console.log("reponse fetch plant", res.data[0]);
           store.dispatch(savePlant(res.data[0]));
         })
         .catch((err) => console.log("err", err.response.data));
@@ -95,12 +86,10 @@ const plant = (store) => (next) => (action) => {
           },
         })
         .then((res) => {
-          console.log("reponse delete plant", res.data);
           localStorage.setItem("deletePlant", "success");
         })
         .catch((err) => {
           console.log("err", err.response.data);
-          localStorage.setItem("deletePlant", "error");
         });
       break;
     }

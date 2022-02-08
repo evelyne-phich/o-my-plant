@@ -87,7 +87,6 @@ const PlantBddForm = ({ onClose, addPlant }) => {
               className="profile-biography-content"
               defaultValue={currentState.description || ""}
               onChange={(event) => {
-                console.log(event.target.value);
                 dispatch(changeField(event.target.value, event.target.name));
               }}
               required="required"
