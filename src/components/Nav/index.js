@@ -86,7 +86,7 @@ const Nav = () => {
           >
             A propos
           </NavLink>
-          {(user.role === "member" || user.role === "admin") && (
+          {user.role === "member" && (
             <>
               <NavLink
                 onClick={() => setMenuIsOpen(false)}
@@ -119,15 +119,6 @@ const Nav = () => {
                 </NavLink>
               )}
             </>
-          )}
-          {user.role === "admin" && (
-            <NavLink
-              onClick={() => setMenuIsOpen(false)}
-              className={getActiveClassname}
-              to="/admin"
-            >
-              Admin
-            </NavLink>
           )}
           {!user.logged && (
             <>
