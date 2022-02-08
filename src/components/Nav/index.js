@@ -102,13 +102,6 @@ const Nav = () => {
               >
                 Ajouter une plante
               </NavLink>
-              <NavLink
-                onClick={() => setMenuIsOpen(false)}
-                className={getActiveClassname}
-                to="/water-today"
-              >
-                Water today
-              </NavLink>
               {user.logged && screenWidth <= 900 && (
                 <NavLink
                   onClick={handleLogout}

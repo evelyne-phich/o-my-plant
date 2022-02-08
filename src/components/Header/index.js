@@ -6,9 +6,15 @@ const Header = () => {
       <section className="header-part-left">
         <div className="header-part-left-contain">
           <h1>O'My Plant</h1>
-          <p>
+          <p style={{ fontWeight: 600, fontSize: "2rem" }}>
             Même vos plantes
-            <br /> ont leur agenda
+            <br /> ont leur agenda !
+          </p>
+          <br />
+          <p style={{}}>
+            Le meilleur compagnon
+            <br />
+            pour l'entretien de vos plantes
           </p>
         </div>
       </section>

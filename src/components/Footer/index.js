@@ -13,7 +13,7 @@ const Footer = () => {
         <h2>O'My Plant</h2>
         <p>
           <br /> Même vos plantes
-          <br /> ont leur agenda.
+          <br /> ont leur agenda !
         </p>
       </section>
 
