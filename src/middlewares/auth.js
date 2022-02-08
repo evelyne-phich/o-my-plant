@@ -90,7 +90,6 @@ const auth = (store) => (next) => (action) => {
           },
         })
         .then((res) => {
-          console.log("user deleted", res.data);
           next(action);
         })
         .catch((err) => console.log("err", err.response.data));

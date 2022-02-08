@@ -13,7 +13,7 @@ import { emptyFields } from "../../actions/plantBdd";
 
 import "./style.scss";
 
-const Database = ({ cursorPointerNone }) => {
+const Database = () => {
   const [openSnackbar, setOpenSnackbar] = useState(false);
   const currentState = useSelector((state) => state.plantBdd);
   const [search, setSearch] = useState("");
@@ -28,12 +28,10 @@ const Database = ({ cursorPointerNone }) => {
   };
   const dispatch = useDispatch();
   const handleAddPlantClick = (event) => {
-    console.log("je passe dans handleAddPlantClick");
     dispatch(handleAddClick(event.target.value));
     setOpenSnackbar(true);
   };
   const handleCloseSnackbar = (event, reason) => {
-    console.log("je passe dans handleCloseSnackbar");
     if (reason === "clickaway") {
       return;
     }

@@ -27,7 +27,6 @@ const LoginForm = () => {
       .then((res) => {
         // stockage du token dans le localStorage
         localStorage.setItem("token", res.headers.authorization);
-        console.log("reponse", res.data);
         // stockage des infos de l'api dans le state
         dispatch(saveUser(res.data));
         navigate("/");

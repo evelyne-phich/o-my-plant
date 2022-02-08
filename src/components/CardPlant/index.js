@@ -36,6 +36,7 @@ CardPlant.propTypes = {
   onCardClick: PropTypes.func,
   onAddClick: PropTypes.func,
   value: PropTypes.number,
+  cursorPointerNone: PropTypes.string,
 };
 
 export default CardPlant;

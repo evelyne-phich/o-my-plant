@@ -27,9 +27,7 @@ const plantBdd = (store) => (next) => (action) => {
             },
           },
         )
-        .then((res) => {
-          console.log(res.data);
-        })
+        .then((res) => {})
         .catch((err) => {
           console.log("erreur: ", err.response.data);
         })
