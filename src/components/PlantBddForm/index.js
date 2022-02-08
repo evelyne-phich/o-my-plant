@@ -61,6 +61,7 @@ const PlantBddForm = ({ onClose }) => {
             value={currentState.commonname || ""}
             className="plant-input-field"
             required="required"
+            maxLength="13"
           ></Field>
           <div
             className="form-image-container"

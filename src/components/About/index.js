@@ -47,21 +47,27 @@ const About = () => {
               src={marie}
             />
             <h2 className="about-page-section-member-name">Marie</h2>
-            <h3 className="about-page-section-member-role">Product Owner</h3>
+            <h3 className="about-page-section-member-role">
+              Dev Front
+              <br />
+              Product Owner
+            </h3>
           </div>
           <div className="about-page-section-member">
             <img
               className="about-page-section-member-avatar"
-              alt="Avatar de Marie"
+              alt="Avatar de Raïd"
               src={raid}
             />
             <h2 className="about-page-section-member-name">Raïd</h2>
-            <h3 className="about-page-section-member-role">Scrum Master</h3>
+            <h3 className="about-page-section-member-role">
+              Dev Front <br /> Scrum Master
+            </h3>
           </div>
           <div className="about-page-section-member">
             <img
               className="about-page-section-member-avatar"
-              alt="Avatar de Marie"
+              alt="Avatar d'Evelyne'"
               src={evelyne}
             />
             <h2 className="about-page-section-member-name">Evelyne</h2>
@@ -70,7 +76,7 @@ const About = () => {
           <div className="about-page-section-member">
             <img
               className="about-page-section-member-avatar"
-              alt="Avatar de Marie"
+              alt="Avatar de Dylan"
               src={dylan}
             />
             <h2 className="about-page-section-member-name">Dylan</h2>
@@ -79,11 +85,13 @@ const About = () => {
           <div className="about-page-section-member">
             <img
               className="about-page-section-member-avatar"
-              alt="Avatar de Marie"
+              alt="Avatar de John"
               src={john}
             />
             <h2 className="about-page-section-member-name">John</h2>
-            <h3 className="about-page-section-member-role">Git Master</h3>
+            <h3 className="about-page-section-member-role">
+              Dev Back <br /> Git Master
+            </h3>
           </div>
         </div>
       </section>
