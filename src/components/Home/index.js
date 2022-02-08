@@ -1,7 +1,3 @@
-// import { useSelector } from 'react-redux';
-// import Page from 'src/components/Page';
-// import AppHeader from 'src/components/AppHeader';
-// import Content from 'src/components/Content';
 import Header from "../Header";
 import PresVideo from "../PresVideo";
 import SocialNetwork from "../SocialNetwork";
@@ -19,14 +15,6 @@ const HomeQuote = () => {
 
 const Home = () => {
   return (
-    /*
-    <Page>
-      <AppHeader />
-      <Content
-        title={title}
-        text="Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, explicabo."
-      />
-    </Page>*/
     <>
       <Header />
       <main className="main">
@@ -37,11 +25,6 @@ const Home = () => {
         <SocialNetwork />
       </main>
     </>
-
-    /*<main>
-        <section></section>
-    </main>
-    <footer></footer>*/
   );
 };
 

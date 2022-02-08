@@ -18,7 +18,7 @@ const PlantsCounter = () => {
   }, []);
 
   return (
-    <div className="section-plant-counter">
+    <section className="section-plant-counter">
       <div className="plant-counter">
         <p>
           {numberOfPlants > 1
@@ -26,7 +26,7 @@ const PlantsCounter = () => {
             : `Grâce à vous, déjà ${numberOfPlants} plante recensée !`}
         </p>
       </div>
-    </div>
+    </section>
   );
 };
 

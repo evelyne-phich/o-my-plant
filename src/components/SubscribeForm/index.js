@@ -46,7 +46,7 @@ const SubscribeForm = () => {
   };
 
   return (
-    <div className="subscribe-form">
+    <section className="subscribe-form">
       <form
         autoComplete="off"
         className="subscribe-form-element"
@@ -103,7 +103,7 @@ const SubscribeForm = () => {
           </div>
         ) : null}
       </form>
-    </div>
+    </section>
   );
 };
 

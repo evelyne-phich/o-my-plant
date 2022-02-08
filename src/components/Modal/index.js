@@ -1,3 +1,4 @@
+import Proptypes from "prop-types";
 import Backdrop from "@mui/material/Backdrop";
 import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
@@ -48,3 +49,9 @@ export default function TransitionsModal({ onClose, open, form }) {
     </>
   );
 }
+
+TransitionsModal.propTypes = {
+  onClose: Proptypes.func,
+  open: Proptypes.bool,
+  form: Proptypes.string,
+};

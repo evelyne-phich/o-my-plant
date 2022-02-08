@@ -78,9 +78,9 @@ const MyGarden = () => {
   }
 
   return (
-    <div className="myGarden">
+    <main className="myGarden">
       <h1 className="myGarden-title">Mon jardin</h1>
-      <div className="myGarden-top">
+      <section className="myGarden-top">
         <div className="myGarden-search">
           <input
             type="search"
@@ -96,7 +96,7 @@ const MyGarden = () => {
         <Link to="/add-plant" className="myGarden-add-plant">
           Ajouter une plante
         </Link>
-      </div>
+      </section>
       <Modal
         onClose={handleCloseGardenPlant}
         open={open}
@@ -110,7 +110,7 @@ const MyGarden = () => {
         severity={plantDeleted}
       />
 
-      <div className="myGarden-plants">
+      <section className="myGarden-plants">
         {plants.length > 0 ? (
           plants
             .filter((plant) =>
@@ -140,8 +140,8 @@ const MyGarden = () => {
         ) : (
           <div className="myGarden-empty">Votre jardin est vide.</div>
         )}
-      </div>
-    </div>
+      </section>
+    </main>
   );
 };
 

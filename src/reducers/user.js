@@ -70,11 +70,9 @@ const reducer = (state = initialState, action = {}) => {
       };
     case DELETE_USER:
       return {
-        ...state,
+        ...initialState,
         profile_deleted: true,
-        logged: false,
       };
-
     default:
       return state;
   }

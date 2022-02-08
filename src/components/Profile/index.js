@@ -1,6 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 
 import Field from "../Field";
 import FieldImage from "../FieldImage";
@@ -21,26 +20,16 @@ import SaveIcon from "@mui/icons-material/Save";
 import "./style.scss";
 
 const Profile = () => {
-  const navigate = useNavigate();
-  const userDeleted = useSelector((state) => state.user.profile_deleted);
   const [image, setImage] = useState(""); // fichier image sélectionné
-  const [imageUrl, setImageUrl] = useState(""); // blob image url
   const [fileInputName, setFileInputName] = useState(""); // to set the name of the fieldImage
   // à chaque changement du state image
   // l'image en cours s'affiche sur la page
   useEffect(() => {
     if (image) {
       const imgUrl = URL.createObjectURL(image); //blob
-      setImageUrl(imgUrl);
       updateImage();
     }
   }, [image]);
-
-  useEffect(() => {
-    if (userDeleted) {
-      navigate("/");
-    }
-  }, [userDeleted]);
 
   const currentState = useSelector((state) => state);
   const dispatch = useDispatch();

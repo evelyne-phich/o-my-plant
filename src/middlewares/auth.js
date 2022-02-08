@@ -78,7 +78,6 @@ const auth = (store) => (next) => (action) => {
           store.dispatch(saveGardenId(res.data));
         })
         .catch((err) => console.log("err", err.response.data));
-
       break;
     }
     case DELETE_USER: {
@@ -91,9 +90,9 @@ const auth = (store) => (next) => (action) => {
         })
         .then((res) => {
           next(action);
+          localStorage.removeItem("token");
         })
         .catch((err) => console.log("err", err.response.data));
-
       break;
     }
     default:

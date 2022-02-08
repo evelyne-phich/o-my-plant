@@ -1,10 +1,9 @@
 import "./style.scss";
-import homeHeaderImage from "../../assets/img/home/home-bgd.jpg";
 
 const Header = () => {
   return (
     <header className="header">
-      <div className="header-part-left">
+      <section className="header-part-left">
         <div className="header-part-left-contain">
           <h1>O'My Plant</h1>
           <p>
@@ -12,8 +11,8 @@ const Header = () => {
             <br /> ont leur agenda
           </p>
         </div>
-      </div>
-      <div className="header-part-right"></div>
+      </section>
+      <section className="header-part-right"></section>
     </header>
   );
 };

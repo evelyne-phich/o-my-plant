@@ -38,7 +38,7 @@ const LoginForm = () => {
   };
 
   return (
-    <div className="login-form">
+    <section className="login-form">
       <form
         autoComplete="off"
         className="login-form-element"
@@ -67,7 +67,7 @@ const LoginForm = () => {
           </div>
         ) : null}
       </form>
-    </div>
+    </section>
   );
 };
 
