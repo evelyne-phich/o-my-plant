@@ -73,7 +73,7 @@ const Profile = () => {
 
   // Snackbar
   const profileUpdated = useSelector((state) => state.user.profile_updated);
-  console.log(profileUpdated);
+
   const [openSnackbar, setOpenSnackbar] = useState(false);
 
   useEffect(() => {
