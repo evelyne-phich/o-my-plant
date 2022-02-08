@@ -6,7 +6,7 @@ const Page404 = () => (
   <div className="page-404">
     <h1 className="page-404-h1">
       Oops ! Vous ne
-      <br /> devriez pas êtes ici
+      <br /> devriez pas être ici !
     </h1>
     <img className="page-404-img" src={errImg} />
   </div>
