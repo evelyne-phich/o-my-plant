@@ -29,7 +29,7 @@ const MyGarden = () => {
       setTimeout(() => {
         setOpenSnackbar(false);
         localStorage.removeItem("deletePlant");
-      }, 1500);
+      }, 2000);
     }
   }, [plantDeleted]);
 

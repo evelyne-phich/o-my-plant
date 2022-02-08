@@ -8,7 +8,7 @@ const Alert = forwardRef(function Alert(props, ref) {
 
 const SnackbarComponent = ({ open, onCloseClick, message, severity }) => {
   return (
-    <Snackbar open={open} autoHideDuration={1500} onClose={onCloseClick}>
+    <Snackbar open={open} autoHideDuration={2000} onClose={onCloseClick}>
       <Alert onClose={onCloseClick} severity={severity} sx={{ width: "100%" }}>
         {message}
       </Alert>
