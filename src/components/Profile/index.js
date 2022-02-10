@@ -174,7 +174,7 @@ const Profile = () => {
                 src={
                   currentState.user.profilepicture
                     ? currentState.user.profilepicture
-                    : "profilePic"
+                    : "https://res.cloudinary.com/dtnoanxmt/image/upload/v1644497374/avat_yhrrne.png"
                 }
                 alt="avatar"
               />
