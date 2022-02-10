@@ -6,7 +6,7 @@ const PresVideo = () => (
     <h1>Découvrir O’My Plant</h1>
     <div className="player-video">
       <ReactPlayer
-        url="https://www.youtube.com/watch?v=Jh5oX0VRnzk"
+        url="https://www.youtube.com/watch?v=qah998oSUoA"
         width="65vw"
         height="45vh"
       />
